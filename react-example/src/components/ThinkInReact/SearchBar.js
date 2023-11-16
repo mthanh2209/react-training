@@ -1,4 +1,8 @@
-export default function SearchBar({ filterText, inStockOnly, onFilterTextChange, onInStockOnlyChange }) {
+export default function SearchBar({
+    filterText,
+    inStockOnly,
+    onFilterTextChange,
+    onInStockOnlyChange }) {
     return (
         <form>
             <input

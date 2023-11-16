@@ -1,6 +1,6 @@
 import './App.css';
 import ExampleLink from './components/Link';
-import FilterableProductTable from './components/FilterableProductTable';
+import FilterableProductTable from './components/ThinkInReact/FilterableProductTable';
 import { Gallery, Form, FeedbackForm } from './components/HookExample/UseState';
 
 import { Routes, Route } from "react-router-dom";
@@ -20,7 +20,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<ExampleLink />} />
         <Route path="/thinkInReact" element={<FilterableProductTable products={PRODUCTS} />} />
-        <Route path="/useState" element={
+        <Route path="/hookExample" element={
           <>
             <h1>Challenge 1: </h1>
             <Gallery />

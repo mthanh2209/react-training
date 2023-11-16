@@ -6,7 +6,7 @@ export default function ExampleLink() {
             <Link to="/thinkInReact">
                 <p>Think In React Example</p>
             </Link>
-            <Link to="/useState">
+            <Link to="/hookExample">
                 <p>Hook Example</p>
             </Link>
         </>
