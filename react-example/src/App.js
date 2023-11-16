@@ -1,5 +1,9 @@
 import './App.css';
+import ExampleLink from './components/Link';
 import FilterableProductTable from './components/FilterableProductTable';
+import { Gallery, Form, FeedbackForm } from './components/HookExample/UseState';
+
+import { Routes, Route } from "react-router-dom";
 
 const PRODUCTS = [
   { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
@@ -11,5 +15,24 @@ const PRODUCTS = [
 ];
 
 export default function App() {
-  return <FilterableProductTable products={PRODUCTS} />
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<ExampleLink />} />
+        <Route path="/thinkInReact" element={<FilterableProductTable products={PRODUCTS} />} />
+        <Route path="/useState" element={
+          <>
+            <h1>Challenge 1: </h1>
+            <Gallery />
+            <br></br>
+            <h1>Challenge 2: </h1>
+            <Form />
+            <br></br>
+            <h1>Challenge 3: </h1>
+            <FeedbackForm />
+          </>
+        } />
+      </Routes>
+    </>
+  )
 }
