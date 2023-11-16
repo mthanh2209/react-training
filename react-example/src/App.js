@@ -1,6 +1,8 @@
 import './App.css';
 import ExampleLink from './components/Link';
 import FilterableProductTable from './components/ThinkInReact/FilterableProductTable';
+import Scientists from './components/PropsExample/Profile';
+import Profile from './components/PropsExample/Children';
 import { Gallery, Form, FeedbackForm } from './components/HookExample/UseState';
 
 import { Routes, Route } from "react-router-dom";
@@ -30,6 +32,16 @@ export default function App() {
             <br></br>
             <h1>Challenge 3: </h1>
             <FeedbackForm />
+          </>
+        } />
+        <Route path="/propsExample" element={
+          <>
+            <br></br>
+            <h1>Challenge 1: </h1>
+            <Scientists />
+            <br></br>
+            <h1>Challenge 2: </h1>
+            <Profile />
           </>
         } />
       </Routes>

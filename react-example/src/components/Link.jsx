@@ -9,6 +9,9 @@ export default function ExampleLink() {
             <Link to="/hookExample">
                 <p>Hook Example</p>
             </Link>
+            <Link to="/propsExample">
+                <p>Props Example</p>
+            </Link>
         </>
     )
 }
