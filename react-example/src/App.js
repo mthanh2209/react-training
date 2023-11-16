@@ -3,6 +3,7 @@ import ExampleLink from './components/Link';
 import FilterableProductTable from './components/ThinkInReact/FilterableProductTable';
 import Scientists from './components/PropsExample/Profile';
 import Profile from './components/PropsExample/Children';
+import Todo from './components/HookExample/Todo';
 import { Gallery, Form, FeedbackForm } from './components/HookExample/UseState';
 
 import { Routes, Route } from "react-router-dom";
@@ -32,6 +33,9 @@ export default function App() {
             <br></br>
             <h1>Challenge 3: </h1>
             <FeedbackForm />
+            <br></br>
+            <h1>Challenge 4: </h1>
+            <Todo />
           </>
         } />
         <Route path="/propsExample" element={
