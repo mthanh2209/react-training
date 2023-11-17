@@ -12,6 +12,9 @@ export default function ExampleLink() {
             <Link to="/propsExample">
                 <p>Props Example</p>
             </Link>
+            <Link to="/renderingLists">
+                <p>Render Example</p>
+            </Link>
         </>
     )
 }

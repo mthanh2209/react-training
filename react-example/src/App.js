@@ -5,6 +5,7 @@ import Scientists from './components/PropsExample/Profile';
 import Profile from './components/PropsExample/Children';
 import Todo from './components/HookExample/Todo';
 import { Gallery, Form, FeedbackForm } from './components/HookExample/UseState';
+import { PoemList, RecipeList, ScientistsList } from './components/RenderExample/RederingList';
 
 import { Routes, Route } from "react-router-dom";
 
@@ -46,6 +47,18 @@ export default function App() {
             <br></br>
             <h1>Challenge 2: </h1>
             <Profile />
+          </>
+        } />
+        <Route path="/renderingLists" element={
+          <>
+            <h1>Challenge 1: </h1>
+            <ScientistsList />
+            <br></br>
+            <h1>Challenge 2: </h1>
+            <RecipeList />
+            <br></br>
+            <h1>Challenge 3: </h1>
+            <PoemList />
           </>
         } />
       </Routes>
