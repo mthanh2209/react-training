@@ -3,7 +3,9 @@ import ExampleLink from './components/Link';
 import FilterableProductTable from './components/ThinkInReact/FilterableProductTable';
 import Scientists from './components/PropsExample/Profile';
 import Profile from './components/PropsExample/Children';
+import Counter from './components/HookExample/UseReducer';
 import Todo from './components/HookExample/Todo';
+import TodoList from './components/HookExample/TodoList/TodoList';
 import { Gallery, Form, FeedbackForm } from './components/HookExample/UseState';
 import { PoemList, RecipeList, ScientistsList } from './components/RenderExample/RederingList';
 
@@ -26,6 +28,7 @@ export default function App() {
         <Route path="/thinkInReact" element={<FilterableProductTable products={PRODUCTS} />} />
         <Route path="/hookExample" element={
           <>
+            <u><h1>USE STATE</h1></u>
             <h1>Challenge 1: </h1>
             <Gallery />
             <br></br>
@@ -37,6 +40,14 @@ export default function App() {
             <br></br>
             <h1>Challenge 4: </h1>
             <Todo />
+            <br></br>
+
+            <u><h1>USE REDUCER</h1></u>
+            <h1>Challenge 1: </h1>
+            <Counter />
+            <br></br>
+            <h1>Challenge 2: </h1>
+            <TodoList />
           </>
         } />
         <Route path="/propsExample" element={
