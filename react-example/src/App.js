@@ -1,4 +1,5 @@
 import './App.css';
+import './components/style.css'
 import ExampleLink from './components/Link';
 import FilterableProductTable from './components/ThinkInReact/FilterableProductTable';
 import Scientists from './components/PropsExample/Profile';
@@ -6,6 +7,7 @@ import Profile from './components/PropsExample/Children';
 import Counter from './components/HookExample/UseReducer';
 import Todo from './components/HookExample/Todo';
 import TodoList from './components/HookExample/TodoList/TodoList';
+import UseContext from './components/HookExample/UseContext';
 import { Gallery, Form, FeedbackForm } from './components/HookExample/UseState';
 import { PoemList, RecipeList, ScientistsList } from './components/RenderExample/RederingList';
 
@@ -48,6 +50,10 @@ export default function App() {
             <br></br>
             <h1>Challenge 2: </h1>
             <TodoList />
+
+            <u><h1>USE CONTEXT</h1></u>
+            <h1>Example 1: </h1>
+            <UseContext />
           </>
         } />
         <Route path="/propsExample" element={
