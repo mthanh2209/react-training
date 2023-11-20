@@ -8,6 +8,7 @@ import Counter from './components/HookExample/UseReducer';
 import Todo from './components/HookExample/Todo';
 import TodoList from './components/HookExample/TodoList/TodoList';
 import UseContext from './components/HookExample/UseContext';
+import PlayVideo from './components/HookExample/UseRef';
 import { Gallery, Form, FeedbackForm } from './components/HookExample/UseState';
 import { PoemList, RecipeList, ScientistsList } from './components/RenderExample/RederingList';
 
@@ -54,6 +55,10 @@ export default function App() {
             <u><h1>USE CONTEXT</h1></u>
             <h1>Example 1: </h1>
             <UseContext />
+
+            <u><h1>USE REF</h1></u>
+            <h1>Example 1: </h1>
+            <PlayVideo />
           </>
         } />
         <Route path="/propsExample" element={
