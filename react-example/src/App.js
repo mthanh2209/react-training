@@ -13,6 +13,7 @@ import AddList from './components/ArrayExample/AddArray';
 import DeleteList from './components/ArrayExample/DeleteArray';
 import ShapeEditor from './components/ArrayExample/TransformArray';
 import CounterList from './components/ArrayExample/ReplaceArray';
+import InsertList from './components/ArrayExample/InsertArray';
 import { Gallery, Form, FeedbackForm } from './components/HookExample/UseState';
 import { PoemList, RecipeList, ScientistsList } from './components/RenderExample/RederingList';
 
@@ -98,6 +99,7 @@ export default function App() {
             <DeleteList />
             <ShapeEditor />
             <CounterList />
+            <InsertList />
           </>
         } />
       </Routes>
