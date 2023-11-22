@@ -11,6 +11,7 @@ import UseContext from './components/HookExample/UseContext';
 import PlayVideo from './components/HookExample/UseRef';
 import AddList from './components/ArrayExample/AddArray';
 import DeleteList from './components/ArrayExample/DeleteArray';
+import ShapeEditor from './components/ArrayExample/TransformArray';
 import { Gallery, Form, FeedbackForm } from './components/HookExample/UseState';
 import { PoemList, RecipeList, ScientistsList } from './components/RenderExample/RederingList';
 
@@ -94,6 +95,7 @@ export default function App() {
           <>
             <AddList />
             <DeleteList />
+            <ShapeEditor />
           </>
         } />
       </Routes>
