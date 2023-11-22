@@ -15,6 +15,7 @@ import ShapeEditor from './components/ArrayExample/TransformArray';
 import CounterList from './components/ArrayExample/ReplaceArray';
 import InsertList from './components/ArrayExample/InsertArray';
 import BucketList from './components/ArrayExample/ObjsInArray';
+import ShoppingCart from './components/ArrayExample/ShoppingCart';
 import { Gallery, Form, FeedbackForm } from './components/HookExample/UseState';
 import { PoemList, RecipeList, ScientistsList } from './components/RenderExample/RederingList';
 
@@ -102,6 +103,7 @@ export default function App() {
             <CounterList />
             <InsertList />
             <BucketList />
+            <ShoppingCart />
           </>
         } />
       </Routes>
