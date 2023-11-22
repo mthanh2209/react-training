@@ -9,6 +9,7 @@ import Todo from './components/HookExample/Todo';
 import TodoList from './components/HookExample/TodoList/TodoList';
 import UseContext from './components/HookExample/UseContext';
 import PlayVideo from './components/HookExample/UseRef';
+import AddList from './components/ArrayExample/AddArray';
 import { Gallery, Form, FeedbackForm } from './components/HookExample/UseState';
 import { PoemList, RecipeList, ScientistsList } from './components/RenderExample/RederingList';
 
@@ -28,7 +29,9 @@ export default function App() {
     <>
       <Routes>
         <Route path="/" element={<ExampleLink />} />
+
         <Route path="/thinkInReact" element={<FilterableProductTable products={PRODUCTS} />} />
+
         <Route path="/hookExample" element={
           <>
             <u><h1>USE STATE</h1></u>
@@ -61,6 +64,7 @@ export default function App() {
             <PlayVideo />
           </>
         } />
+
         <Route path="/propsExample" element={
           <>
             <br></br>
@@ -71,6 +75,7 @@ export default function App() {
             <Profile />
           </>
         } />
+
         <Route path="/renderingLists" element={
           <>
             <h1>Challenge 1: </h1>
@@ -83,6 +88,8 @@ export default function App() {
             <PoemList />
           </>
         } />
+
+        <Route path="/arrayExample" element={<AddList />} />
       </Routes>
     </>
   )

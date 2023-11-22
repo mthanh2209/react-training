@@ -15,6 +15,9 @@ export default function ExampleLink() {
             <Link to="/renderingLists">
                 <p>Render Example</p>
             </Link>
+            <Link to="/arrayExample">
+                <p>Array Example</p>
+            </Link>
         </>
     )
 }
