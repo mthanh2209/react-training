@@ -10,6 +10,7 @@ import TodoList from './components/HookExample/TodoList/TodoList';
 import UseContext from './components/HookExample/UseContext';
 import PlayVideo from './components/HookExample/UseRef';
 import AddList from './components/ArrayExample/AddArray';
+import DeleteList from './components/ArrayExample/DeleteArray';
 import { Gallery, Form, FeedbackForm } from './components/HookExample/UseState';
 import { PoemList, RecipeList, ScientistsList } from './components/RenderExample/RederingList';
 
@@ -89,7 +90,12 @@ export default function App() {
           </>
         } />
 
-        <Route path="/arrayExample" element={<AddList />} />
+        <Route path="/arrayExample" element={
+          <>
+            <AddList />
+            <DeleteList />
+          </>
+        } />
       </Routes>
     </>
   )
