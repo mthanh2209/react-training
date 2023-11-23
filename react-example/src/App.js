@@ -17,6 +17,7 @@ import InsertList from './components/ArrayExample/InsertArray';
 import BucketList from './components/ArrayExample/ObjsInArray';
 import ShoppingCart from './components/ArrayExample/ShoppingCart';
 import TodoTask from './components/ArrayExample/TodoList';
+import TodoTaskImmer from './components/ArrayExample/TodoImmer';
 import { Gallery, Form, FeedbackForm } from './components/HookExample/UseState';
 import { PoemList, RecipeList, ScientistsList } from './components/RenderExample/RederingList';
 
@@ -106,6 +107,7 @@ export default function App() {
             <BucketList />
             <ShoppingCart />
             <TodoTask />
+            <TodoTaskImmer />
           </>
         } />
       </Routes>
