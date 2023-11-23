@@ -18,6 +18,7 @@ import BucketList from './components/ArrayExample/ObjsInArray';
 import ShoppingCart from './components/ArrayExample/ShoppingCart';
 import TodoTask from './components/ArrayExample/TodoList';
 import TodoTaskImmer from './components/ArrayExample/TodoImmer';
+import TodoApp from './components/HookExample/UseMemo';
 import { Gallery, Form, FeedbackForm } from './components/HookExample/UseState';
 import { PoemList, RecipeList, ScientistsList } from './components/RenderExample/RederingList';
 
@@ -70,6 +71,10 @@ export default function App() {
             <u><h1>USE REF</h1></u>
             <h1>Example 1: </h1>
             <PlayVideo />
+
+            <u><h1>USE MEMO</h1></u>
+            <h1>Example 1: </h1>
+            <TodoApp />
           </>
         } />
 
