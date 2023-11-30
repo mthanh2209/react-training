@@ -1,0 +1,21 @@
+:root {
+  --regular-font: 'Roboto-Regular';
+  --medium-font: 'Roboto-Medium';
+
+  --font-xs: 0.875rem;
+  --font-sm: 1rem;
+
+  --primary-color: #475466;
+  --secondary-color: #1ca1c1;
+  --secondary-color-hover: #1b8fac;
+  --dark-color: #313131;
+
+  --not-active-color: #ff6455;
+  --light-red: #ffdedb;
+
+  --active-color: #55cd97;
+  --light-green: #d4ede5;
+
+  --white-color: #fff;
+  --black-color: #000;
+}
