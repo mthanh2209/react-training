@@ -1,13 +1,14 @@
 .btn {
   border: none;
-  border-radius: 0.25rem;
+  border-radius: 0.125rem;
   cursor: pointer;
   font-size: var(--font-sm);
   font-family: var(--medium-font);
+  padding: 0.625rem 2rem;
 }
 
 .btn-primary {
-  color: var(--white);
+  color: var(--white-color);
   background: var(--secondary-color);
 }
 
