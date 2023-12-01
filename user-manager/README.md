@@ -1,30 +1,104 @@
-# React + TypeScript + Vite
+# REACT TRAINING - Practice one
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+- Getting started with react basic and using storybook
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Design
 
-## Expanding the ESLint configuration
+[Webix](https://webix.com/demos/user-manager/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Targets
 
-- Configure the top-level `parserOptions` property like this:
+- Understand & apply knowledge of React/ TypeScript
+- Understand and apply React basic and StoryBook
+- [PageSpeed](https://pagespeed.web.dev/) scores at minimum 98 points
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Requirements
+
+- Use await instead of then
+- Apply JSON-SERVER
+- Use Axios to call API
+
+## Information
+
+- Technologies: **React + Vite**
+- Editor: **VSCode**
+- Timeline: **15 days** (Nov 24, 2023 - Dev 20, 2022)
+- Team size: **1 developer**
+- Source code manager: **GitHub**
+- Estimation details plan: [Plan](https://docs.google.com/document/d/1QS_4veFpgx4NUnekuxGgWG_bd-nI8TLtnyQGeW4Cy9E/edit?usp=sharing)
+
+## Features
+
+- Call API (show all list user)
+  - Small Avatar
+  - Full Name
+  - Status (Active or Not active)
+  - Email
+- Add a new user
+  - Overlay
+  - Modal card
+  - Required entering a name
+  - Validation: “The name is required”
+  - Button (Save, Cancel)
+- View information users when clicking on the user
+  - AvatarText (1 avatar contains the first letter of the user name)
+  - Status (Not active - default)
+  - Full Name
+  - Email (unknown - default)
+  - Last visited date (unknown - default, the date will be updated when you come back in)
+- View detail and edit information users when clicking on the icon pen
+  - Full Name
+  - Email
+    - Edit email with the syntax: “username@gmail.com”
+    - Validation: “The email is invalid”
+  - AvatarText (default - 1 avatar contains the first letter of the user name)
+  - Upload photo (only accept JPG, PNG and less than 1MB)
+  - Status (can be converted to active or not active)
+  - Registered date
+  - Last visited date
+  - Details
+- Save information when finished editing
+  - Toast (react-toastify with 3s)
+  - Success
+  - Error
+- Delete users
+  - Overlay
+  - Modal card
+  - Button (Cancel, Delete)
+- Search users
+  - Search box will display a list containing the entered keyword as the user's name
+  - Or 'user not found' when there is no matching keyword.
+## Environments
+
+- Node: v18.16.1
+- Vite: Vite requires Node.js version 14.18+, 16+. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.
+
+## Install and Run
+
+Open Windows PowerShell or cmd or [Windows Terminal](https://www.microsoft.com/en-gb/p/windows-terminal/9n0dx20hk701?rtc=1&activetab=pivot:overviewtab)
+
+- **Step 01: Clone repository with HTTPS**
+
+```bash
+git clone https://github.com/mthanh2209/react-training.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **Step 2: Move to user-manager folder**
+
+```bash
+cd user-manager
+```
+
+- **Step 3: Install project**
+
+```bash
+npm install
+```
+
+- **Step 5: Run project**
+
+```bash
+npm run dev
+```
