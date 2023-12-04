@@ -1,0 +1,30 @@
+.popper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-popper {
+  border: none;
+  border-radius: 0.125rem;
+  cursor: pointer;
+  font-size: var(--font-sm);
+  font-family: var(--medium-font);
+  padding: 0.42rem 4.35rem;
+}
+
+.plus-icon {
+  margin-right: 12px;
+}
+
+.btn-option {
+  font-family: var(--regular-font);
+  font-size: var(--font-xs);
+  position: absolute;
+  top: 50px;
+  width: 189px;
+  padding: 8px 13px;
+  text-align: left;
+  background-color: #4a4e58;
+  color: var(--white-color);
+}
