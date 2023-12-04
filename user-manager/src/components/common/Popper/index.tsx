@@ -2,14 +2,22 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import '@/components/common/Popper/Popper.css';
+import { IPopperProps } from '@/types/interfaces';
 
-const Popper = () => {
-  const [showOption, setShowOption] = useState(false)
+const Popper = ({
+  open,
+  options
+}: IPopperProps) => {
+  const [showOption, setShowOption] = useState(open)
   const ref = useRef<HTMLButtonElement>(null);
 
   const handleShowOption = () => {
     setShowOption(true)
   }
+
+  useEffect(() => {
+    setShowOption(open);
+  }, [open]);
 
   useEffect(() => {
     const handleCloseOption = (event: MouseEvent) => {
@@ -23,8 +31,6 @@ const Popper = () => {
     };
   }, []);
 
-  const handleOpenModal = () => { }
-
   return (
     <div className='popper'>
       <button
@@ -37,12 +43,17 @@ const Popper = () => {
 
       {showOption &&
         createPortal(
-          <button
-            className='btn-popper btn-option'
-            type='button'
-            onClick={handleOpenModal}>
-            Add new user
-          </button>,
+          <div className='popper-option'>
+            {options.map((option, index) => (
+              <button
+                key={index}
+                className='btn-popper btn-option'
+                type='button'
+                onClick={option.onClick}>
+                {option.text}
+              </button>
+            ))}
+          </div>,
           document.querySelector('.popper') as HTMLElement
         )}
     </div>

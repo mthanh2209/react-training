@@ -14,17 +14,21 @@
 }
 
 .plus-icon {
-  margin-right: 12px;
+  margin-right: 0.75rem;
+}
+
+.popper-option {
+  position: relative;
 }
 
 .btn-option {
+  display: flex;
+  flex-direction: column;
+  width: 189px;
   font-family: var(--regular-font);
   font-size: var(--font-xs);
-  position: absolute;
-  top: 50px;
-  width: 189px;
-  padding: 8px 13px;
   text-align: left;
   background-color: #4a4e58;
   color: var(--white-color);
+  padding: 0.5rem 0.8rem;
 }

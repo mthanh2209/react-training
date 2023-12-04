@@ -8,3 +8,13 @@ export interface IButtonProps {
   content?: string;
   onClick(event: React.MouseEvent): void;
 }
+
+interface IOption {
+  text?: string;
+  onClick(event: React.MouseEvent): void;
+}
+
+export interface IPopperProps {
+  open?: boolean;
+  options: IOption[];
+}
