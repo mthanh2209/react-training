@@ -16,5 +16,7 @@ interface IOption {
 
 export interface IPopperProps {
   open?: boolean;
+  icon?: string;
+  children?: string;
   options: IOption[];
 }

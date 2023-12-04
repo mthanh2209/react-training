@@ -6,6 +6,8 @@ import { IPopperProps } from '@/types/interfaces';
 
 const Popper = ({
   open,
+  icon,
+  children,
   options
 }: IPopperProps) => {
   const [showOption, setShowOption] = useState(open)
@@ -38,7 +40,11 @@ const Popper = ({
         type='button'
         onClick={handleShowOption}
         ref={ref}>
-        <span className='plus-icon'>+</span>Add
+        <img
+          className='plus-icon'
+          alt={`${children}-icon`}
+          src={icon} />
+        {children}
       </button>
 
       {showOption &&
