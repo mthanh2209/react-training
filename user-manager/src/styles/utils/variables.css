@@ -7,8 +7,12 @@
 
   --primary-color: #475466;
   --secondary-color: #1ca1c1;
-  --secondary-color-hover: #1b8fac;
+  --secondary-color-hover: #1992af;
+  --secondary-color-active: #17839d;
   --dark-color: #313131;
+  --light-grey: #f4f5f9;
+  --light-grey-hover: #e7e9f2;
+  --light-grey-active: #daddeb;
 
   --not-active-color: #ff6455;
   --light-red: #ffdedb;
