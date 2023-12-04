@@ -1,5 +1,6 @@
-import './Button.css'
-import { IButtonProps } from '../../../types/interfaces';
+import '@/components/common/Button/Button.css'
+
+import { IButtonProps } from '@/types/interfaces';
 
 const Button = ({
   variants,
