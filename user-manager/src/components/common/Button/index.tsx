@@ -1,5 +1,6 @@
-import './Button.css'
-import { IButtonProps } from '../../../types/interfaces';
+import '@/components/common/Button/Button.css';
+
+import { IButtonProps } from '@/types/interfaces';
 
 const Button = ({
   variants,
@@ -13,7 +14,9 @@ const Button = ({
     className={`btn btn-${variants}`}
     type={type}
     onClick={onClick}>
-    <span style={{ display: `${withIcon}` }} className='icon-wrapper'>
+    <span
+      style={{ display: `${withIcon}` }}
+      className='icon-wrapper'>
       <img
         className='icon'
         src={icon}
