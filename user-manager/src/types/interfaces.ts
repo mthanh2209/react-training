@@ -1,4 +1,3 @@
-import { ChangeEventHandler } from 'react';
 import { TType, TVariant, TWithIcon } from '.';
 
 export interface IButtonProps {
@@ -8,18 +7,6 @@ export interface IButtonProps {
   icon?: string;
   content?: string;
   onClick(event: React.MouseEvent): void;
-}
-
-interface IOption {
-  text?: string;
-  onClick(event: React.MouseEvent): void;
-}
-
-export interface IPopperProps {
-  open?: boolean;
-  icon?: string;
-  children?: string;
-  options: IOption[];
 }
 
 export interface ITextFieldProps {
