@@ -1,3 +1,4 @@
+import { ChangeEventHandler } from 'react';
 import { TType, TVariant, TWithIcon } from '.';
 
 export interface IButtonProps {
@@ -19,4 +20,13 @@ export interface IPopperProps {
   icon?: string;
   children?: string;
   options: IOption[];
+}
+
+export interface ITextFieldProps {
+  className?: string;
+  value?: string;
+  placeholder?: string;
+  errorText?: string;
+  invalid?: boolean;
+  onChange?: (value: string) => void;
 }
