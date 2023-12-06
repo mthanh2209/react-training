@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import '@/components/common/Popper/Popper.css';
-import { IPopperProps } from '@/types/interfaces';
+import '@components/common/Popper/Popper.css';
+import { IPopperProps } from '@types/interfaces';
 
 const Popper = ({
   open,
