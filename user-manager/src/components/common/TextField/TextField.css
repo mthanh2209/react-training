@@ -5,7 +5,7 @@
 }
 
 .text-field {
-  padding: 0px 12px;
+  padding: 0.4rem 0.75rem;
   font-size: var(--font-xs);
   font-family: var(--regular-font);
   color: var(--primary-color);
@@ -20,7 +20,7 @@
 }
 
 .input-text {
-  width: 286px;
+  width: 18rem;
 }
 
 .input-search {
@@ -28,12 +28,12 @@
 }
 
 .input-submit {
-  width: 204px;
+  width: 13rem;
 }
 
 .error-message {
   font-size: var(--font-xs);
   font-family: var(--regular-font);
   color: var(--not-active-color);
-  margin-top: 5px;
+  margin-top: 0.3rem;
 }
