@@ -1,0 +1,34 @@
+.popper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-popper {
+  border: none;
+  border-radius: 0.125rem;
+  cursor: pointer;
+  font-size: var(--font-sm);
+  font-family: var(--medium-font);
+  padding: 0.42rem 4.35rem;
+}
+
+.plus-icon {
+  margin-right: 0.75rem;
+}
+
+.popper-option {
+  position: relative;
+}
+
+.btn-option {
+  display: flex;
+  flex-direction: column;
+  width: 189px;
+  font-family: var(--regular-font);
+  font-size: var(--font-xs);
+  text-align: left;
+  background-color: #4a4e58;
+  color: var(--white-color);
+  padding: 0.5rem 0.8rem;
+}
