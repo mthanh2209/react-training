@@ -11,7 +11,7 @@ export const Default: Story = {
   args: {
     className: 'text',
     value: '',
-    placeholder: 'Nguyen Thanh',
+    placeholder: 'Full Name',
     errorText: ''
   },
 };
