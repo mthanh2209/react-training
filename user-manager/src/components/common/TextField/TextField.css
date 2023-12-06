@@ -32,7 +32,8 @@
 }
 
 .error-message {
-  font-size: var(--regular-font);
+  font-size: var(--font-xs);
+  font-family: var(--regular-font);
   color: var(--not-active-color);
   margin-top: 5px;
 }
