@@ -1,6 +1,14 @@
 import '@/components/common/Button/Button.css'
+import { TType, TVariant, TWithIcon } from '@types';
 
-import { IButtonProps } from '@types/interfaces';
+export interface IButtonProps {
+  variants?: TVariant;
+  withIcon?: TWithIcon;
+  type?: TType;
+  icon?: string;
+  content?: string;
+  onClick(event: React.MouseEvent): void;
+}
 
 const Button = ({
   variants,
