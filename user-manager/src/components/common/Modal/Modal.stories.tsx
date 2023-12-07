@@ -1,4 +1,4 @@
-import Modal from '.';
+import Modal from '@components/common/Modal/index';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Modal>;
 export const Default: Story = {
   args: {
     open: true,
-    modalHeader: 'Delete',
+    modalTitle: 'Delete',
     modalDesc: 'Are you sure to delete this user?',
     type: 'submit',
     confirmText: 'Delete',
