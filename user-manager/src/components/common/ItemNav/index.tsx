@@ -1,11 +1,5 @@
 import '@components/common/ItemNav/ItemNav.css';
-
-interface IItemNav {
-  icon?: string;
-  content?: string;
-  selected?: boolean;
-  onClick: () => void;
-}
+import { IItemNav } from '@types/interface';
 
 const ItemNav = ({
   icon,
