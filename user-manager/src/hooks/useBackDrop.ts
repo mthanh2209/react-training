@@ -3,9 +3,14 @@ import {
   RefObject
 } from 'react';
 
-type Callback = () => void;
-
-const useBackDrop = (ref: RefObject<HTMLElement>, callback: Callback): void => {
+interface IBackDropProps {
+  ref: RefObject<HTMLElement>
+  callback: () => void
+}
+const useBackDrop = ({
+  ref,
+  callback
+}: IBackDropProps) => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent): void => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
