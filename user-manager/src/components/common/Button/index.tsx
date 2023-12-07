@@ -7,7 +7,7 @@ export interface IButtonProps {
   type?: TType;
   icon?: string;
   content?: string;
-  onClick(event: React.MouseEvent): void;
+  onClick?: () => void
 }
 
 const Button = ({
