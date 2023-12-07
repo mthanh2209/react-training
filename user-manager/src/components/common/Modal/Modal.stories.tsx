@@ -14,7 +14,7 @@ export const Default: Story = {
     open: true,
     modalHeader: 'Delete',
     modalDesc: 'Are you sure to delete this user?',
-    type: 'confirm',
+    type: 'submit',
     confirmText: 'Delete',
     denyText: 'Cancel'
   }

@@ -1,6 +1,8 @@
 import { createPortal } from 'react-dom';
 import '@components/common/Modal/Modal.css';
 import Button from '../Button';
+import TextField from '../TextField';
+
 import { TModal } from '@types';
 import closeIcon from '@assets/images/close-icon.svg';
 
@@ -11,9 +13,9 @@ interface IModalProps {
   modalDesc?: string;
   confirmText?: string;
   denyText?: string;
-  onClose(event: React.MouseEvent): void;
-  onConfirmText(event: React.MouseEvent): void;
-  onDenyText(event: React.MouseEvent): void;
+  onClose?: () => void;
+  onConfirmText?: () => void;
+  onDenyText?: () => void;
 }
 
 const Modal = ({
@@ -31,60 +33,64 @@ const Modal = ({
     <>
       {open &&
         createPortal(
-          <div
-            className={`modal-wrapper modal-${type}`}
-            onClick={onClose}>
-            <div className={`modal`}>
+          <div className='modal-wrapper' onClick={onClose}>
+            <div className={`modal modal-${type}`}>
               <div className={`modal-${type}-header`}>
-                {modalHeader ? (
+                {type === 'confirm' ? (
                   <>
                     <h2 className='modal-title'>{modalHeader}</h2>
                     <p className='modal-desc'>{modalDesc}</p>
                   </>
                 ) : (
                   <>
-                    <p className='modal-desc'>{modalDesc}</p>
+                    <p className='modal-title'>{modalDesc}</p>
                     <Button
-                    variants='primary'
-                    withIcon='none'
-                    type='button'
-                    icon={closeIcon}
-                    content={confirmText}
-                    onClick={onConfirmText}
+                      variants='withIcon'
+                      withIcon='block'
+                      type='button'
+                      icon={closeIcon}
+                      content=''
+                      onClick={onClose}
                     />
                   </>
                 )}
               </div>
 
               <div className={`modal-${type}-body`}>
-                {modalHeader ? (
+                {type === 'confirm' ? (
                   <>
                     <Button
-                    variants='secondary'
-                    withIcon='none'
-                    type='button'
-                    icon=''
-                    content={denyText}
-                    onClick={onDenyText}
+                      variants='secondary'
+                      withIcon='none'
+                      type='button'
+                      icon=''
+                      content={denyText}
+                      onClick={onDenyText}
                     />
                     <Button
-                    variants='primary'
-                    withIcon='none'
-                    type='button'
-                    icon=''
-                    content={confirmText}
-                    onClick={onConfirmText}
+                      variants='primary'
+                      withIcon='none'
+                      type='button'
+                      icon=''
+                      content={confirmText}
+                      onClick={onConfirmText}
                     />
                   </>
                 ) : (
                   <>
+                    <TextField
+                      className='submit'
+                      value=''
+                      placeholder=''
+                      onChange={onConfirmText}
+                    />
                     <Button
-                    variants='primary'
-                    withIcon='none'
-                    type='button'
-                    icon=''
-                    content={confirmText}
-                    onClick={onConfirmText}
+                      variants='primary'
+                      withIcon='none'
+                      type='button'
+                      icon=''
+                      content={confirmText}
+                      onClick={onConfirmText}
                     />
                   </>
                 )}

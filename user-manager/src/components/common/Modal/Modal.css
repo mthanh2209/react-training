@@ -9,34 +9,66 @@
 }
 
 .modal {
-  color: var(--dark-color);
-  box-shadow:
-    0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 0 auto;
-
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  background-color: var(--white);
-  overflow: hidden;
-  height: fit-content;
+  box-shadow:
+  0 4px 8px 0 rgba(0, 0, 0, 0.2),
+  0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 0 auto;
 }
 
-.modal-submit-header {
+.modal-submit {
   min-width: 350px;
   padding: 10px 20px;
 }
 
-.modal-submit-body {
+.modal-submit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 23px;
+  font-family: var(--medium-font);
+  font-size: var(--font-sm);
+}
 
+.modal-submit-body {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.modal-confirm {
+  min-width: 270px;
+  padding: 20px 16px;
+  border-top: 4px solid var(--secondary-color);
 }
 
 .modal-confirm-header {
-  min-width: 270px;
-  padding: 20px 0 15px;
-  border-top: 4px solid var(--secondary-color);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.modal-confirm-header .modal-title {
+  font-family: var(--medium-font);
+  font-size: var(--font-sm);
+}
+
+.modal-confirm-header .modal-desc {
+  font-family: var(--regular-font);
+  font-size: var(--font-xs);
+}
+
+.modal-confirm-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-withIcon {
+  background-color: var(--white-color);
 }

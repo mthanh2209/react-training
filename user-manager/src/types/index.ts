@@ -1,4 +1,4 @@
-export type TVariant = 'primary' | 'secondary';
+export type TVariant = 'primary' | 'secondary' | 'withIcon';
 
 export type TType = 'button' | 'submit';
 
