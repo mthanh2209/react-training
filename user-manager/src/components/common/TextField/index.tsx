@@ -1,6 +1,14 @@
 import '@components/common/TextField/TextField.css';
-import { ITextFieldProps } from "@types/interfaces";
 import { FormEvent } from "react";
+
+interface ITextFieldProps {
+  className?: string;
+  value?: string;
+  placeholder?: string;
+  errorText?: string;
+  invalid?: boolean;
+  onChange?: (value: string) => void;
+}
 
 const TextField = ({
   className,
