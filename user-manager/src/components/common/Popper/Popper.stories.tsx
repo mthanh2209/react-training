@@ -12,8 +12,8 @@ type Story = StoryObj<typeof Popper>;
 export const Default: Story = {
   args: {
     open: false,
-    children: 'Add',
     icon: plusIcon,
+    children: 'Add',
     options: [{
       text: 'Add new user',
       onClick: () => { }
