@@ -1,4 +1,7 @@
+// Components
 import '@components/common/ItemNav/ItemNav.css';
+
+// Types
 import { IItemNav } from '@types/interface';
 
 const ItemNav = ({

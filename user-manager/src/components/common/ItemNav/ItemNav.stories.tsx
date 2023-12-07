@@ -1,5 +1,9 @@
-import ItemNav from '@components/common/ItemNav/index';
 import type { Meta, StoryObj } from '@storybook/react';
+
+// Components
+import ItemNav from '@components/common/ItemNav/index';
+
+// Icons
 import userIcon from '@assets/images/user-icon.svg';
 
 export default {
