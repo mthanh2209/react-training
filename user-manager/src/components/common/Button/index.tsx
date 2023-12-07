@@ -1,4 +1,7 @@
+// Components
 import '@/components/common/Button/Button.css'
+
+// Types
 import { TType, TVariant, TWithIcon } from '@types';
 
 export interface IButtonProps {
