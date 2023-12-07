@@ -1,0 +1,24 @@
+.item-nav {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  font-size: var(--font-xs);
+  font-family: var(--regular-font);
+  color: var(--white-color);
+  list-style: none;
+  padding: 0.5rem;
+}
+
+.selected {
+  color: #1ca1c1;
+  box-shadow: 2px 0 var(--secondary-color) inset;
+}
+
+.icon-item {
+  width: 23px;
+  height: 23px;
+}
+
+.selected .icon-item {
+  filter: invert(70%) sepia(62%) saturate(2639%) hue-rotate(172deg) brightness(102%) contrast(90%);
+}
