@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Popper from '.';
+
+// Components
+import Popper from '@components/common/Popper/index';
+
+// Icons
 import plusIcon from '@assets/images/plus-icon.svg';
 
 export default {
