@@ -4,12 +4,12 @@
   cursor: pointer;
   font-size: var(--font-sm);
   font-family: var(--medium-font);
+  padding: 0.625rem 2rem;
 }
 
 .btn-primary {
   color: var(--white-color);
   background: var(--secondary-color);
-  padding: 0.625rem 2rem;
 }
 
 .btn-primary:hover {
@@ -23,7 +23,6 @@
 .btn-secondary {
   color: var(--secondary-color);
   background: var(--light-grey);
-  padding: 0.625rem 2rem;
 }
 
 .btn-secondary:hover {
