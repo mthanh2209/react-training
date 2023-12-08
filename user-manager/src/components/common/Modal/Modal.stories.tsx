@@ -1,6 +1,7 @@
-import Modal from '@components/common/Modal/index';
-
 import type { Meta, StoryObj } from '@storybook/react';
+
+// Components
+import Modal from '@components/common/Modal/index';
 
 export default {
   title: 'Components/Modal',

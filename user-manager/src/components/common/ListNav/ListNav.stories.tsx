@@ -1,7 +1,11 @@
-import ListNav from '@components/common/ListNav/index';
 import type { Meta } from '@storybook/react';
-import userIcon from '@assets/images/user-icon.svg';
 import { useState } from 'react';
+
+// Components
+import ListNav from '@components/common/ListNav/index';
+
+// Icons
+import userIcon from '@assets/images/user-icon.svg';
 
 export default {
   title: 'Components/ListNav',

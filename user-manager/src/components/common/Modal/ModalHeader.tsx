@@ -1,4 +1,7 @@
+// Components
 import Button from '@components/common/Button/index';
+
+// Icons
 import closeIcon from '@assets/images/close-icon.svg';
 
 interface IModalHeaderProps {

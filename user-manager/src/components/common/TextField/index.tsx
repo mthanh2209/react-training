@@ -1,5 +1,7 @@
+import { FormEvent } from 'react';
+
+// Components
 import '@components/common/TextField/TextField.css';
-import { FormEvent } from "react";
 
 interface ITextFieldProps {
   className?: string;

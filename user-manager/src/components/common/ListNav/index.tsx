@@ -1,4 +1,7 @@
+// Components
 import ItemNav from '@components/common/ItemNav/index';
+
+// Types
 import { IItemNav } from '@types/interface';
 
 interface IListNavProps {

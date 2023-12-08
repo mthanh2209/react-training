@@ -1,9 +1,12 @@
 import { createPortal } from 'react-dom';
-import '@components/common/Modal/Modal.css';
 
-import { TModal } from '@types';
+// Components
+import '@components/common/Modal/Modal.css';
 import ModalHeader from '@components/common/Modal/ModalHeader';
 import ModalBody from '@components/common/Modal/ModalBody';
+
+// Types
+import { TModal } from '@types';
 
 interface IModalProps {
   open?: boolean;

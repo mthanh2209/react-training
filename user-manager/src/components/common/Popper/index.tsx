@@ -1,6 +1,9 @@
-import '@components/common/Popper/Popper.css';
 import { useEffect, useRef, useState } from 'react';
 
+// Components
+import '@components/common/Popper/Popper.css';
+
+// Hooks
 import useBackDrop from '@hooks/useBackDrop';
 
 interface IPopperProps {
