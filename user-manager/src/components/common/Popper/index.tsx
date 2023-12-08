@@ -6,14 +6,14 @@ import '@components/common/Popper/Popper.css';
 // Hooks
 import useBackDrop from '@hooks/useBackDrop';
 
+// Types
+import { IPopperOption } from '@types/interface';
+
 interface IPopperProps {
   open?: boolean;
   icon?: string;
   children?: string;
-  options: {
-    text?: string;
-    onClick(event: React.MouseEvent): void;
-  }[];
+  options: IPopperOption[];
 }
 
 const Popper = ({
@@ -29,7 +29,10 @@ const Popper = ({
     setShowOption(false);
   };
 
-  useBackDrop(optionRef, closeOption);
+  useBackDrop({
+    ref: optionRef,
+    callback: closeOption
+  });
 
   const handleTogglePopper = () => {
     setShowOption(true);
