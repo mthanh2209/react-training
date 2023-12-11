@@ -9,3 +9,12 @@ export interface IItemNav {
   selected?: boolean;
   onClick?: () => void;
 }
+
+export interface IColumn<T> {
+  key: keyof T;
+  title: string;
+  render?: (
+    column: IColumn<T>,
+    item: T
+  ) => JSX.Element;
+}
