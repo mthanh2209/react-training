@@ -1,0 +1,10 @@
+.toolbar-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolbar-content {
+  font-family: var(--medium-font);
+}
