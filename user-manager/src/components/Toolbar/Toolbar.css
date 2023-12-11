@@ -3,8 +3,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  overflow: hidden;
 }
 
 .toolbar-content {
   font-family: var(--medium-font);
+}
+
+.search-icon {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
 }

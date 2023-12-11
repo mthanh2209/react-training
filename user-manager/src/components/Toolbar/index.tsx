@@ -17,7 +17,7 @@ interface IToolbar {
 const Toolbar = ({
   open = false,
   icon = searchIcon,
-  content = 'User'
+  content = 'Users'
 }: IToolbar) => {
   const [openSearchBar, setOpenSearchBar] = useState(open);
 
