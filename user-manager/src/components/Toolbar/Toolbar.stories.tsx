@@ -15,7 +15,6 @@ type Story = StoryObj<typeof Toolbar>;
 
 export const Default: Story = {
   args: {
-    open: false,
     icon: searchIcon,
     content: 'User'
   }

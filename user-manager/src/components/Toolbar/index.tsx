@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useState } from 'react';
 
 // Components
 import '@components/Toolbar/Toolbar.css';
@@ -9,21 +8,23 @@ import SearchBar from '@components/common/SearchBar/index';
 import searchIcon from '@assets/images/search-icon.svg';
 
 interface IToolbar {
-  open?: boolean;
   icon?: string;
   content?: string;
 }
 
 const Toolbar = ({
-  open = false,
   icon = searchIcon,
   content = 'Users'
 }: IToolbar) => {
-  const [openSearchBar, setOpenSearchBar] = useState(open);
+  const [openSearchBar, setOpenSearchBar] = useState(false);
 
-  useEffect(() => {
-    setOpenSearchBar(open);
-  }, [open]);
+  const handleOpenSearchBar = () => {
+    setOpenSearchBar(true)
+  }
+
+  const handleCloseSearchBar = () => {
+    setOpenSearchBar(false)
+  }
 
   return (
     <div className='toolbar-wrapper'>
@@ -32,15 +33,13 @@ const Toolbar = ({
         className='search-icon'
         src={icon}
         alt='icon'
-        onClick={() => setOpenSearchBar(!open)}
+        onClick={handleOpenSearchBar}
       />
 
-      {openSearchBar &&
-        createPortal(
+      {openSearchBar && (
           <SearchBar
-            onClose={() => setOpenSearchBar(open)}
-          />,
-          document.querySelector('.toolbar-wrapper') as HTMLElement
+            onClose={handleCloseSearchBar}
+          />
         )}
     </div>
   );
