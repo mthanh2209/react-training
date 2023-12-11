@@ -17,6 +17,6 @@ export const Default: Story = {
   args: {
     icon: userIcon,
     content: 'Users',
-    selected: false
+    isSelected: false
   },
 };

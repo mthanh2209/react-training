@@ -22,7 +22,7 @@ const ListNav = ({
           key={index}
           icon={item.icon}
           content={item.content}
-          selected={index === selected}
+          isSelected={index === selected}
           onClick={() => onClick(index)}
         />
       ))}
