@@ -2,14 +2,19 @@
 import '@components/common/SearchBar/SearchBar.css';
 import TextField from '@components/common/TextField';
 
+// Icons
+import closeIcon from '@assets/images/close-icon.svg';
+
 interface ISearchBarProps {
-  icon?: string
-  onChange?: (value: string) => void
-  onClose?: () => void
+  icon?: string;
+  placeholder?: string;
+  onChange?: (value: string) => void;
+  onClose?: () => void;
 }
 
 const SearchBar = ({
-  icon,
+  icon = closeIcon,
+  placeholder = 'Search',
   onChange,
   onClose
 }: ISearchBarProps) => {
@@ -17,7 +22,7 @@ const SearchBar = ({
     <div className='search-wrapper'>
       <TextField
         className='search'
-        placeholder='Search'
+        placeholder={placeholder}
         onChange={onChange}
       />
       <img
@@ -27,7 +32,7 @@ const SearchBar = ({
         onClick={onClose}
       />
     </div>
-  )
-}
+  );
+};
 
 export default SearchBar;

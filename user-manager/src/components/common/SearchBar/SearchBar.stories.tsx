@@ -14,6 +14,7 @@ type Story = StoryObj<typeof SearchBar>;
 
 export const Default: Story = {
   args: {
-    icon: closeIcon
+    icon: closeIcon,
+    placeholder: 'Search',
   },
 };
