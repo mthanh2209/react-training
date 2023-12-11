@@ -23,11 +23,11 @@ const Avatar = ({
       className={`avatar ${className}`}
       style={{backgroundColor: bgColor}} >
       {avatarText
-      ? <img
+        ? firstLetter
+        : <img
           className='avatar-image'
           src={src}
-          alt={alt} />
-      : firstLetter }
+          alt={alt} /> }
     </div>
   );
 };
