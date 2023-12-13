@@ -9,3 +9,15 @@ export interface IItemNav {
   isSelected?: boolean;
   onClick?: () => void;
 }
+
+export interface CustomUserProps {
+  id: string;
+  avatar: string;
+  fullName: string;
+  email: string;
+  status: boolean;
+  registerDate: Date | null;
+  lastVisitedDate: Date | null;
+  details?: string;
+  bgColor: string;
+}
