@@ -9,17 +9,14 @@ interface IStatus {
 
 const Status = ({
   isActive,
-  active,
-  notActive
-}: IStatus) => {
-  const statusContent = isActive ? active : notActive;
-  return (
-    <span
-      className={`status status-${isActive
+  active = 'Active',
+  notActive = 'Not active'
+}: IStatus) => (
+  <span
+    className={`status status-${isActive
       ? 'active' : 'not-active'}`}>
-      {statusContent}
-    </span>
-  );
-};
+    {isActive ? active : notActive}
+  </span>
+);
 
 export default Status;
