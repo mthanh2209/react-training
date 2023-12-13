@@ -2,17 +2,17 @@
 import '@components/common/Avatar/Avatar.css';
 
 interface IAvatar {
-  src?: string;
+  src?: string | null;
   alt: string;
-  isAvatarText?: boolean;
+  hasUrl?: boolean;
   bgColor?: string;
-  className?: string
+  className?: string;
 }
 
 const Avatar = ({
   src,
   alt,
-  isAvatarText = true,
+  hasUrl,
   bgColor,
   className
 }: IAvatar) => {
@@ -21,13 +21,13 @@ const Avatar = ({
   return (
     <div
       className={`avatar ${className}`}
-      style={{backgroundColor: bgColor}} >
-      {isAvatarText
-        ? firstLetter
-        : <img
+      style={{ backgroundColor: bgColor }}>
+      {src && hasUrl
+        ? <img
           className='avatar-image'
           src={src}
-          alt={alt} /> }
+          alt={alt} />
+        : firstLetter}
     </div>
   );
 };

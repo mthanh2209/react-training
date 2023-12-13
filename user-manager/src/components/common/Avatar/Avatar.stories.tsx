@@ -16,7 +16,7 @@ type Story = StoryObj<typeof Avatar>;
 export const Default: Story = {
   args: {
     alt: 'UserName',
-    isAvatarText: true,
+    hasUrl: false,
     bgColor: getRandomColor(),
     className: 'avatar-circle'
   }
