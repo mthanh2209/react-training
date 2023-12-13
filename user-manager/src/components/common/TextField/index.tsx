@@ -8,7 +8,6 @@ interface ITextFieldProps {
   value?: string;
   placeholder?: string;
   errorText?: string;
-  invalid?: boolean;
   onChange?: (value: string) => void;
 }
 

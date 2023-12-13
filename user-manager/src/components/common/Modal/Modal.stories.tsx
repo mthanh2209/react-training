@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Modal>;
 
 export const Default: Story = {
   args: {
-    open: true,
+    isOpen: true,
     modalTitle: 'Delete',
     modalDesc: 'Are you sure to delete this user?',
     type: 'submit',

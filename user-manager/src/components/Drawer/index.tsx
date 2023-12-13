@@ -21,7 +21,7 @@ const Drawer = ({
   popperOption,
   listNav
 }: IDrawerProps) => {
-  const [selected, setSelected] = useState<number>(0);
+  const [isSelected, setSelected] = useState<number>(0);
 
   return (
     <div className='drawer-wrapper'>
@@ -32,7 +32,7 @@ const Drawer = ({
 
       <ListNav
         items={listNav}
-        selected={selected}
+        selected={isSelected}
         onClick={(index: number) => setSelected(index)}
       />
     </div>

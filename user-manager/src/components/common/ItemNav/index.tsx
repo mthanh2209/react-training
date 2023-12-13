@@ -7,11 +7,11 @@ import { IItemNav } from '@types/interface';
 const ItemNav = ({
   icon,
   content,
-  selected,
+  isSelected,
   onClick
 }: IItemNav) => (
   <li
-    className={`item-nav ${selected ? 'selected' : ''}`}
+    className={`item-nav ${isSelected ? 'selected' : ''}`}
     onClick={onClick}>
     <span>
       <img

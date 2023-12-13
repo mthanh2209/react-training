@@ -10,20 +10,20 @@ import useBackDrop from '@hooks/useBackDrop';
 import { IPopperOption } from '@types/interface';
 
 interface IPopperProps {
-  open?: boolean;
+  isOpen?: boolean;
   icon?: string;
   children?: string;
   options: IPopperOption[];
 }
 
 const Popper = ({
-  open = false,
+  isOpen = false,
   icon,
   children,
   options
 }: IPopperProps) => {
   const optionRef = useRef(null);
-  const [showOption, setShowOption] = useState(false);
+  const [isShowOption, setShowOption] = useState(false);
 
   const closeOption = () => {
     setShowOption(false);
@@ -39,8 +39,8 @@ const Popper = ({
   };
 
   useEffect(() => {
-    setShowOption(open);
-  }, [open]);
+    setShowOption(isOpen);
+  }, [isOpen]);
 
   return (
     <div className='popper'>
@@ -53,7 +53,7 @@ const Popper = ({
         {children}
       </button>
 
-      {showOption && (
+      {isShowOption && (
         <div className='popper-option'>
           {options.map((option, index) => (
             <button
