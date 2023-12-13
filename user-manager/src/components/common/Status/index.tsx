@@ -1,17 +1,25 @@
 // Components
-import '@components/common/Status/Status.css'
+import '@components/common/Status/Status.css';
 
 interface IStatus {
-  isActive: boolean;
+  isActive?: boolean;
+  active?: string;
+  notActive?: string;
 }
-const Status = ({ isActive }: IStatus) => (
-  <span
-    className={`status status-${isActive
-      ? 'active'
-      : 'not-active'
-    }`}>
-    {isActive ? 'Active' : 'Not active'}
-  </span>
-);
+
+const Status = ({
+  isActive,
+  active,
+  notActive
+}: IStatus) => {
+  const statusContent = isActive ? active : notActive;
+  return (
+    <span
+      className={`status status-${isActive
+      ? 'active' : 'not-active'}`}>
+      {statusContent}
+    </span>
+  );
+};
 
 export default Status;
