@@ -6,6 +6,6 @@ export interface IPopperOption {
 export interface IItemNav {
   icon?: string;
   content?: string;
-  selected?: boolean;
+  isSelected?: boolean;
   onClick?: () => void;
 }

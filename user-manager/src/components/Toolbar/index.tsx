@@ -16,7 +16,7 @@ const Toolbar = ({
   icon = searchIcon,
   content = 'Users'
 }: IToolbar) => {
-  const [openSearchBar, setOpenSearchBar] = useState(false);
+  const [isOpenSearchBar, setOpenSearchBar] = useState(false);
 
   const handleOpenSearchBar = () => {
     setOpenSearchBar(true)
@@ -36,7 +36,7 @@ const Toolbar = ({
         onClick={handleOpenSearchBar}
       />
 
-      {openSearchBar && (
+      {isOpenSearchBar && (
           <SearchBar
             onClose={handleCloseSearchBar}
           />

@@ -4,7 +4,7 @@ import '@components/common/Avatar/Avatar.css';
 interface IAvatar {
   src?: string;
   alt: string;
-  avatarText?: boolean;
+  isAvatarText?: boolean;
   bgColor?: string;
   className?: string
 }
@@ -12,7 +12,7 @@ interface IAvatar {
 const Avatar = ({
   src,
   alt,
-  avatarText = true,
+  isAvatarText = true,
   bgColor,
   className
 }: IAvatar) => {
@@ -22,7 +22,7 @@ const Avatar = ({
     <div
       className={`avatar ${className}`}
       style={{backgroundColor: bgColor}} >
-      {avatarText
+      {isAvatarText
         ? firstLetter
         : <img
           className='avatar-image'

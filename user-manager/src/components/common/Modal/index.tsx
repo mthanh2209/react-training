@@ -9,7 +9,7 @@ import ModalBody from '@components/common/Modal/ModalBody';
 import { TModal } from '@types';
 
 interface IModalProps {
-  open?: boolean;
+  isOpen?: boolean;
   type?: TModal;
   modalTitle?: string;
   modalDesc?: string;
@@ -21,7 +21,7 @@ interface IModalProps {
 }
 
 const Modal = ({
-  open,
+  isOpen,
   type,
   modalTitle,
   modalDesc,
@@ -33,7 +33,7 @@ const Modal = ({
 }: IModalProps) => {
   return (
     <>
-      {open &&
+      {isOpen &&
         createPortal(
           <div className='modal-wrapper' onClick={onClose}>
             <div className={`modal modal-${type}`}>
