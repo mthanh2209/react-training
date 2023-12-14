@@ -18,8 +18,8 @@ type Story = StoryObj<typeof ImageUploader>;
 
 export const Default: Story = {
   args: {
-    avatar: '',
-    fullName: 'User',
+    initialImage: '',
+    alt: 'User',
     bgColor: getRandomColor(),
     buttonContent: 'Upload new photo',
     icon: uploadIcon

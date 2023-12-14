@@ -11,8 +11,7 @@ import { convertToDataURL } from '@helpers';
 import uploadIcon from '@assets/images/upload-icon.svg';
 
 interface IImageUploaderProps {
-  avatar: string;
-  fullName: string;
+  initialImage: string;
   alt: string;
   bgColor?: string;
   buttonContent?: string;
@@ -20,9 +19,8 @@ interface IImageUploaderProps {
   onChange: (data: string) => void;
 }
 const ImageUploader = ({
-  avatar,
-  fullName,
-  alt = fullName,
+  initialImage,
+  alt,
   bgColor,
   buttonContent = 'Upload new photo',
   icon = uploadIcon,
@@ -43,7 +41,7 @@ const ImageUploader = ({
   return (
     <div className='uploader-wrapper'>
       <Avatar
-        src={uploadImage != null ? uploadImage : avatar}
+        src={uploadImage != null ? uploadImage : initialImage}
         alt={alt}
         bgColor={bgColor}
         className='avatar-edit-information'
@@ -66,7 +64,6 @@ const ImageUploader = ({
         type='file'
         accept='image/*'
         id='button-upload-image'
-        name={fullName}
         onChange={handleImageUpload}
       />
     </div>
