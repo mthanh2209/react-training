@@ -11,25 +11,17 @@ import uploadIcon from '@assets/images/upload-icon.svg';
 
 export default {
   title: 'Components/ImageUploader',
-  component: ImageUploader,
+  component: ImageUploader
 } as Meta;
 
 type Story = StoryObj<typeof ImageUploader>;
 
 export const Default: Story = {
   args: {
-    users: {
-      id: '1',
-      avatar: '',
-      fullName: 'User',
-      email: 'user@example.com',
-      status: true,
-      registerDate: null,
-      lastVisitedDate: null,
-      bgColor: getRandomColor(),
-    },
-    hasUrl: true,
+    avatar: '',
+    fullName: 'User',
+    bgColor: getRandomColor(),
     buttonContent: 'Upload new photo',
     icon: uploadIcon
-  },
+  }
 };

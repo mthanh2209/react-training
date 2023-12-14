@@ -1,37 +1,34 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 // Components
 import '@components/common/ImageUploader/ImageUploader.css';
 import Avatar from '@components/common/Avatar';
 
 // Types
-import { CustomUserProps } from '@types/interface';
 import { convertToDataURL } from '@helpers';
 
 // Icons
 import uploadIcon from '@assets/images/upload-icon.svg';
 
 interface IImageUploaderProps {
-  users: CustomUserProps;
-  hasUrl?: boolean;
+  avatar: string;
+  fullName: string;
+  alt: string;
+  bgColor?: string;
   buttonContent?: string;
   icon?: string;
   onChange: (data: string) => void;
 }
 const ImageUploader = ({
-  users,
-  hasUrl,
+  avatar,
+  fullName,
+  alt = fullName,
+  bgColor,
   buttonContent = 'Upload new photo',
   icon = uploadIcon,
   onChange
 }: IImageUploaderProps) => {
-  const [displayImage, setDisplayImage] = useState(hasUrl);
   const [uploadImage, setUploadImage] = useState<string | null>(null);
-
-  useEffect(() => {
-    setDisplayImage(hasUrl);
-    setUploadImage(users.avatar);
-  }, [hasUrl, users]);
 
   const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const inputFile = event.target.files?.[0];
@@ -46,11 +43,10 @@ const ImageUploader = ({
   return (
     <div className='uploader-wrapper'>
       <Avatar
-        src={uploadImage != null ? uploadImage : users.avatar}
-        alt={users.fullName}
-        bgColor={users.bgColor}
+        src={uploadImage != null ? uploadImage : avatar}
+        alt={alt}
+        bgColor={bgColor}
         className='avatar-edit-information'
-        hasUrl={displayImage}
       />
 
       <label
@@ -70,7 +66,7 @@ const ImageUploader = ({
         type='file'
         accept='image/*'
         id='button-upload-image'
-        name={users.fullName}
+        name={fullName}
         onChange={handleImageUpload}
       />
     </div>
