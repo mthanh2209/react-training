@@ -1,4 +1,4 @@
-type ITableHeaderCell = {
+interface ITableHeaderCell {
   children?: string;
 }
 

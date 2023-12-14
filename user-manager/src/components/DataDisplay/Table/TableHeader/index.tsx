@@ -1,8 +1,11 @@
-import TableHeaderCell from '@components/Table/TableHeaderCell';
-import { IColumn } from '@types/interface';
+// Components
+import TableHeaderCell from '@components/DataDisplay/Table/TableHeader/TableHeaderCell';
+
+// Types
+import { CustomColumnProps } from '@types/interface';
 
 interface ITableHeader<T> {
-  columns: IColumn<T>[];
+  columns: CustomColumnProps<T>[];
 }
 
 const TableHeader = <T,>({

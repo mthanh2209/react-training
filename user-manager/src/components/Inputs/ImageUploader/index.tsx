@@ -44,7 +44,7 @@ const ImageUploader = ({
         src={uploadImage != null ? uploadImage : initialImage}
         alt={alt}
         bgColor={bgColor}
-        className='avatar-edit-information'
+        additionalClass='avatar-edit-information'
       />
 
       <label
