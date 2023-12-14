@@ -26,14 +26,6 @@ export const Default: Story = {
         bgColor: getRandomColor()
       },
       {
-        id: 1,
-        avatar: '',
-        fullName: 'User',
-        email: 'user@example.com',
-        isActive: true,
-        bgColor: getRandomColor()
-      },
-      {
         id: 2,
         avatar: '',
         fullName: 'Member',
