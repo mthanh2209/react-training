@@ -12,6 +12,8 @@ type Story = StoryObj<typeof Status>;
 
 export const Default: Story = {
   args: {
-    isActive: true
+    isActive: true,
+    active: 'Active',
+    notActive: 'Not active'
   },
 };
