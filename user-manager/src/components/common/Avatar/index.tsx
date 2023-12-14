@@ -4,15 +4,13 @@ import '@components/common/Avatar/Avatar.css';
 interface IAvatar {
   src?: string;
   alt: string;
-  isAvatarText?: boolean;
   bgColor?: string;
-  className?: string
+  className?: string;
 }
 
 const Avatar = ({
   src,
   alt,
-  isAvatarText = true,
   bgColor,
   className
 }: IAvatar) => {
@@ -21,13 +19,13 @@ const Avatar = ({
   return (
     <div
       className={`avatar ${className}`}
-      style={{backgroundColor: bgColor}} >
-      {isAvatarText
-        ? firstLetter
-        : <img
+      style={{ backgroundColor: bgColor }}>
+      {src
+        ? <img
           className='avatar-image'
           src={src}
-          alt={alt} /> }
+          alt={alt} />
+        : firstLetter}
     </div>
   );
 };
