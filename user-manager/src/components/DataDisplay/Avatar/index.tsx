@@ -5,20 +5,20 @@ interface IAvatar {
   src?: string;
   alt: string;
   bgColor?: string;
-  className?: string;
+  additionalClass?: string;
 }
 
 const Avatar = ({
   src,
   alt,
   bgColor,
-  className
+  additionalClass
 }: IAvatar) => {
   const firstLetter = alt.charAt(0);
 
   return (
     <div
-      className={`avatar ${className}`}
+      className={`avatar ${additionalClass}`}
       style={{ backgroundColor: bgColor }}>
       {src
         ? <img
