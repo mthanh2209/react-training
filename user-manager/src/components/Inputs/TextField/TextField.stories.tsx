@@ -11,7 +11,7 @@ type Story = StoryObj<typeof TextField>;
 
 export const Default: Story = {
   args: {
-    className: 'text',
+    additionalClass: 'text',
     value: '',
     placeholder: 'Full Name',
     errorText: ''
