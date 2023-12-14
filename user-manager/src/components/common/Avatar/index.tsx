@@ -2,9 +2,8 @@
 import '@components/common/Avatar/Avatar.css';
 
 interface IAvatar {
-  src?: string | null;
+  src?: string;
   alt: string;
-  hasUrl?: boolean;
   bgColor?: string;
   className?: string;
 }
@@ -12,7 +11,6 @@ interface IAvatar {
 const Avatar = ({
   src,
   alt,
-  hasUrl,
   bgColor,
   className
 }: IAvatar) => {
@@ -22,7 +20,7 @@ const Avatar = ({
     <div
       className={`avatar ${className}`}
       style={{ backgroundColor: bgColor }}>
-      {src && hasUrl
+      {src
         ? <img
           className='avatar-image'
           src={src}
