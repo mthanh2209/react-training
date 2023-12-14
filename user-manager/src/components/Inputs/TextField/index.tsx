@@ -3,8 +3,11 @@ import { FormEvent } from 'react';
 // Components
 import '@components/Inputs/TextField/TextField.css';
 
+// Types
+import { TInput } from '@types';
+
 interface ITextFieldProps {
-  additionalClass?: string;
+  className?: TInput;
   value?: string;
   placeholder?: string;
   errorText?: string;
@@ -12,7 +15,7 @@ interface ITextFieldProps {
 }
 
 const TextField = ({
-  additionalClass,
+  className,
   value,
   placeholder,
   errorText,
@@ -26,7 +29,7 @@ const TextField = ({
     <div className='input-wrapper'>
       <input
         type='text'
-        className={`text-field input-${additionalClass}`}
+        className={`text-field input-${className}`}
         value={value}
         placeholder={placeholder}
         onChange={handleChangeInput} />
