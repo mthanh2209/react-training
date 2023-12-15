@@ -4,7 +4,7 @@ import TableHeader from "@components/DataDisplay/Table/TableHeader";
 import TableRow from "@components/DataDisplay/Table/TableRow";
 
 // Types
-import { IColumnProps, IUserProps} from "@types/interface";
+import { IColumnProps } from "@types/interface";
 
 interface ITableProps<T> {
   rowData: T[];
@@ -13,7 +13,7 @@ interface ITableProps<T> {
   selectedRowIndex: number;
   onRowClick: (
     index: number,
-    item: IUserProps
+    item: T
   ) => void;
 }
 

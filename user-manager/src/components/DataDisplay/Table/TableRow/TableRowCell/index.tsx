@@ -16,7 +16,7 @@ const TableRowCell = <T,>({
   item,
   column
 }: ITableRowCell<T>): JSX.Element => {
-  const value = getObjValue(item, column.key)
+  const value = getObjValue(item, column.key as keyof T)
 
   return (
     <TableCell>

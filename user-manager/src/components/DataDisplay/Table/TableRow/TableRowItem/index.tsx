@@ -1,8 +1,5 @@
 import { useState } from 'react';
 
-// Types
-import { IUserProps } from '@types/interface';
-
 interface ITableRowItem<T> {
   item: T;
   index: number;
@@ -10,7 +7,7 @@ interface ITableRowItem<T> {
   selectedRowIndex: number;
   onRowItemClick: (
     index: number,
-    item: IUserProps
+    item: T
   ) => void;
 }
 

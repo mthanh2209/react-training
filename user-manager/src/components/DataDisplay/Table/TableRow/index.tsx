@@ -3,7 +3,7 @@ import TableRowItem from "@components/DataDisplay/Table/TableRow/TableRowItem";
 import TableRowCell from "@components/DataDisplay/Table/TableRow/TableRowCell";
 
 // Types
-import { IColumnProps, IUserProps } from "@types/interface";
+import { IColumnProps } from "@types/interface";
 
 interface ITableRow<T> {
   rowData: T[];
@@ -11,7 +11,7 @@ interface ITableRow<T> {
   selectedRowIndex: number;
   onRowClick: (
     index: number,
-    item: IUserProps
+    item: T
   ) => void;
 }
 
