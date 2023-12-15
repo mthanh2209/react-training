@@ -9,3 +9,24 @@ export interface IItemNav {
   isSelected?: boolean;
   onClick?: () => void;
 }
+
+export interface IColumnProps<T> {
+  key: keyof T;
+  title: string;
+  render?: (
+    column: IColumnProps<T>,
+    item: T
+  ) => JSX.Element;
+}
+
+export interface IUserProps {
+  id: number;
+  avatar: string;
+  fullName: string;
+  email: string;
+  isActive: boolean;
+  registeredDate?: string | null;
+  lastVisitedDate?: string | null;
+  details?: string;
+  bgColor: string;
+}
