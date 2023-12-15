@@ -23,3 +23,11 @@ export const getObjValue = <T, Key extends keyof T>(
 ): T[Key] => {
   return obj[key];
 };
+
+export const renderDate = (data: string) => {
+  const dateData = new Date(data);
+  return dateData.toLocaleString('en-US', {
+    dateStyle: 'medium',
+    timeStyle: 'medium'
+  });
+};
