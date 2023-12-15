@@ -1,10 +1,15 @@
-import iconEdit from '@assets/images/edit-icon.svg';
-import Status from '../Status';
-import Button from '@components/Inputs/Button';
-import Avatar from './../Avatar/index';
 // Components
 import '@components/DataDisplay/SideBar/SideBar.css';
+import InformationList from '@components/DataDisplay/SideBar/InfoList';
+import Status from '@components/DataDisplay/Status';
+import Button from '@components/Inputs/Button';
+import Avatar from '@components/DataDisplay/Avatar/index';
+
+// Types
 import { IInfoList } from '@types/interface';
+
+// Icons
+import iconEdit from '@assets/images/edit-icon.svg';
 
 interface ISideBarProps {
   title?: string;
@@ -51,15 +56,12 @@ const InformationSidebar = ({
       </div>
       <div className='info-list'>
         {infoList.map((infoItem, index) => (
-          <>
-            <div className='info-list-header' key={index}>
-              <span className={`info-list-icon ${infoItem.icon}`}></span>
-              {infoItem.title}
-            </div>
-            <p className='info-list-content'>
-              {infoItem.content === '' || null ? 'Unknown' : infoItem.content}
-            </p>
-          </>
+          <InformationList
+            key={index}
+            icon={infoItem.icon}
+            title={infoItem.title}
+            content={infoItem.content}
+          />
         ))}
       </div>
     </article>
