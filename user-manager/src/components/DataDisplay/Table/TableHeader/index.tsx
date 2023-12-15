@@ -2,10 +2,10 @@
 import TableHeaderCell from '@components/DataDisplay/Table/TableHeader/TableHeaderCell';
 
 // Types
-import { CustomColumnProps } from '@types/interface';
+import { IColumnProps } from '@types/interface';
 
 interface ITableHeader<T> {
-  columns: CustomColumnProps<T>[];
+  columns: IColumnProps<T>[];
 }
 
 const TableHeader = <T,>({

@@ -3,27 +3,27 @@ import TableRowItem from "@components/DataDisplay/Table/TableRow/TableRowItem";
 import TableRowCell from "@components/DataDisplay/Table/TableRow/TableRowCell";
 
 // Types
-import { CustomColumnProps, CustomUserProps } from "@types/interface";
+import { IColumnProps, IUserProps } from "@types/interface";
 
 interface ITableRow<T> {
-  users: T[];
-  columns: CustomColumnProps<T>[];
+  rowData: T[];
+  columns: IColumnProps<T>[];
   selectedRowIndex: number;
   onRowClick: (
     index: number,
-    item: CustomUserProps
+    item: IUserProps
   ) => void;
 }
 
 const TableRow = ({
-  users,
+  rowData,
   columns,
   selectedRowIndex,
   onRowClick
-}: ITableRow<CustomUserProps>): JSX.Element => {
+}: ITableRow<IUserProps>): JSX.Element => {
   return (
     <>
-      {users.map((item, itemIndex) => (
+      {rowData.map((item, itemIndex) => (
         <TableRowItem
           key={`table-row-${itemIndex}`}
           item={item}

@@ -1,14 +1,17 @@
 import { useState } from 'react';
 
 // Types
-import { CustomUserProps } from '@types/interface';
+import { IUserProps } from '@types/interface';
 
 interface ITableRowItem<T> {
   item: T;
   index: number;
   children: JSX.Element[];
   selectedRowIndex: number;
-  onRowItemClick: (index: number, item: T) => void;
+  onRowItemClick: (
+    index: number,
+    item: T
+  ) => void;
 }
 
 const TableRowItem = ({
@@ -17,7 +20,7 @@ const TableRowItem = ({
   children,
   selectedRowIndex,
   onRowItemClick
-}: ITableRowItem<CustomUserProps>) => {
+}: ITableRowItem<IUserProps>) => {
   const [selectedRow, setSelectedRow] = useState(selectedRowIndex);
 
   const rowIndex = index + 1;

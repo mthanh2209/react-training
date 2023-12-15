@@ -2,14 +2,14 @@
 import TableCell from "@components/DataDisplay/Table/TableRow/TableRowCell/TableCell"
 
 // Types
-import { CustomColumnProps } from "@types/interface";
+import { IColumnProps } from "@types/interface";
 
 // Helpers
 import { getObjValue } from "@helpers";
 
 interface ITableRowCell<T> {
   item: T,
-  column: CustomColumnProps<T>
+  column: IColumnProps<T>
 }
 
 const TableRowCell = <T,>({

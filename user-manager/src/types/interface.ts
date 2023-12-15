@@ -10,16 +10,16 @@ export interface IItemNav {
   onClick?: () => void;
 }
 
-export interface CustomColumnProps<T> {
+export interface IColumnProps<T> {
   key: keyof T;
   title: string;
   render?: (
-    column: CustomColumnProps<T>,
+    column: IColumnProps<T>,
     item: T
   ) => JSX.Element;
 }
 
-export interface CustomUserProps {
+export interface IUserProps {
   id: number;
   avatar: string;
   fullName: string;

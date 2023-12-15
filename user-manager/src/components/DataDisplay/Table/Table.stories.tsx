@@ -16,7 +16,7 @@ type Story = StoryObj<typeof Table>;
 
 export const Default: Story = {
   args: {
-    users: [
+    rowData: [
       {
         id: 1,
         avatar: '',

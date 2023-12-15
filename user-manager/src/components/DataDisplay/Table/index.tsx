@@ -4,26 +4,26 @@ import TableHeader from "@components/DataDisplay/Table/TableHeader";
 import TableRow from "@components/DataDisplay/Table/TableRow";
 
 // Types
-import { CustomColumnProps, CustomUserProps } from "@types/interface";
+import { IColumnProps, IUserProps } from "@types/interface";
 
 interface ITableProps<T> {
-  users: T[];
-  columns: CustomColumnProps<T>[];
+  rowData: T[];
+  columns: IColumnProps<T>[];
   additionalClass?: string;
   selectedRowIndex: number;
   onRowClick: (
     index: number,
-    item: CustomUserProps
+    item: T
   ) => void;
 }
 
 const Table = ({
-  users,
+  rowData,
   columns,
   additionalClass,
   selectedRowIndex,
   onRowClick
-}: ITableProps<CustomUserProps>): JSX.Element => {
+}: ITableProps<IUserProps>): JSX.Element => {
 
   return (
     <div className="table-wrapper">
@@ -34,7 +34,7 @@ const Table = ({
 
         <tbody className="table-body">
           <TableRow
-            users={users}
+            rowData={rowData}
             columns={columns}
             selectedRowIndex={selectedRowIndex}
             onRowClick={onRowClick}/>
