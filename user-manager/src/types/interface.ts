@@ -13,10 +13,7 @@ export interface IItemNav {
 export interface IColumnProps<T> {
   key: keyof T;
   title: string;
-  render?: (
-    column: IColumnProps<T>,
-    item: T
-  ) => JSX.Element;
+  render?: (column: IColumnProps<T>, item: T) => JSX.Element;
 }
 
 export interface IUserProps {
@@ -29,4 +26,10 @@ export interface IUserProps {
   lastVisitedDate?: string | null;
   details?: string;
   bgColor: string;
+}
+
+export interface IInfoList {
+  icon?: string;
+  title?: string;
+  content?: string | null;
 }
