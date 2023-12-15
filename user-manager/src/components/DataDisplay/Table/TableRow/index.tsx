@@ -15,12 +15,12 @@ interface ITableRow<T> {
   ) => void;
 }
 
-const TableRow = ({
+const TableRow = <T,>({
   rowData,
   columns,
   selectedRowIndex,
   onRowClick
-}: ITableRow<IUserProps>): JSX.Element => {
+}: ITableRow<T>) => {
   return (
     <>
       {rowData.map((item, itemIndex) => (

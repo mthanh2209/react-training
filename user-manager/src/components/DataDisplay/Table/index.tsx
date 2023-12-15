@@ -4,7 +4,7 @@ import TableHeader from "@components/DataDisplay/Table/TableHeader";
 import TableRow from "@components/DataDisplay/Table/TableRow";
 
 // Types
-import { IColumnProps, IUserProps } from "@types/interface";
+import { IColumnProps, IUserProps} from "@types/interface";
 
 interface ITableProps<T> {
   rowData: T[];
@@ -13,17 +13,17 @@ interface ITableProps<T> {
   selectedRowIndex: number;
   onRowClick: (
     index: number,
-    item: T
+    item: IUserProps
   ) => void;
 }
 
-const Table = ({
+const Table = <T,>({
   rowData,
   columns,
   additionalClass,
   selectedRowIndex,
   onRowClick
-}: ITableProps<IUserProps>): JSX.Element => {
+}: ITableProps<T>) => {
 
   return (
     <div className="table-wrapper">

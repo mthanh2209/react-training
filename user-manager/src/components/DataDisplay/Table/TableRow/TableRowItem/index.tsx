@@ -10,17 +10,17 @@ interface ITableRowItem<T> {
   selectedRowIndex: number;
   onRowItemClick: (
     index: number,
-    item: T
+    item: IUserProps
   ) => void;
 }
 
-const TableRowItem = ({
+const TableRowItem = <T,>({
   item,
   index,
   children,
   selectedRowIndex,
   onRowItemClick
-}: ITableRowItem<IUserProps>) => {
+}: ITableRowItem<T>) => {
   const [selectedRow, setSelectedRow] = useState(selectedRowIndex);
 
   const rowIndex = index + 1;
