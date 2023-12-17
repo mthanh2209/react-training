@@ -6,7 +6,7 @@ import '@components/Inputs/TextArea/TextArea.css';
 interface ITextArea {
   value?: string;
   placeholder?: string
-  onChange?: (value: string) => {};
+  onChange?: (value: string) => void;
 }
 
 const TextArea = ({

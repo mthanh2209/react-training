@@ -3,7 +3,7 @@ import '@components/Inputs/SwitchStatus/SwitchStatus.css';
 
 interface ISwitchStatus {
   isChecked?: boolean;
-  onChange?: () => {};
+  onChange?: () => void;
 }
 
 const SwitchStatus = ({
