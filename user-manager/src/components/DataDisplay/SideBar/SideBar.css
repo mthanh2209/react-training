@@ -1,0 +1,70 @@
+.sidebar {
+  margin: 0.6rem;
+  min-width: 22rem;
+  border: 1px solid var(--border-color);
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3rem 0.6rem;
+  font-family: var(--medium-font);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-title {
+  margin-right: 1.25rem;
+  color: var(--primary-color);
+}
+
+.sidebar-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0;
+}
+
+.info-name {
+  margin: 1.25rem 0 0;
+  font-size: var(--font-xs);
+  font-family: var(--medium-font);
+  color: var(--dark-color);
+  letter-spacing: 0.2px;
+}
+
+.info-list {
+  padding: 0 1rem;
+  font-size: var(--font-xs);
+  color: var(--dark-color);
+  letter-spacing: 0.2px;
+}
+
+.info-list-header {
+  margin: 0 0 0.6rem;
+  font-family: var(--medium-font);
+}
+
+.info-list-content {
+  margin: 0 0 1.5rem;
+  font-family: var(--regular-font);
+}
+
+.info-list-icon::before {
+  display: block;
+  content: '';
+  width: 1.5rem;
+  height: 2.5rem;
+  float: left;
+  margin: -4px 6px 0 0;
+}
+
+.email-icon::before {
+  background: url('../../../assets/images/email-icon.svg') no-repeat;
+  background-size: 20px 20px;
+}
+
+.date-icon::before {
+  background: url('../../../assets/images/clock-icon.svg') no-repeat;
+  background-size: 20px 20px;
+}
