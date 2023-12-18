@@ -2,7 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 // Components
 import Panel from '@components/Inputs/Panel/index';
-import { getRandomColor } from '@helpers';
+
+// Helpers
+import { getRandomColor, renderDate } from '@helpers';
 
 export default {
   title: 'Components/Panel',
@@ -10,8 +12,6 @@ export default {
 } as Meta;
 
 type Story = StoryObj<typeof Panel>;
-
-const currentDate = new Date().toString();
 
 export const Default: Story = {
   args: {
@@ -22,7 +22,7 @@ export const Default: Story = {
       fullName: 'UserName',
       email: 'user@example.com',
       isActive: false,
-      registeredDate: currentDate,
+      registeredDate: renderDate(new Date().toISOString()),
       lastVisitedDate: null,
       details: '',
       bgColor: getRandomColor()

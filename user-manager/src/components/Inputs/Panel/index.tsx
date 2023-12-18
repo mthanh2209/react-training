@@ -1,10 +1,16 @@
-import '@components/Inputs/Panel/Panel.css';
-import { IUserProps } from '@types/interface';
-import Button from '../Button';
-import ActionBar from './ActionBar';
-import ProfileEditor from './ProfileEditor';
-import backIcon from '@assets/images/back-icon.svg';
 import { useState } from 'react';
+
+// Components
+import '@components/Inputs/Panel/Panel.css';
+import Button from '@components/Inputs/Button';
+import ActionBar from '@components/Inputs/Panel/ActionBar';
+import ProfileEditor from '@components/Inputs/Panel/ProfileEditor';
+
+// Types
+import { IUserProps } from '@types/interface';
+
+// Icons
+import backIcon from '@assets/images/back-icon.svg';
 interface IPanelProp<T> {
   listBar: string[];
   itemData: T;
@@ -20,11 +26,11 @@ const Panel = ({
   onSaveUser,
   onDeleteUser
 }: IPanelProp<IUserProps>) => {
-  const [activeTabIndex, setActiveTabIndex] = useState(0);
-  const handleActiveTab = (index: number) => {
-    setActiveTabIndex(index);
+  const [activeItemBarIndex, setActiveItemBarIndex] = useState(0);
+  const handleActiveItemBar = (index: number) => {
+    setActiveItemBarIndex(index);
   };
-  const tabData = listBar[activeTabIndex];
+  const barData = listBar[activeItemBarIndex];
 
   return (
     <div className='panel-wrapper'>
@@ -40,15 +46,15 @@ const Panel = ({
         {listBar.map((itemBar, index) => (
           <ActionBar
             title={itemBar}
-            isActive={activeTabIndex === index}
+            isActive={activeItemBarIndex === index}
             itemIndex={index}
-            onClick={handleActiveTab}
+            onClick={handleActiveItemBar}
           />
         ))}
       </div>
-      
+
       <ProfileEditor
-        activeItemBar={tabData}
+        activeItemBar={barData}
         itemData={itemData}
         onSaveUser={onSaveUser}
         onDeleteUser={onDeleteUser}

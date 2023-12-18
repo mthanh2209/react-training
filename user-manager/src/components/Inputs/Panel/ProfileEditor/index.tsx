@@ -1,3 +1,7 @@
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+
+// Components
 import Modal from '@components/DataDisplay/Modal';
 import Status from '@components/DataDisplay/Status';
 import Button from '@components/Inputs/Button';
@@ -5,10 +9,12 @@ import ImageUploader from '@components/Inputs/ImageUploader';
 import SwitchStatus from '@components/Inputs/SwitchStatus';
 import TextArea from '@components/Inputs/TextArea';
 import TextField from '@components/Inputs/TextField';
+
+// Helpers
 import { renderDate } from '@helpers';
+
+// Types
 import { IUserProps } from '@types/interface';
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
 
 interface IProfileEditor<T> {
   activeItemBar: string;
@@ -97,11 +103,17 @@ const ProfileEditor = ({
           <div className='confirm-buttons'>
             <Button
               variants='secondary'
+              withIcon='none'
               type='button'
               content='Delete'
               onClick={handleOpenModal}
             />
-            <Button variants='primary' type='submit' content='Save' />
+            <Button
+              variants='primary'
+              withIcon='none'
+              type='submit'
+              content='Save'
+            />
           </div>
 
           {isOpenModal &&
@@ -112,11 +124,11 @@ const ProfileEditor = ({
                 modalTitle='Delete'
                 modalDesc='Are you sure to delete this user?'
                 confirmText='Delete'
-                denyText='Save'
+                denyText='Cancel'
                 onClose={handleCloseModal}
                 onConfirmText={handleDeleteButton}
               />,
-              document.querySelector('.popper') as HTMLElement
+              document.body as HTMLElement
             )}
 
           <form
@@ -187,8 +199,8 @@ const ProfileEditor = ({
         </>
       );
 
-      default:
-        return null;
+    default:
+      return null;
   }
 };
 
