@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "avatar": "https://docs.webix.com/usermanager-backend/users/87/avatar/503723673.jpg",
+      "fullName": "Berni Mayou",
+      "email": "bern.mayour@mail.com",
+      "isActive": true,
+      "registeredDate": null,
+      "lastVisitedDate": null,
+      "details": ""
+    },
+    {
+      "id": 2,
+      "avatar": "https://docs.webix.com/usermanager-backend/users/105/avatar/096793420.jpg",
+      "fullName": "Daenerys Stormborn Targaryen",
+      "email": "breaker.of.chains@gm.com",
+      "isActive": false,
+      "registeredDate": null,
+      "lastVisitedDate": null,
+      "details": ""
+    }
+  ]
+}
