@@ -1,15 +1,15 @@
-// Helpers
-import { renderDate } from '@helpers';
-
 interface ITextView {
-  title?: string;
-  date?: string | null;
+  label?: string;
+  content?: string;
 }
-const TextView = ({ title, date }: ITextView) => (
+const TextView = ({
+  label,
+  content
+}: ITextView) => (
   <div className='form-item'>
-    <span className='form-item-title'>{title}</span>
+    <label className='form-item-title'>{label}</label>
     <p className='form-edit-content'>
-      {date == null ? 'Unknown' : renderDate(date)}
+      {content}
     </p>
   </div>
 );
