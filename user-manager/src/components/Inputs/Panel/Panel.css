@@ -61,6 +61,12 @@
   margin: 0 0 1.5rem;
 }
 
+.form-item-input{
+  text-align: end;
+  align-items: baseline;
+  margin-right: 1.25rem;
+}
+
 .form-item-avatar {
   align-items: start;
 }

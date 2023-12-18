@@ -9,9 +9,7 @@ import ImageUploader from '@components/Inputs/ImageUploader';
 import SwitchStatus from '@components/Inputs/SwitchStatus';
 import TextArea from '@components/Inputs/TextArea';
 import TextField from '@components/Inputs/TextField';
-
-// Helpers
-import { renderDate } from '@helpers';
+import TextView from '@components/Inputs/Panel/TextView';
 
 // Types
 import { IUserProps } from '@types/interface';
@@ -140,18 +138,18 @@ const ProfileEditor = ({
             className='form-edit-profile'
             onSubmit={handleFormSubmit}
           >
-            <div className='form-item'>
-              <span className='form-item-title'>Full Name</span>
+            <div className='form-item form-item-input'>
               <TextField
+                label='Full Name'
                 className='text'
                 value={currentFullName}
                 onChange={handleFullNameChange}
               />
             </div>
 
-            <div className='form-item'>
-              <span className='form-item-title'>Email</span>
+            <div className='form-item form-item-input'>
               <TextField
+                label='Email'
                 className='text'
                 value={currentEmail}
                 onChange={handleEmailChange}
@@ -177,23 +175,13 @@ const ProfileEditor = ({
               </div>
             </div>
 
-            <div className='form-item'>
-              <span className='form-item-title'>Registered</span>
-              <p className='form-edit-content'>
-                {registeredDate == null
-                  ? 'Unknown'
-                  : renderDate(registeredDate)}
-              </p>
-            </div>
+            <TextView
+              title='Registered'
+              date={registeredDate} />
 
-            <div className='form-item'>
-              <span className='form-item-title'>Last visited</span>
-              <p className='form-edit-content'>
-                {lastVisitedDate == null
-                  ? 'Unknown'
-                  : renderDate(lastVisitedDate)}
-              </p>
-            </div>
+            <TextView
+              title='Last visited'
+              date={lastVisitedDate} />
 
             <div className='form-item form-item-details'>
               <span className='form-item-title'>Details</span>
