@@ -80,15 +80,12 @@ const ProfileEditor = ({
     event.preventDefault();
     const currentDate = new Date().toString();
     const updatedItem = {
-      id: id,
       avatar: currentAvatar,
       fullName: currentFullName,
       email: currentEmail,
       isActive: currentStatus,
-      registeredDate: registeredDate,
       lastVisitedDate: currentDate,
       details: currentDetails,
-      bgColor: bgColor
     };
     onSaveUser(updatedItem);
   };
