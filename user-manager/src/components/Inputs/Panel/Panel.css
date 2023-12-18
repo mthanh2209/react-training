@@ -1,0 +1,101 @@
+.panel-wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  margin: 1rem;
+  border: 1px solid var(--border-color);
+  min-width: 19rem;
+  height: 89vh;
+  background-color: var(--white-color);
+  font-family: var(--medium-font);
+  color: var(--primary-color);
+}
+
+.panel-edit {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--white-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Action Bar */
+.item-bar {
+  border: none;
+  min-width: 9rem;
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  font-family: var(--medium-font);
+  color: var(--secondary-color);
+  background-color: var(--white-color);
+  outline: none;
+  cursor: pointer;
+}
+
+.item-bar:hover {
+  background-color: var(--light-grey);
+}
+
+.item-bar.active {
+  border-bottom: 3px solid var(--secondary-color);
+}
+
+.item-bar.active:hover {
+  background-color: var(--white-color);
+}
+
+/* Profile Editor */
+.form-edit-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: auto;
+  margin: 1.25rem 0 0 3rem;
+}
+
+.form-item {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 0 0 1.5rem;
+}
+
+.form-item-avatar {
+  align-items: start;
+}
+
+.form-item-status {
+  grid-template-columns: 8rem 5rem 1fr;
+}
+
+.form-item-details {
+  align-items: start;
+}
+
+.status-wrapper {
+  margin-top: 0.4rem;
+  margin-left: 1.25rem;
+}
+
+.form-item-title {
+  margin: 0 1.25rem 0 0;
+  font-family: var(--medium-font);
+  text-align: end;
+}
+
+.form-edit-content {
+  min-width: 13rem;
+  font-family: var(--regular-font);
+}
+
+.confirm-buttons {
+  position: sticky;
+  top: 3rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin: 1rem;
+  background-color: var(--white-color);
+  z-index: 1;
+}
