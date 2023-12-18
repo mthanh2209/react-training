@@ -8,6 +8,7 @@ export interface IButtonProps {
   variants?: TVariant;
   withIcon?: TWithIcon;
   type?: TType;
+  form?: string;
   icon?: string;
   content?: string;
   onClick?: () => void
@@ -17,6 +18,7 @@ const Button = ({
   variants,
   withIcon,
   type,
+  form,
   icon,
   content,
   onClick
@@ -24,6 +26,7 @@ const Button = ({
   <button
     className={`btn btn-${variants}`}
     type={type}
+    form={form}
     onClick={onClick}>
     <span style={{ display: `${withIcon}` }} className='icon-wrapper'>
       <img
