@@ -13,6 +13,8 @@ export default {
 
 type Story = StoryObj<typeof Panel>;
 
+const date = new Date().toISOString()
+
 export const Default: Story = {
   args: {
     listBar: ['General'],
@@ -21,7 +23,7 @@ export const Default: Story = {
     fullName: 'UserName',
     email: 'user@example.com',
     isActive: false,
-    registeredDate: formatDate(new Date().toISOString()),
+    registeredDate: date,
     lastVisitedDate: null,
     details: '',
     bgColor: getRandomColor()

@@ -17,7 +17,7 @@ export interface IColumnProps<T> {
 }
 
 export interface IUserProps {
-  id: number;
+  id?: number;
   avatar: string;
   fullName: string;
   email: string;
@@ -25,7 +25,7 @@ export interface IUserProps {
   registeredDate?: string | null;
   lastVisitedDate?: string | null;
   details?: string;
-  bgColor: string;
+  bgColor?: string;
 }
 
 export interface IInfoList {
