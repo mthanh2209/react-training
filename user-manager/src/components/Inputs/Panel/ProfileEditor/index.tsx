@@ -15,7 +15,7 @@ import TextView from '@components/Inputs/Panel/TextView';
 import { IUserProps } from '@types/interface';
 
 // Helpers
-import { renderDate } from '@helpers';
+import { formatDate } from '@helpers';
 
 interface IProfileEditor {
   activeItemBar: string;
@@ -189,7 +189,7 @@ const ProfileEditor = ({
               content={
                 registeredDate === null || registeredDate === undefined
                 ? 'Unknown'
-                : renderDate(registeredDate)
+                : formatDate(registeredDate)
               } />
 
             <TextView
@@ -197,7 +197,7 @@ const ProfileEditor = ({
               content={
                 lastVisitedDate === null || lastVisitedDate === undefined
                 ? 'Unknown'
-                : renderDate(lastVisitedDate)
+                : formatDate(lastVisitedDate)
               } />
 
             <div className='form-item form-item-details'>
