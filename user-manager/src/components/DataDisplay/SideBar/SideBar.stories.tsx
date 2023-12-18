@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Sidebar from '@components/DataDisplay/Sidebar/index';
 
 // Helpers
-import { getRandomColor, renderDate } from '@helpers';
+import { getRandomColor, formatDate } from '@helpers';
 
 export default {
   title: 'Components/Sidebar',
@@ -28,7 +28,7 @@ export const Default: Story = {
       {
         icon: 'date-icon',
         title: 'Last visited:',
-        content: renderDate(new Date().toISOString())
+        content: formatDate(new Date().toISOString())
       }
     ]
   }

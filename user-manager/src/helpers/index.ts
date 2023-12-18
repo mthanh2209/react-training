@@ -24,7 +24,7 @@ export const getObjValue = <T, Key extends keyof T>(
   return obj[key];
 };
 
-export const renderDate = (data: string) => {
+export const formatDate = (data: string) => {
   const dateData = new Date(data);
   return dateData.toLocaleString('en-US', {
     dateStyle: 'medium',

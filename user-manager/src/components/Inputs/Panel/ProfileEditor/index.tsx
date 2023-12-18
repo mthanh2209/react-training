@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { createPortal } from 'react-dom';
 
 // Components
@@ -9,32 +9,51 @@ import ImageUploader from '@components/Inputs/ImageUploader';
 import SwitchStatus from '@components/Inputs/SwitchStatus';
 import TextArea from '@components/Inputs/TextArea';
 import TextField from '@components/Inputs/TextField';
-
-// Helpers
-import { renderDate } from '@helpers';
+import TextView from '@components/Inputs/Panel/TextView';
 
 // Types
 import { IUserProps } from '@types/interface';
 
-interface IProfileEditor<T> {
+// Helpers
+import { formatDate } from '@helpers';
+
+interface IProfileEditor {
   activeItemBar: string;
   contentItem?: string;
-  itemData: T;
+  id: number;
+  avatar: string;
+  fullName: string;
+  email: string;
+  isActive: boolean;
+  registeredDate: string | null;
+  lastVisitedDate: string | null;
+  details: string;
+  bgColor: string;
   onSaveUser: (itemData: IUserProps) => void;
   onDeleteUser: (id: number) => void;
 }
+
 const ProfileEditor = ({
   activeItemBar,
   contentItem = 'General',
-  itemData,
+  id,
+  avatar,
+  fullName,
+  email,
+  isActive,
+  registeredDate,
+  lastVisitedDate,
+  details,
+  bgColor,
   onSaveUser,
   onDeleteUser
-}: IProfileEditor<IUserProps>) => {
-  const [avatar, setAvatar] = useState(itemData.avatar);
-  const [fullName, setFullName] = useState(itemData.fullName);
-  const [email, setEmail] = useState(itemData.email);
-  const [status, setStatus] = useState(itemData.isActive);
-  const [details, setDetails] = useState(itemData.details);
+}: IProfileEditor) => {
+
+  const [currentAvatar, setAvatar] = useState(avatar);
+  const [currentFullName, setFullName] = useState(fullName);
+  const [currentEmail, setEmail] = useState(email);
+  const [currentStatus, setStatus] = useState(isActive);
+  const [currentDetails, setDetails] = useState(details);
   const [isOpenModal, setOpenModal] = useState(false);
 
   const handleFullNameChange = (value: string) => {
@@ -46,7 +65,7 @@ const ProfileEditor = ({
   };
 
   const handleSwitchChange = () => {
-    setStatus(!status);
+    setStatus(!currentStatus);
   };
 
   const handleDetailsChange = (value: string) => {
@@ -59,18 +78,17 @@ const ProfileEditor = ({
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const date = new Date();
-    const currentDate = date.toString();
+    const currentDate = new Date().toString();
     const updatedItem = {
-      id: itemData.id,
-      avatar: avatar,
-      fullName: fullName,
-      email: email,
-      isActive: status,
-      registeredDate: itemData.registeredDate,
+      id: id,
+      avatar: currentAvatar,
+      fullName: currentFullName,
+      email: currentEmail,
+      isActive: currentStatus,
+      registeredDate: registeredDate,
       lastVisitedDate: currentDate,
-      details: details,
-      bgColor: itemData.bgColor
+      details: currentDetails,
+      bgColor: bgColor
     };
     onSaveUser(updatedItem);
   };
@@ -81,20 +99,12 @@ const ProfileEditor = ({
 
   const handleDeleteButton = () => {
     setOpenModal(false);
-    onDeleteUser(itemData.id);
+    onDeleteUser(id);
   };
 
   const handleCloseModal = () => {
     setOpenModal(false);
   };
-
-  useEffect(() => {
-    setFullName(itemData.fullName);
-    setEmail(itemData.email);
-    setStatus(itemData.isActive);
-    setDetails(itemData.details);
-    setAvatar(itemData.avatar);
-  }, [itemData]);
 
   switch (activeItemBar) {
     case contentItem:
@@ -112,6 +122,7 @@ const ProfileEditor = ({
               variants='primary'
               withIcon='none'
               type='submit'
+              form='form-edit-profile'
               content='Save'
             />
           </div>
@@ -136,20 +147,20 @@ const ProfileEditor = ({
             className='form-edit-profile'
             onSubmit={handleFormSubmit}
           >
-            <div className='form-item'>
-              <span className='form-item-title'>Full Name</span>
+            <div className='form-item form-item-input'>
               <TextField
+                label='Full Name'
                 className='text'
-                value={fullName}
+                value={currentFullName}
                 onChange={handleFullNameChange}
               />
             </div>
 
-            <div className='form-item'>
-              <span className='form-item-title'>Email</span>
+            <div className='form-item form-item-input'>
               <TextField
+                label='Email'
                 className='text'
-                value={email}
+                value={currentEmail}
                 onChange={handleEmailChange}
               />
             </div>
@@ -158,42 +169,42 @@ const ProfileEditor = ({
               <span className='form-item-title'>Avatar</span>
               <ImageUploader
                 initialImage=''
-                alt={fullName}
-                bgColor={itemData.bgColor}
+                alt={currentFullName}
+                bgColor={bgColor}
                 onChange={handleAvatarChange}
               />
             </div>
 
             <div className='form-item form-item-status'>
               <span className='form-item-title'>Status</span>
-              <SwitchStatus isChecked={status} onChange={handleSwitchChange} />
+              <SwitchStatus isChecked={currentStatus} onChange={handleSwitchChange} />
 
               <div className='status-wrapper'>
-                <Status isActive={status} />
+                <Status isActive={currentStatus} />
               </div>
             </div>
 
-            <div className='form-item'>
-              <span className='form-item-title'>Registered</span>
-              <p className='form-edit-content'>
-                {itemData.registeredDate == null
-                  ? 'Unknown'
-                  : renderDate(itemData.registeredDate)}
-              </p>
-            </div>
+            <TextView
+              label='Registered'
+              content={
+                registeredDate === null || registeredDate === undefined
+                ? 'Unknown'
+                : formatDate(registeredDate)
+              } />
 
-            <div className='form-item'>
-              <span className='form-item-title'>Last visited</span>
-              <p className='form-edit-content'>
-                {itemData.lastVisitedDate == null
-                  ? 'Unknown'
-                  : renderDate(itemData.lastVisitedDate)}
-              </p>
-            </div>
+            <TextView
+              label='Last visited'
+              content={
+                lastVisitedDate === null || lastVisitedDate === undefined
+                ? 'Unknown'
+                : formatDate(lastVisitedDate)
+              } />
 
             <div className='form-item form-item-details'>
               <span className='form-item-title'>Details</span>
-              <TextArea onChange={handleDetailsChange} value={details} />
+              <TextArea
+                onChange={handleDetailsChange}
+                value={currentDetails} />
             </div>
           </form>
         </>
