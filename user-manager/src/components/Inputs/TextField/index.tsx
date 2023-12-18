@@ -7,6 +7,7 @@ import '@components/Inputs/TextField/TextField.css';
 import { TInput } from '@types';
 
 interface ITextFieldProps {
+  label?: string
   className?: TInput;
   value?: string;
   placeholder?: string;
@@ -15,6 +16,7 @@ interface ITextFieldProps {
 }
 
 const TextField = ({
+  label,
   className,
   value,
   placeholder,
@@ -26,16 +28,19 @@ const TextField = ({
   }
 
   return (
-    <div className='input-wrapper'>
-      <input
-        type='text'
-        className={`text-field input-${className}`}
-        value={value}
-        placeholder={placeholder}
-        onChange={handleChangeInput} />
+    <>
+      <label className='label-input'>{label}</label>
+      <div className='input-wrapper'>
+        <input
+          type='text'
+          className={`text-field input-${className}`}
+          value={value}
+          placeholder={placeholder}
+          onChange={handleChangeInput} />
 
-      <span className='error-message'>{errorText}</span>
-    </div>
+        <span className='error-message'>{errorText}</span>
+      </div>
+    </>
   )
 }
 
