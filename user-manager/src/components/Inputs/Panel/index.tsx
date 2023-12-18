@@ -11,9 +11,18 @@ import { IUserProps } from '@types/interface';
 
 // Icons
 import backIcon from '@assets/images/back-icon.svg';
-interface IPanelProp<T> {
+
+interface IPanelProp {
   listBar: string[];
-  itemData: T;
+  id: number;
+  avatar: string;
+  fullName: string;
+  email: string;
+  isActive: boolean;
+  registeredDate: string | null;
+  lastVisitedDate: string | null;
+  details: string;
+  bgColor: string;
   onReturnClick: () => void;
   onSaveUser: (itemData: IUserProps) => void;
   onDeleteUser: (id: number) => void;
@@ -21,11 +30,19 @@ interface IPanelProp<T> {
 
 const Panel = ({
   listBar,
-  itemData,
+  id,
+  avatar,
+  fullName,
+  email,
+  isActive,
+  registeredDate,
+  lastVisitedDate,
+  details,
+  bgColor,
   onReturnClick,
   onSaveUser,
   onDeleteUser
-}: IPanelProp<IUserProps>) => {
+}: IPanelProp) => {
   const [activeItemBarIndex, setActiveItemBarIndex] = useState(0);
   const handleActiveItemBar = (index: number) => {
     setActiveItemBarIndex(index);
@@ -55,7 +72,15 @@ const Panel = ({
 
       <ProfileEditor
         activeItemBar={barData}
-        itemData={itemData}
+        id={id}
+        avatar={avatar}
+        fullName={fullName}
+        email={email}
+        isActive={isActive}
+        registeredDate={registeredDate}
+        lastVisitedDate={lastVisitedDate}
+        details={details}
+        bgColor={bgColor}
         onSaveUser={onSaveUser}
         onDeleteUser={onDeleteUser}
       />

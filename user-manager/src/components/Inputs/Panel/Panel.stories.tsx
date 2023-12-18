@@ -16,16 +16,14 @@ type Story = StoryObj<typeof Panel>;
 export const Default: Story = {
   args: {
     listBar: ['General'],
-    itemData: {
-      id: 1,
-      avatar: '',
-      fullName: 'UserName',
-      email: 'user@example.com',
-      isActive: false,
-      registeredDate: renderDate(new Date().toISOString()),
-      lastVisitedDate: null,
-      details: '',
-      bgColor: getRandomColor()
-    }
+    id: 1,
+    avatar: '',
+    fullName: 'UserName',
+    email: 'user@example.com',
+    isActive: false,
+    registeredDate: renderDate(new Date().toISOString()),
+    lastVisitedDate: null,
+    details: '',
+    bgColor: getRandomColor()
   }
 };

@@ -14,31 +14,40 @@ import TextView from '@components/Inputs/Panel/TextView';
 // Types
 import { IUserProps } from '@types/interface';
 
-interface IProfileEditor<T> {
+// Helpers
+import { renderDate } from '@helpers';
+
+interface IProfileEditor {
   activeItemBar: string;
   contentItem?: string;
-  itemData: T;
-  onSaveUser: (itemData: T) => void;
+  id: number;
+  avatar: string;
+  fullName: string;
+  email: string;
+  isActive: boolean;
+  registeredDate: string | null;
+  lastVisitedDate: string | null;
+  details: string;
+  bgColor: string;
+  onSaveUser: (itemData: IUserProps) => void;
   onDeleteUser: (id: number) => void;
 }
+
 const ProfileEditor = ({
   activeItemBar,
   contentItem = 'General',
-  itemData,
+  id,
+  avatar,
+  fullName,
+  email,
+  isActive,
+  registeredDate,
+  lastVisitedDate,
+  details,
+  bgColor,
   onSaveUser,
   onDeleteUser
-}: IProfileEditor<IUserProps>) => {
-  const {
-    id,
-    avatar,
-    fullName,
-    email,
-    isActive,
-    registeredDate,
-    lastVisitedDate,
-    details,
-    bgColor
-  } = itemData;
+}: IProfileEditor) => {
 
   const [currentAvatar, setAvatar] = useState(avatar);
   const [currentFullName, setFullName] = useState(fullName);
@@ -176,12 +185,20 @@ const ProfileEditor = ({
             </div>
 
             <TextView
-              title='Registered'
-              date={registeredDate} />
+              label='Registered'
+              content={
+                registeredDate === null || registeredDate === undefined
+                ? 'Unknown'
+                : renderDate(registeredDate)
+              } />
 
             <TextView
-              title='Last visited'
-              date={lastVisitedDate} />
+              label='Last visited'
+              content={
+                lastVisitedDate === null || lastVisitedDate === undefined
+                ? 'Unknown'
+                : renderDate(lastVisitedDate)
+              } />
 
             <div className='form-item form-item-details'>
               <span className='form-item-title'>Details</span>
