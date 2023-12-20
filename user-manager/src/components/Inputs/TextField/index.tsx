@@ -8,7 +8,8 @@ import { TInput } from '@types';
 
 interface ITextFieldProps {
   label?: string
-  className?: TInput;
+  additionalClassInput?: TInput;
+  additionalClassLabel?: string;
   value?: string;
   placeholder?: string;
   errorText?: string;
@@ -17,7 +18,8 @@ interface ITextFieldProps {
 
 const TextField = ({
   label,
-  className,
+  additionalClassInput,
+  additionalClassLabel,
   value,
   placeholder,
   errorText,
@@ -29,11 +31,13 @@ const TextField = ({
 
   return (
     <>
-      <label className={`label-input label-input-${className}`}>{label}</label>
+      <label className={`label-input ${additionalClassLabel}-${additionalClassInput}`}>
+        {label}
+      </label>
       <div className='input-wrapper'>
         <input
           type='text'
-          className={`text-field input-${className}`}
+          className={`text-field ${additionalClassInput}`}
           value={value}
           placeholder={placeholder}
           onChange={handleChangeInput} />
