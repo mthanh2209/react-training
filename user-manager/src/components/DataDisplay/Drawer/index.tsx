@@ -8,16 +8,19 @@ import Popper from '@components/DataDisplay/Popper';
 // Types
 import { IItemNav, IPopperOption } from '@types/interface';
 
+// Icons
+import plusIcon from '@assets/images/plus-icon.svg';
+
 interface IDrawerProps {
-  text?: string
-  icon?: string
+  text?: string;
+  icon?: string;
   popperOption: IPopperOption[];
   listNav: IItemNav[];
 }
 
 const Drawer = ({
-  text,
-  icon,
+  text = 'Add',
+  icon = plusIcon,
   popperOption,
   listNav
 }: IDrawerProps) => {
@@ -28,7 +31,8 @@ const Drawer = ({
       <Popper
         icon={icon}
         children={text}
-        options={popperOption} />
+        options={popperOption}
+      />
 
       <ListNav
         items={listNav}
