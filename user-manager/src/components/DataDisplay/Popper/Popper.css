@@ -1,4 +1,5 @@
 .popper {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +21,7 @@
 
 .popper-option {
   position: absolute;
-  top: 4.4rem;
+  top: 2rem;
 }
 
 .btn-option {
