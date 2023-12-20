@@ -1,0 +1,16 @@
+.main-header {
+  font-family: var(--medium-font);
+  color: var(--primary-color);
+  padding: 20px 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.main-body {
+  display: flex;
+  background-color: #ebedf0;
+}
+
+.body-content {
+  padding: 10px;
+  width: 100%;
+}
