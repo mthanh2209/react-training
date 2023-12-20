@@ -63,12 +63,10 @@ export const getUsers = async (): Promise<IServiceProps> =>
   );
 
 export const addUsers = async (
-  id: number,
   fullName: string
 ): Promise<IServiceProps> => {
   const registeredDate = new Date().toISOString();
   const postData = {
-    id,
     avatar: '',
     fullName,
     email: '',
