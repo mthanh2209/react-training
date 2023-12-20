@@ -3,7 +3,8 @@
   font-family: var(--medium-font);
 }
 
-.label-input.input-search {
+.label-input.input-search,
+.label-input.input-submit {
   display: none;
 }
 

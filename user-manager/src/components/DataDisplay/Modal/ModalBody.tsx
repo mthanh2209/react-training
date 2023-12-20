@@ -41,7 +41,7 @@ const ModalBody = ({
       ) : (
         <>
           <TextField
-            className='submit'
+            additionalClass='input-submit'
             value=''
             placeholder=''
             onChange={onConfirmText}
