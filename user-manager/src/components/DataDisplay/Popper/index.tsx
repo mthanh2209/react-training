@@ -15,34 +15,32 @@ interface IPopperProps {
   icon?: string;
   children?: string;
   options: IPopperOption[];
+  onSubmit: (data: string) => void;
 }
 
 const Popper = ({
   isOpen = false,
   icon,
   children,
-  options
+  options,
+  onSubmit
 }: IPopperProps) => {
   const optionRef = useRef(null);
   const [isShowOption, setShowOption] = useState(false);
   const [isOpenModal, setOpenModal] = useState(false);
+  const [textInput, setTextInput] = useState('');
+
+  const handleInputChange = (value: string) => {
+    setTextInput(value);
+  };
 
   const closeOption = () => {
     setShowOption(false);
   };
 
-  useBackDrop({
-    ref: optionRef,
-    callback: closeOption
-  });
-
   const handleTogglePopper = () => {
     setShowOption(true);
   };
-
-  useEffect(() => {
-    setShowOption(isOpen);
-  }, [isOpen]);
 
   const handleOpenModal = () => {
     setOpenModal(true);
@@ -52,17 +50,29 @@ const Popper = ({
     setOpenModal(false);
   };
 
+  const handleOnSubmit = () => {
+    onSubmit(textInput);
+    setOpenModal(false);
+  };
+
+  useBackDrop({
+    ref: optionRef,
+    callback: closeOption
+  });
+
+  useEffect(() => {
+    setShowOption(isOpen);
+  }, [isOpen]);
+
   return (
     <div className='popper'>
       <button
         className='btn-primary btn-popper'
         type='button'
         onClick={handleTogglePopper}
-        ref={optionRef}>
-        <img
-          className='plus-icon'
-          alt={`${children}-icon`}
-          src={icon} />
+        ref={optionRef}
+      >
+        <img className='plus-icon' alt={`${children}-icon`} src={icon} />
         {children}
       </button>
 
@@ -73,7 +83,8 @@ const Popper = ({
               key={index}
               className='btn-popper btn-option'
               type='button'
-              onClick={handleOpenModal}>
+              onClick={handleOpenModal}
+            >
               {option.text}
             </button>
           ))}
@@ -87,6 +98,8 @@ const Popper = ({
           modalDesc='Enter user name'
           confirmText='Save'
           onClose={handleCloseModal}
+          onConfirmText={handleOnSubmit}
+          onChangeText={handleInputChange}
         />
       )}
     </div>

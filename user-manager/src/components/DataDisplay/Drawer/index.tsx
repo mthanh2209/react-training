@@ -16,13 +16,15 @@ interface IDrawerProps {
   icon?: string;
   popperOption: IPopperOption[];
   listNav: IItemNav[];
+  onSubmit: (data: string) => void;
 }
 
 const Drawer = ({
   text = 'Add',
   icon = plusIcon,
   popperOption,
-  listNav
+  listNav,
+  onSubmit
 }: IDrawerProps) => {
   const [isSelected, setSelected] = useState<number>(0);
 
@@ -32,6 +34,7 @@ const Drawer = ({
         icon={icon}
         children={text}
         options={popperOption}
+        onSubmit={onSubmit}
       />
 
       <ListNav
