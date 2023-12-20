@@ -16,7 +16,7 @@ import { IUserProps } from '@types/interface';
 import { IColumnProps } from '@types/interface';
 
 // Services
-import { get } from '@service';
+import { getUsers } from '@service';
 
 const popperOption = [{ text: 'Add new user' }];
 
@@ -56,17 +56,13 @@ const App = () => {
   const handleSelectedRow = () => {};
 
   useEffect(() => {
-    const getUsers = async () => {
-      try {
-        const response = await get();
-        if (response.data) {
-          setUsers(response.data);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
+    const handleGetUsers = async () => {
+      const response = await getUsers();
+      if (response.data) {
+        setUsers(response.data);
       }
     };
-    getUsers();
+    handleGetUsers();
   }, []);
 
   return (

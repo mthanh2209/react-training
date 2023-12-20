@@ -56,13 +56,13 @@ const makeRequest = async (
   }
 };
 
-export const get = async (): Promise<IServiceProps> =>
+export const getUsers = async (): Promise<IServiceProps> =>
   makeRequest(
     API_REQUEST.GET,
     USERS_URL
   );
 
-export const post = async (
+export const addUsers = async (
   id: number,
   fullName: string
 ): Promise<IServiceProps> => {
@@ -85,14 +85,14 @@ export const post = async (
   );
 };
 
-export const update = async (dataItem: IData): Promise<IServiceProps> =>
+export const updateUsers = async (dataItem: IData): Promise<IServiceProps> =>
   makeRequest(
     API_REQUEST.PUT,
     `${USERS_URL}/${dataItem.id}`,
     dataItem
   );
 
-export const deleted = async (id: number): Promise<IServiceProps> =>
+export const deleteUsers = async (id: number): Promise<IServiceProps> =>
   makeRequest(
     API_REQUEST.DELETE,
     `${USERS_URL}/${id}`
