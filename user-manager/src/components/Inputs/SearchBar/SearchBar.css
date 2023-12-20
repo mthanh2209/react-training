@@ -1,12 +1,12 @@
 .search-wrapper {
   position: absolute;
   display: grid;
-  grid-template-columns: 1fr 2.5rem;
-  grid-gap: 0.8rem;
-  align-items: center;
+  grid-template-columns: 1fr min-content;
+  gap: 1rem;
   width: 100%;
   background-color: var(--white-color);
-  padding-top: 4px
+  padding-right: 1.3rem;
+  align-items: center;
 }
 
 .close-icon {

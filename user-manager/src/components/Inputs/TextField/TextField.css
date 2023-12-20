@@ -3,9 +3,14 @@
   font-family: var(--medium-font);
 }
 
+.label-input-search {
+  display: none;
+}
+
 .input-wrapper {
   display: flex;
   flex-direction: column;
+  margin-top: 0.625rem;
 }
 
 .text-field {

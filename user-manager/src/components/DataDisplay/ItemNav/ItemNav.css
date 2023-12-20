@@ -20,7 +20,3 @@
   width: 23px;
   height: 23px;
 }
-
-.selected .icon-item {
-  filter: invert(70%) sepia(62%) saturate(2639%) hue-rotate(172deg) brightness(102%) contrast(90%);
-}

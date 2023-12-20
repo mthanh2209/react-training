@@ -29,7 +29,7 @@ const TextField = ({
 
   return (
     <>
-      <label className='label-input'>{label}</label>
+      <label className={`label-input label-input-${className}`}>{label}</label>
       <div className='input-wrapper'>
         <input
           type='text'
