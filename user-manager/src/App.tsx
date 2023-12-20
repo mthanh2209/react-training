@@ -10,19 +10,26 @@ import Avatar from '@components/DataDisplay/Avatar';
 
 // Icons
 import userIcon from '@assets/images/user-icon.svg';
+import userIconSelected from '@assets/images/user-icon-selected.svg';
 
 // Types
-import { IUserProps } from '@types/interface';
+import { IUserProps as IUser } from '@types/interface';
 import { IColumnProps } from '@types/interface';
 
 // Services
-import { getUsers } from '@service';
+import { addUsers, getUsers } from '@service';
 
 const popperOption = [{ text: 'Add new user' }];
 
-const listNav = [{ icon: userIcon, content: 'Users' }];
+const listNav = [
+  {
+    icon: userIcon,
+    iconSelected: userIconSelected,
+    content: 'Users'
+  }
+];
 
-const columns: IColumnProps<IUserProps>[] = [
+const columns: IColumnProps<IUser>[] = [
   {
     key: 'avatar',
     title: '',
@@ -65,11 +72,24 @@ const App = () => {
     handleGetUsers();
   }, []);
 
+  const handleAddUsers = async (userName: string) => {
+    const response = await addUsers(userName);
+    if (response.data) {
+      const { data } = await getUsers();
+      setUsers(data);
+      setRowIndex(data.length);
+    }
+  };
+
   return (
     <>
       <header className='main-header'>User Manager</header>
       <main className='main-body'>
-        <Drawer popperOption={popperOption} listNav={listNav} />
+        <Drawer
+          popperOption={popperOption}
+          listNav={listNav}
+          onSubmit={handleAddUsers}
+        />
 
         <div className='body-content'>
           <Toolbar />
