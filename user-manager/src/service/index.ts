@@ -62,7 +62,7 @@ export const getUsers = async (): Promise<IServiceProps> =>
     USERS_URL
   );
 
-export const postUsers = async (
+export const addUsers = async (
   id: number,
   fullName: string
 ): Promise<IServiceProps> => {

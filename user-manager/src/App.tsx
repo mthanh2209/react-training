@@ -55,13 +55,15 @@ const App = () => {
   const [rowIndex, setRowIndex] = useState(0);
   const handleSelectedRow = () => {};
 
-  const handleGetUsers = async () => {
-    const response = await getUsers();
-    if (response.data) {
-      setUsers(response.data);
-    }
-  };
-  handleGetUsers();
+  useEffect(() => {
+    const handleGetUsers = async () => {
+      const response = await getUsers();
+      if (response.data) {
+        setUsers(response.data);
+      }
+    };
+    handleGetUsers();
+  }, []);
 
   return (
     <>
