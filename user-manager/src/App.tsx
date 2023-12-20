@@ -1,5 +1,5 @@
 import '@App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // Components
 import Drawer from '@components/DataDisplay/Drawer';
@@ -15,8 +15,8 @@ import userIcon from '@assets/images/user-icon.svg';
 import { IUserProps } from '@types/interface';
 import { IColumnProps } from '@types/interface';
 
-// Helpers
-import { getRandomColor } from '@helpers';
+// Services
+import { get } from '@service';
 
 const popperOption = [{ text: 'Add new user' }];
 
@@ -50,26 +50,24 @@ const columns: IColumnProps<IUserProps>[] = [
   }
 ];
 
-const rowData: IUserProps[] = [
-  {
-    avatar: '',
-    fullName: 'User',
-    email: 'user@example.com',
-    isActive: true,
-    bgColor: getRandomColor()
-  },
-  {
-    avatar: '',
-    fullName: 'Member',
-    email: 'member@example.com',
-    isActive: false,
-    bgColor: getRandomColor()
-  }
-];
-
 const App = () => {
+  const [users, setUsers] = useState([]);
   const [rowIndex, setRowIndex] = useState(0);
   const handleSelectedRow = () => {};
+
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const response = await get();
+        if (response.data) {
+          setUsers(response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    getUsers();
+  }, []);
 
   return (
     <>
@@ -80,7 +78,7 @@ const App = () => {
         <div className='body-content'>
           <Toolbar />
           <Table
-            rowData={rowData}
+            rowData={users}
             columns={columns}
             selectedRowIndex={rowIndex}
             onRowClick={handleSelectedRow}
