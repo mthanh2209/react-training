@@ -6,4 +6,4 @@ export type TWithIcon = 'none' | 'block';
 
 export type TModal = 'submit' | 'confirm'
 
-export type TInput = 'text' | 'submit' | 'search'
+export type TInput = 'input-text' | 'input-submit' | 'input-search'

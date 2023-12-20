@@ -6,6 +6,7 @@ import ListNav from '@components/DataDisplay/ListNav/index';
 
 // Icons
 import userIcon from '@assets/images/user-icon.svg';
+import userIconSelected from '@assets/images/user-icon-selected.svg';
 
 export default {
   title: 'Components/ListNav',
@@ -16,12 +17,12 @@ type ListNavStoryArgs = {
   items: {
     content?: string;
     icon?: string;
-    onClick: () => void }[];
+    iconSelected?: string;
+    onClick: () => void;
+  }[];
 };
 
-export const Default = ({
-  items
-}: ListNavStoryArgs) => {
+export const Default = ({ items }: ListNavStoryArgs) => {
   const [selected, setSelected] = useState<number>(0);
 
   return (
@@ -35,8 +36,23 @@ export const Default = ({
 
 Default.args = {
   items: [
-    { content: 'Users', icon: userIcon, onClick: () => {} },
-    { content: 'Roles', icon: userIcon, onClick: () => {} },
-    { content: 'Rules', icon: userIcon, onClick: () => {} }
+    {
+      content: 'Users',
+      icon: userIcon,
+      iconSelected: userIconSelected,
+      onClick: () => {}
+    },
+    {
+      content: 'Roles',
+      icon: userIcon,
+      iconSelected: userIconSelected,
+      onClick: () => {}
+    },
+    {
+      content: 'Rules',
+      icon: userIcon,
+      iconSelected: userIconSelected,
+      onClick: () => {}
+    }
   ]
 };

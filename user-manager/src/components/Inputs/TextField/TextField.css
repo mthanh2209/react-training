@@ -3,7 +3,7 @@
   font-family: var(--medium-font);
 }
 
-.label-input-search {
+.label-input.input-search {
   display: none;
 }
 
