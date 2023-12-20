@@ -147,7 +147,7 @@ const ProfileEditor = ({
             <div className='form-item form-item-input'>
               <TextField
                 label='Full Name'
-                className='text'
+                additionalClass='input-text'
                 value={currentFullName}
                 onChange={handleFullNameChange}
               />
@@ -156,7 +156,7 @@ const ProfileEditor = ({
             <div className='form-item form-item-input'>
               <TextField
                 label='Email'
-                className='text'
+                additionalClass='input-text'
                 value={currentEmail}
                 onChange={handleEmailChange}
               />

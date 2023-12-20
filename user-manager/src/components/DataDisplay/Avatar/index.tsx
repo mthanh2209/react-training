@@ -1,6 +1,9 @@
 // Components
 import '@components/DataDisplay/Avatar/Avatar.css';
 
+// Helpers
+import { capitalizeLetter } from '@helpers';
+
 interface IAvatar {
   src?: string;
   alt: string;
@@ -14,7 +17,7 @@ const Avatar = ({
   bgColor,
   additionalClass
 }: IAvatar) => {
-  const firstLetter = alt.charAt(0);
+  const firstLetter = capitalizeLetter(alt.charAt(0));
 
   return (
     <div

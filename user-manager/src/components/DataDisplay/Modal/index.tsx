@@ -18,6 +18,7 @@ interface IModalProps {
   onClose?: () => void;
   onConfirmText?: () => void;
   onDenyText?: () => void;
+  onChangeText?: (value: string) => void;
 }
 
 const Modal = ({
@@ -29,13 +30,14 @@ const Modal = ({
   denyText,
   onClose,
   onConfirmText,
-  onDenyText
+  onDenyText,
+  onChangeText
 }: IModalProps) => {
   return (
     <>
       {isOpen &&
         createPortal(
-          <div className='modal-wrapper' onClick={onClose}>
+          <div className='modal-wrapper'>
             <div className={`modal modal-${type}`}>
               <ModalHeader
                 type={type}
@@ -50,6 +52,7 @@ const Modal = ({
                 denyText={denyText}
                 onConfirmText={onConfirmText}
                 onDenyText={onDenyText}
+                onChangeText={onChangeText}
               />
             </div>
           </div>,

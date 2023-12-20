@@ -8,6 +8,7 @@ interface IModalBodyProps {
   denyText?: string;
   onConfirmText?: () => void;
   onDenyText?: () => void;
+  onChangeText?: (value: string) => void;
 }
 
 const ModalBody = ({
@@ -15,7 +16,8 @@ const ModalBody = ({
   confirmText,
   denyText,
   onConfirmText,
-  onDenyText
+  onDenyText,
+  onChangeText
 }: IModalBodyProps) => {
   return (
     <div className={`modal-${type}-body`}>
@@ -41,10 +43,8 @@ const ModalBody = ({
       ) : (
         <>
           <TextField
-            className='submit'
-            value=''
-            placeholder=''
-            onChange={onConfirmText}
+            additionalClass='input-submit'
+            onChange={onChangeText}
           />
           <Button
             variants='primary'
