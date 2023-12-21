@@ -7,7 +7,8 @@ import '@components/Inputs/TextField/TextField.css';
 import { TInput } from '@types';
 
 interface ITextFieldProps {
-  label?: string
+  isShowLabel?: boolean
+  label?: string;
   additionalClass?: TInput;
   value?: string;
   placeholder?: string;
@@ -16,6 +17,7 @@ interface ITextFieldProps {
 }
 
 const TextField = ({
+  isShowLabel,
   label,
   additionalClass,
   value,
@@ -24,26 +26,26 @@ const TextField = ({
   onChange
 }: ITextFieldProps) => {
   const handleChangeInput = (event: FormEvent<HTMLInputElement>) => {
-    onChange?.(event.currentTarget.value)
-  }
+    onChange?.(event.currentTarget.value);
+  };
 
   return (
     <>
-      <label className={`label-input ${additionalClass}`}>
-        {label}
-      </label>
+      <label className={`label-input ${!isShowLabel && 'hide'}`}>{label}</label>
+
       <div className='input-wrapper'>
         <input
           type='text'
           className={`text-field ${additionalClass}`}
           value={value}
           placeholder={placeholder}
-          onChange={handleChangeInput} />
+          onChange={handleChangeInput}
+        />
 
         <span className='error-message'>{errorText}</span>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default TextField;

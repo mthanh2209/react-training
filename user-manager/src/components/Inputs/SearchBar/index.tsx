@@ -21,6 +21,7 @@ const SearchBar = ({
   return (
     <div className='search-wrapper'>
       <TextField
+        isShowLabel={false}
         additionalClass='input-search'
         placeholder={placeholder}
         onChange={onChange}
