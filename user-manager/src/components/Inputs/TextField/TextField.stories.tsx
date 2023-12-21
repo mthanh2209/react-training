@@ -11,6 +11,7 @@ type Story = StoryObj<typeof TextField>;
 
 export const Default: Story = {
   args: {
+    isShowLabel: false,
     additionalClass: 'input-search',
     placeholder: 'Full Name',
   },

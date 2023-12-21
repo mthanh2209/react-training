@@ -7,6 +7,7 @@ import '@components/Inputs/TextField/TextField.css';
 import { TInput } from '@types';
 
 interface ITextFieldProps {
+  isShowLabel?: boolean
   label?: string;
   additionalClass?: TInput;
   value?: string;
@@ -16,6 +17,7 @@ interface ITextFieldProps {
 }
 
 const TextField = ({
+  isShowLabel,
   label,
   additionalClass,
   value,
@@ -29,12 +31,7 @@ const TextField = ({
 
   return (
     <>
-      {additionalClass === 'input-search' ||
-      additionalClass === 'input-submit' ? (
-        <label className='label-input hide'>{label}</label>
-      ) : (
-        <label className='label-input'>{label}</label>
-      )}
+      <label className={`label-input ${!isShowLabel && 'hide'}`}>{label}</label>
 
       <div className='input-wrapper'>
         <input
