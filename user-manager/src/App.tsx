@@ -18,6 +18,7 @@ import { IColumnProps } from '@types/interface';
 
 // Services
 import { addUsers, getUsers } from '@service';
+import InformationSidebar from '@components/DataDisplay/Sidebar';
 
 const popperOption = [{ text: 'Add new user' }];
 
@@ -57,10 +58,27 @@ const columns: IColumnProps<IUser>[] = [
   }
 ];
 
+const infoList = (data: IUser | null) => {
+  if (!data) return [];
+  return [
+    {
+      icon: 'email-icon',
+      title: 'Email:',
+      content: data.email
+    },
+    {
+      icon: 'date-icon',
+      title: 'Last visited:',
+      content: data.lastVisitedDate
+    }
+  ];
+};
+
 const App = () => {
   const [users, setUsers] = useState([]);
   const [rowIndex, setRowIndex] = useState(0);
-  const handleSelectedRow = () => {};
+  const [rowData, setRowData] = useState<IUser | null>(null);
+  const [userInfoList, setUserInfoList] = useState<any[]>([]);
 
   useEffect(() => {
     const handleGetUsers = async () => {
@@ -78,8 +96,20 @@ const App = () => {
       const { data } = await getUsers();
       setUsers(data);
       setRowIndex(data.length);
+      setRowData(data[data.length - 1]);
     }
   };
+
+  useEffect(() => {
+    setUserInfoList(infoList(rowData))
+  }, [rowData]);
+
+  const handleSelectedRow = (index: number, dataItem: IUser): void => {
+    setRowData(dataItem);
+    setRowIndex(index);
+  };
+
+  const handleShowPanel = () => {};
 
   return (
     <>
@@ -100,6 +130,18 @@ const App = () => {
             onRowClick={handleSelectedRow}
           />
         </div>
+
+        {rowData !== null && (
+          <InformationSidebar
+            title='User information'
+            isActive={rowData.isActive}
+            src={rowData.avatar}
+            bgColor={rowData.bgColor}
+            fullName={rowData.fullName}
+            infoList={userInfoList}
+            onEditButton={handleShowPanel}
+          />
+        )}
       </main>
     </>
   );

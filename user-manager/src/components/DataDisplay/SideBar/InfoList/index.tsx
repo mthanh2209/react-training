@@ -12,7 +12,7 @@ const InformationList = ({
         {title}
       </div>
       <p className='info-list-content'>
-        {content === '' || null ? 'Unknown' : content}
+      {content === null || content === '' ? 'Unknown' : content}
       </p>
     </>
   );
