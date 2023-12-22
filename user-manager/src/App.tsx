@@ -5,50 +5,28 @@ import { useEffect, useState } from 'react';
 import Drawer from '@components/DataDisplay/Drawer';
 import Table from '@components/DataDisplay/Table';
 import Toolbar from '@components/DataDisplay/Toolbar';
-import Status from '@components/DataDisplay/Status';
-import Avatar from '@components/DataDisplay/Avatar';
 import InformationSidebar from '@components/DataDisplay/Sidebar';
 import Panel from '@components/DataDisplay/Panel';
 
 // Types
 import { IUserProps as IUser } from '@types/interface';
-import { IColumnProps } from '@types/interface';
 
 // Services
-import { addUsers, deleteUsers, getUsers, updateUsers } from '@service';
+import {
+  addUsers,
+  deleteUsers,
+  getUsers,
+  updateUsers
+} from '@service';
 
 // Constants
-import { InfoList } from '@constants/infoList';
-import { PopperOption } from '@constants/popperOption';
-import { ListNav } from '@constants/listNav';
+import { INFO_LIST } from '@constants/infoList';
+import { POPOVER_OPTION } from '@constants/popperOption';
+import { LIST_NAV } from '@constants/listNav';
+import { COLUMNS } from '@constants/columns';
 
-const columns: IColumnProps<IUser>[] = [
-  {
-    key: 'avatar',
-    title: '',
-    render: (_, item) => (
-      <Avatar
-        src={item.avatar}
-        alt={item.fullName}
-        bgColor={item.bgColor}
-        additionalClass='avatar-circle'
-      />
-    )
-  },
-  {
-    key: 'fullName',
-    title: 'Full Name'
-  },
-  {
-    key: 'isActive',
-    title: 'Status',
-    render: (_, item) => <Status isActive={item.isActive} />
-  },
-  {
-    key: 'email',
-    title: 'Email'
-  }
-];
+// Helpers
+import { filterUsers } from '@helpers/filterUsers';
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -56,6 +34,7 @@ const App = () => {
   const [rowData, setRowData] = useState<IUser | null>(null);
   const [userInfoList, setUserInfoList] = useState<any[]>([]);
   const [showSidebar, setShowSidebar] = useState(true);
+  const [searchKeyword, setSearchKeyword] = useState('');
 
   const handleGetUsers = async () => {
     const response = await getUsers();
@@ -66,7 +45,7 @@ const App = () => {
 
   useEffect(() => {
     if (rowData) {
-      setUserInfoList(InfoList(rowData));
+      setUserInfoList(INFO_LIST(rowData));
     }
     handleGetUsers();
   }, [rowData]);
@@ -118,20 +97,34 @@ const App = () => {
     }
   };
 
+  const filteredUsers: IUser[] = filterUsers(users, searchKeyword);
+  const columns = COLUMNS(searchKeyword);
+
+  const handleSearch = (keyword: string): void => {
+    setSearchKeyword(keyword);
+  };
+
+  const handleCloseSearchBar = () => {
+    setSearchKeyword('');
+  };
+
   return (
     <>
       <header className='main-header'>User Manager</header>
       <main className='main-body'>
         <Drawer
-          popperOption={PopperOption}
-          listNav={ListNav}
+          popperOption={POPOVER_OPTION}
+          listNav={LIST_NAV}
           onSubmit={handleAddUsers}
         />
 
         <div className='body-content'>
-          <Toolbar />
+          <Toolbar
+            onClose={handleCloseSearchBar}
+            onChange={handleSearch}
+          />
           <Table
-            rowData={users}
+            rowData={filteredUsers}
             columns={columns}
             selectedRowIndex={rowIndex}
             onRowClick={handleSelectedRow}
