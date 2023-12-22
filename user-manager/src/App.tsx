@@ -8,11 +8,7 @@ import Toolbar from '@components/DataDisplay/Toolbar';
 import Status from '@components/DataDisplay/Status';
 import Avatar from '@components/DataDisplay/Avatar';
 import InformationSidebar from '@components/DataDisplay/Sidebar';
-import Panel from '@components/Inputs/Panel';
-
-// Icons
-import userIcon from '@assets/images/user-icon.svg';
-import userIconSelected from '@assets/images/user-icon-selected.svg';
+import Panel from '@components/DataDisplay/Panel';
 
 // Types
 import { IUserProps as IUser } from '@types/interface';
@@ -21,18 +17,10 @@ import { IColumnProps } from '@types/interface';
 // Services
 import { addUsers, getUsers, updateUsers } from '@service';
 
-// Helpers
-import { formatDate } from '@helpers';
-
-const popperOption = [{ text: 'Add new user' }];
-
-const listNav = [
-  {
-    icon: userIcon,
-    iconSelected: userIconSelected,
-    content: 'Users'
-  }
-];
+// Constants
+import { InfoList } from '@constants/infoList';
+import { PopperOption } from '@constants/popperOption';
+import { ListNav } from '@constants/listNav';
 
 const columns: IColumnProps<IUser>[] = [
   {
@@ -62,25 +50,6 @@ const columns: IColumnProps<IUser>[] = [
   }
 ];
 
-const infoList = (data: IUser | null) => {
-  if (!data) return [];
-  return [
-    {
-      icon: 'email-icon',
-      title: 'Email:',
-      content: data.email
-    },
-    {
-      icon: 'date-icon',
-      title: 'Last visited:',
-      content:
-        data.lastVisitedDate !== null
-          ? formatDate(data.lastVisitedDate)
-          : 'Unknown'
-    }
-  ];
-};
-
 const App = () => {
   const [users, setUsers] = useState([]);
   const [rowIndex, setRowIndex] = useState(0);
@@ -97,7 +66,7 @@ const App = () => {
 
   useEffect(() => {
     if (rowData) {
-      setUserInfoList(infoList(rowData));
+      setUserInfoList(InfoList(rowData));
     }
     handleGetUsers();
   }, [rowData]);
@@ -123,7 +92,6 @@ const App = () => {
 
   const handleUpdateUsers = async (itemData: IUser) => {
     const response = await updateUsers(itemData);
-    console.log(response);
     if (response.data) {
       setRowData(response.data);
       handleGetUsers();
@@ -147,8 +115,8 @@ const App = () => {
       <header className='main-header'>User Manager</header>
       <main className='main-body'>
         <Drawer
-          popperOption={popperOption}
-          listNav={listNav}
+          popperOption={PopperOption}
+          listNav={ListNav}
           onSubmit={handleAddUsers}
         />
 
@@ -176,7 +144,7 @@ const App = () => {
 
         {!showSidebar && rowData !== null && (
           <Panel
-            listBar={['General']}
+            tabs={['General']}
             id={rowData.id}
             avatar={rowData.avatar}
             fullName={rowData.fullName}
