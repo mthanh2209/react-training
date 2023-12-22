@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 // Components
-import '@components/Inputs/Panel/Panel.css';
+import '@components/DataDisplay/Panel/Panel.css';
 import Button from '@components/Inputs/Button';
-import ActionBar from '@components/Inputs/Panel/ActionBar';
-import ProfileEditor from '@components/Inputs/Panel/ProfileEditor';
+import Tabs from '@components/DataDisplay/Panel/Tabs';
+import ProfileEditor from '@components/DataDisplay/Panel/ProfileEditor';
 
 // Types
 import { IUserProps } from '@types/interface';
@@ -13,7 +13,7 @@ import { IUserProps } from '@types/interface';
 import backIcon from '@assets/images/back-icon.svg';
 
 interface IPanelProp {
-  listBar: string[];
+  tabs: string[];
   id: number;
   avatar: string;
   fullName: string;
@@ -29,7 +29,7 @@ interface IPanelProp {
 }
 
 const Panel = ({
-  listBar,
+  tabs,
   id,
   avatar,
   fullName,
@@ -43,11 +43,12 @@ const Panel = ({
   onSaveUser,
   onDeleteUser
 }: IPanelProp) => {
-  const [activeItemBarIndex, setActiveItemBarIndex] = useState(0);
-  const handleActiveItemBar = (index: number) => {
-    setActiveItemBarIndex(index);
+  const [activeTabIndex, setActiveTabIndex] = useState(0);
+  console.log(activeTabIndex)
+  const handleActiveTab = (index: number) => {
+    setActiveTabIndex(index);
   };
-  const barData = listBar[activeItemBarIndex];
+  const tabData = tabs[activeTabIndex];
 
   return (
     <div className='panel-wrapper'>
@@ -60,18 +61,18 @@ const Panel = ({
           onClick={onReturnClick}
         />
 
-        {listBar.map((itemBar, index) => (
-          <ActionBar
-            title={itemBar}
-            isActive={activeItemBarIndex === index}
-            itemIndex={index}
-            onClick={handleActiveItemBar}
+        {tabs.map((tab, index) => (
+          <Tabs
+            title={tab}
+            isActive={activeTabIndex === index}
+            index={index}
+            onClick={handleActiveTab}
           />
         ))}
       </div>
 
       <ProfileEditor
-        activeItemBar={barData}
+        activeItemBar={tabData}
         id={id}
         avatar={avatar}
         fullName={fullName}

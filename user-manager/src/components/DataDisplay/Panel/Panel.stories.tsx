@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 // Components
-import Panel from '@components/Inputs/Panel/index';
+import Panel from '@components/DataDisplay/Panel/index';
 
 // Helpers
-import { getRandomColor, formatDate } from '@helpers';
+import { getRandomColor } from '@helpers';
 
 export default {
   title: 'Components/Panel',

@@ -19,50 +19,6 @@
       "registeredDate": null,
       "lastVisitedDate": null,
       "details": ""
-    },
-    {
-      "avatar": "",
-      "fullName": "bbbb",
-      "email": "",
-      "isActive": false,
-      "registeredDate": "2023-12-21T03:14:14.768Z",
-      "lastVisitedDate": null,
-      "details": "",
-      "bgColor": "#2a82f",
-      "id": 3
-    },
-    {
-      "avatar": "",
-      "fullName": "y",
-      "email": "",
-      "isActive": false,
-      "registeredDate": "2023-12-21T03:14:28.888Z",
-      "lastVisitedDate": null,
-      "details": "",
-      "bgColor": "#2d86d7",
-      "id": 4
-    },
-    {
-      "avatar": "",
-      "fullName": "abc",
-      "email": "",
-      "isActive": false,
-      "registeredDate": "2023-12-21T03:28:13.715Z",
-      "lastVisitedDate": null,
-      "details": "",
-      "bgColor": "#53375e",
-      "id": 5
-    },
-    {
-      "avatar": "",
-      "fullName": "avc",
-      "email": "",
-      "isActive": false,
-      "registeredDate": "2023-12-21T03:28:24.902Z",
-      "lastVisitedDate": null,
-      "details": "",
-      "bgColor": "#d8c5a8",
-      "id": 6
     }
   ]
 }

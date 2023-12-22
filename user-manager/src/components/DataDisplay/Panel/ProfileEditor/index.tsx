@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useEffect, useState } from 'react';
 
 // Components
 import Modal from '@components/DataDisplay/Modal';
@@ -9,7 +8,7 @@ import ImageUploader from '@components/Inputs/ImageUploader';
 import SwitchStatus from '@components/Inputs/SwitchStatus';
 import TextArea from '@components/Inputs/TextArea';
 import TextField from '@components/Inputs/TextField';
-import TextView from '@components/Inputs/Panel/TextView';
+import TextView from '@components/DataDisplay/Panel/TextView';
 
 // Types
 import { IUserProps } from '@types/interface';
@@ -48,7 +47,6 @@ const ProfileEditor = ({
   onSaveUser,
   onDeleteUser
 }: IProfileEditor) => {
-
   const [currentAvatar, setAvatar] = useState(avatar);
   const [currentFullName, setFullName] = useState(fullName);
   const [currentEmail, setEmail] = useState(email);
@@ -80,14 +78,16 @@ const ProfileEditor = ({
     event.preventDefault();
     const currentDate = new Date().toString();
     const updatedItem = {
+      id: id,
       avatar: currentAvatar,
       fullName: currentFullName,
       email: currentEmail,
       isActive: currentStatus,
       lastVisitedDate: currentDate,
       details: currentDetails,
+      bgColor: bgColor
     };
-    onSaveUser(updatedItem);
+    onSaveUser(updatedItem as IUserProps);
   };
 
   const handleOpenModal = () => {
@@ -102,6 +102,14 @@ const ProfileEditor = ({
   const handleCloseModal = () => {
     setOpenModal(false);
   };
+
+  useEffect(() => {
+    setFullName(fullName);
+    setEmail(email);
+    setStatus(isActive);
+    setDetails(details);
+    setAvatar(avatar);
+  }, [fullName, email, isActive, details, avatar]);
 
   switch (activeItemBar) {
     case contentItem:
@@ -124,20 +132,18 @@ const ProfileEditor = ({
             />
           </div>
 
-          {isOpenModal &&
-            createPortal(
-              <Modal
-                isOpen={isOpenModal}
-                type='confirm'
-                modalTitle='Delete'
-                modalDesc='Are you sure to delete this user?'
-                confirmText='Delete'
-                denyText='Cancel'
-                onClose={handleCloseModal}
-                onConfirmText={handleDeleteButton}
-              />,
-              document.body as HTMLElement
-            )}
+          {isOpenModal && (
+            <Modal
+              isOpen={isOpenModal}
+              type='confirm'
+              modalTitle='Delete'
+              modalDesc='Are you sure to delete this user?'
+              confirmText='Delete'
+              denyText='Cancel'
+              onClose={handleCloseModal}
+              onConfirmText={handleDeleteButton}
+            />
+          )}
 
           <form
             id='form-edit-profile'
@@ -146,6 +152,7 @@ const ProfileEditor = ({
           >
             <div className='form-item form-item-input'>
               <TextField
+                isShowLabel={true}
                 label='Full Name'
                 additionalClass='input-text'
                 value={currentFullName}
@@ -155,6 +162,7 @@ const ProfileEditor = ({
 
             <div className='form-item form-item-input'>
               <TextField
+                isShowLabel={true}
                 label='Email'
                 additionalClass='input-text'
                 value={currentEmail}
@@ -165,7 +173,7 @@ const ProfileEditor = ({
             <div className='form-item form-item-avatar'>
               <span className='form-item-title'>Avatar</span>
               <ImageUploader
-                initialImage=''
+                initialImage={currentAvatar}
                 alt={currentFullName}
                 bgColor={bgColor}
                 onChange={handleAvatarChange}
@@ -174,7 +182,10 @@ const ProfileEditor = ({
 
             <div className='form-item form-item-status'>
               <span className='form-item-title'>Status</span>
-              <SwitchStatus isChecked={currentStatus} onChange={handleSwitchChange} />
+              <SwitchStatus
+                isChecked={currentStatus}
+                onChange={handleSwitchChange}
+              />
 
               <div className='status-wrapper'>
                 <Status isActive={currentStatus} />
@@ -185,23 +196,23 @@ const ProfileEditor = ({
               label='Registered'
               content={
                 registeredDate === null || registeredDate === undefined
-                ? 'Unknown'
-                : formatDate(registeredDate)
-              } />
+                  ? 'Unknown'
+                  : formatDate(registeredDate)
+              }
+            />
 
             <TextView
               label='Last visited'
               content={
                 lastVisitedDate === null || lastVisitedDate === undefined
-                ? 'Unknown'
-                : formatDate(lastVisitedDate)
-              } />
+                  ? 'Unknown'
+                  : formatDate(lastVisitedDate)
+              }
+            />
 
             <div className='form-item form-item-details'>
               <span className='form-item-title'>Details</span>
-              <TextArea
-                onChange={handleDetailsChange}
-                value={currentDetails} />
+              <TextArea onChange={handleDetailsChange} value={currentDetails} />
             </div>
           </form>
         </>

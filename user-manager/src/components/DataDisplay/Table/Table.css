@@ -42,11 +42,11 @@
 }
 
 .table-header th:nth-child(2) {
-  width: 31rem;
+  width: 25rem;
 }
 
 .table-header th:nth-child(3) {
-  width: 9rem;
+  width: 10rem;
 }
 
 .table-header-cell {
