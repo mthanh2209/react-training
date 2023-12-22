@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
 
 // Components
 import Modal from '@components/DataDisplay/Modal';
@@ -9,7 +8,7 @@ import ImageUploader from '@components/Inputs/ImageUploader';
 import SwitchStatus from '@components/Inputs/SwitchStatus';
 import TextArea from '@components/Inputs/TextArea';
 import TextField from '@components/Inputs/TextField';
-import TextView from '@components/Inputs/Panel/TextView';
+import TextView from '@components/DataDisplay/Panel/TextView';
 
 // Types
 import { IUserProps } from '@types/interface';
@@ -133,20 +132,18 @@ const ProfileEditor = ({
             />
           </div>
 
-          {isOpenModal &&
-            createPortal(
-              <Modal
-                isOpen={isOpenModal}
-                type='confirm'
-                modalTitle='Delete'
-                modalDesc='Are you sure to delete this user?'
-                confirmText='Delete'
-                denyText='Cancel'
-                onClose={handleCloseModal}
-                onConfirmText={handleDeleteButton}
-              />,
-              document.body as HTMLElement
-            )}
+          {isOpenModal && (
+            <Modal
+              isOpen={isOpenModal}
+              type='confirm'
+              modalTitle='Delete'
+              modalDesc='Are you sure to delete this user?'
+              confirmText='Delete'
+              denyText='Cancel'
+              onClose={handleCloseModal}
+              onConfirmText={handleDeleteButton}
+            />
+          )}
 
           <form
             id='form-edit-profile'
