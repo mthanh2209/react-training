@@ -15,7 +15,7 @@ import { IUserProps as IUser } from '@types/interface';
 import { IColumnProps } from '@types/interface';
 
 // Services
-import { addUsers, getUsers, updateUsers } from '@service';
+import { addUsers, deleteUsers, getUsers, updateUsers } from '@service';
 
 // Constants
 import { InfoList } from '@constants/infoList';
@@ -98,7 +98,15 @@ const App = () => {
     }
   };
 
-  const handleDeleteUsers = () => {};
+  const handleDeleteUsers = async () => {
+    if (rowData) {
+      const response = await deleteUsers(rowData.id);
+      if (response.data) {
+        setRowData(null);
+        handleGetUsers()
+      }
+    }
+  };
 
   const handleSelectedRow = (index: number, dataItem: IUser): void => {
     setRowData(dataItem);

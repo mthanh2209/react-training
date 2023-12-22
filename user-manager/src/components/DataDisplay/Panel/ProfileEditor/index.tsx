@@ -142,6 +142,7 @@ const ProfileEditor = ({
               denyText='Cancel'
               onClose={handleCloseModal}
               onConfirmText={handleDeleteButton}
+              onDenyText={handleCloseModal}
             />
           )}
 
