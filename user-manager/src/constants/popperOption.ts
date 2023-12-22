@@ -1,4 +1,4 @@
-export const PopperOption = [
+export const POPOVER_OPTION = [
   {
     text: 'Add new user'
   }

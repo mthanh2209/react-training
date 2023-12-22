@@ -4,7 +4,7 @@ import { formatDate } from "@helpers";
 // Types
 import { IUserProps } from "@types/interface";
 
-export const InfoList = (data: IUserProps | null) => {
+export const INFO_LIST = (data: IUserProps | null) => {
   if (!data) return [];
   return [
     {
