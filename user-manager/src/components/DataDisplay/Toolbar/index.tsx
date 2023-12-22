@@ -10,11 +10,15 @@ import searchIcon from '@assets/images/search-icon.svg';
 interface IToolbar {
   icon?: string;
   content?: string;
+  onChange?: (value: string) => void;
+  onClose: () => void;
 }
 
 const Toolbar = ({
   icon = searchIcon,
-  content = 'Users'
+  content = 'Users',
+  onChange,
+  onClose
 }: IToolbar) => {
   const [isOpenSearchBar, setOpenSearchBar] = useState(false);
 
@@ -24,6 +28,7 @@ const Toolbar = ({
 
   const handleCloseSearchBar = () => {
     setOpenSearchBar(false)
+    onClose()
   }
 
   return (
@@ -38,6 +43,7 @@ const Toolbar = ({
 
       {isOpenSearchBar && (
           <SearchBar
+            onChange={onChange}
             onClose={handleCloseSearchBar}
           />
         )}

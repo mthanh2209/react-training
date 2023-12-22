@@ -51,6 +51,7 @@
 
 .table-header-cell {
   font-family: var(--medium-font);
+  color: var(--dark-color);
   padding: 1.25rem 0px;
   text-align: left;
   background-color: var(--light-grey);
@@ -86,4 +87,10 @@
 
 .table-cell {
   vertical-align: middle;
+  color: var(--primary-color);
+}
+
+.highlight {
+  background-color: #ffff00;
+  color: var(--black-color);
 }
