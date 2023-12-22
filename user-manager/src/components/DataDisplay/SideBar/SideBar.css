@@ -1,6 +1,7 @@
 .sidebar {
   margin: 0.6rem;
   min-width: 22rem;
+  background-color: var(--white-color);
   border: 1px solid var(--border-color);
 }
 
