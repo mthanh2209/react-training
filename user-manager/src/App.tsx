@@ -7,6 +7,7 @@ import Table from '@components/DataDisplay/Table';
 import Toolbar from '@components/DataDisplay/Toolbar';
 import InformationSidebar from '@components/DataDisplay/Sidebar';
 import Panel from '@components/DataDisplay/Panel';
+import Toast from '@components/DataDisplay/Toast';
 
 // Types
 import { IUserProps as IUser } from '@types/interface';
@@ -35,6 +36,9 @@ const App = () => {
   const [userInfoList, setUserInfoList] = useState<any[]>([]);
   const [showSidebar, setShowSidebar] = useState(true);
   const [searchKeyword, setSearchKeyword] = useState('');
+  const [showToast, setShowToast] = useState(false);
+  const [toastError, setToastError] = useState(false);
+  const [toastKey, setToastKey] = useState(0);
 
   const handleGetUsers = async () => {
     const response = await getUsers();
@@ -58,6 +62,12 @@ const App = () => {
       setRowIndex(data.length);
       setRowData(data[data.length - 1]);
       setShowSidebar(true);
+      setShowToast(true);
+      setToastError(false);
+      setToastKey((prevKey) => prevKey + 1);
+    } else {
+      setShowToast(true);
+      setToastError(true);
     }
   };
 
@@ -74,6 +84,12 @@ const App = () => {
     if (response.data) {
       setRowData(response.data);
       handleGetUsers();
+      setShowToast(true);
+      setToastError(false);
+      setToastKey((prevKey) => prevKey + 1);
+    } else {
+      setShowToast(true);
+      setToastError(true);
     }
   };
 
@@ -82,7 +98,13 @@ const App = () => {
       const response = await deleteUsers(rowData.id);
       if (response.data) {
         setRowData(null);
-        handleGetUsers()
+        handleGetUsers();
+        setShowToast(true);
+        setToastError(false);
+        setToastKey((prevKey) => prevKey + 1);
+      } else {
+        setShowToast(true);
+        setToastError(true);
       }
     }
   };
@@ -110,7 +132,14 @@ const App = () => {
 
   return (
     <>
-      <header className='main-header'>User Manager</header>
+      <header className='main-header'>
+        User Manager
+        {showToast &&
+          <Toast
+            isError={toastError}
+            key={toastKey} />
+        }
+      </header>
       <main className='main-body'>
         <Drawer
           popperOption={POPOVER_OPTION}

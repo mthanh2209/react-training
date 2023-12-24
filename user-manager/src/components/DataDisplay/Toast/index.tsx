@@ -24,11 +24,11 @@ const Toast = ({
     const loadingTimer = setTimeout(() => {
       setShowLoading(false);
       setShowToast(true);
-    }, 3000);
+    }, 1000);
 
     const hideToastTimer = setTimeout(() => {
       setShowToast(false);
-    }, 9000);
+    }, 2000);
 
     return () => {
       clearTimeout(loadingTimer);

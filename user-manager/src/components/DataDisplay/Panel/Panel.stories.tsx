@@ -17,7 +17,7 @@ const date = new Date().toISOString()
 
 export const Default: Story = {
   args: {
-    listBar: ['General'],
+    tabs: ['General'],
     id: 1,
     avatar: '',
     fullName: 'UserName',
