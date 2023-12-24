@@ -4,3 +4,8 @@ export const API_REQUEST = {
   DELETE: 'delete',
   PUT: 'put'
 };
+
+export const TOAST = {
+  ERROR: 'error',
+  SUCCESS: 'success'
+};
