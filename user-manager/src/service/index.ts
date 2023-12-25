@@ -5,26 +5,27 @@ import { API_URL, USERS_URL } from '@constants/urls';
 import { API_REQUEST, LOADING } from '@constants';
 
 // Helpers
-import { getRandomColor } from '@helpers/getRandomColor';
+import { setLoadingTimeout } from '@helpers/setLoadingTimeout';
 
 // Interfaces
 import { IUserProps as IData } from '@interfaces/users';
+import { POST_DATA } from '@constants/postData';
 
 axios.defaults.baseURL = API_URL;
 
-type IServiceProps = {
+type IResponse = {
   data: any;
   error: string | null;
 };
 
-const handleResponse = (data: any): IServiceProps => ({
+const handleResponse = (data: any): IResponse => ({
   data,
   error: null
 });
 
-const handleError = (error?: any): IServiceProps => ({
+const handleError = (error?: any): IResponse => ({
   error: error
-    ? error.message || 'Something went wrong'
+    ? error.message
     : 'Something went wrong',
   data: null
 });
@@ -33,26 +34,24 @@ const makeRequest = async (
   method: string,
   url: string,
   data?: any
-): Promise<IServiceProps> => {
+): Promise<IResponse> => {
   try {
-    const setLoadingTimeout = (time: number): Promise<void> => {
-      return new Promise((resolve) => {
-        const loadingTimer = setTimeout(() => {
-          resolve();
-          clearTimeout(loadingTimer);
-        }, time);
-      });
-    };
-
     let response;
-    if (method === API_REQUEST.GET) {
-      response = await axios.get(url);
-    } else if (method === API_REQUEST.POST) {
-      response = await axios.post(url, data);
-    } else if (method === API_REQUEST.PUT) {
-      response = await axios.put(url, data);
-    } else if (method === API_REQUEST.DELETE) {
-      response = await axios.delete(url);
+    switch (method) {
+      case API_REQUEST.GET:
+        response = await axios.get(url);
+        break;
+      case API_REQUEST.POST:
+        response = await axios.post(url, data);
+        break;
+      case API_REQUEST.PUT:
+        response = await axios.put(url, data);
+        break;
+      case API_REQUEST.DELETE:
+        response = await axios.delete(url);
+        break;
+      default:
+        break;
     }
 
     await setLoadingTimeout(LOADING.TIMER_LOADING);
@@ -60,14 +59,14 @@ const makeRequest = async (
     if (response && response.data) {
       return handleResponse(response.data);
     } else {
-      throw new Error('Empty response');
+      throw new Error('Something went wrong');
     }
   } catch (error) {
     return handleError(error);
   }
 };
 
-export const getUsers = async (): Promise<IServiceProps> =>
+export const getUsers = async (): Promise<IResponse> =>
   makeRequest(
     API_REQUEST.GET,
     USERS_URL
@@ -75,33 +74,22 @@ export const getUsers = async (): Promise<IServiceProps> =>
 
 export const addUsers = async (
   fullName: string
-): Promise<IServiceProps> => {
-  const registeredDate = new Date().toISOString();
-  const postData = {
-    avatar: '',
-    fullName,
-    email: '',
-    isActive: false,
-    registeredDate,
-    lastVisitedDate: null,
-    details: '',
-    bgColor: getRandomColor()
-  };
+): Promise<IResponse> => {
   return makeRequest(
     API_REQUEST.POST,
     USERS_URL,
-    postData
+    POST_DATA(fullName)
   );
 };
 
-export const updateUsers = async (dataItem: IData): Promise<IServiceProps> =>
+export const updateUsers = async (dataItem: IData): Promise<IResponse> =>
   makeRequest(
     API_REQUEST.PUT,
     `${USERS_URL}/${dataItem.id}`,
     dataItem
   );
 
-export const deleteUsers = async (id: number): Promise<IServiceProps> =>
+export const deleteUsers = async (id: number): Promise<IResponse> =>
   makeRequest(
     API_REQUEST.DELETE,
     `${USERS_URL}/${id}`
