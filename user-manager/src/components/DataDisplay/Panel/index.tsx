@@ -62,6 +62,7 @@ const Panel = ({
 
         {tabs.map((tab, index) => (
           <Tabs
+            key={index}
             title={tab}
             isActive={activeTabIndex === index}
             index={index}

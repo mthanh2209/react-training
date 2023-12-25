@@ -83,6 +83,7 @@ const ProfileEditor = ({
       fullName: currentFullName,
       email: currentEmail,
       isActive: currentStatus,
+      registeredDate: registeredDate,
       lastVisitedDate: currentDate,
       details: currentDetails,
       bgColor: bgColor
