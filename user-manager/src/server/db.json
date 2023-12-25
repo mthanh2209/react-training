@@ -11,14 +11,15 @@
       "details": ""
     },
     {
-      "id": 2,
-      "avatar": "https://docs.webix.com/usermanager-backend/users/105/avatar/096793420.jpg",
-      "fullName": "Daenerys Stormborn Targaryen",
-      "email": "breaker.of.chains@gm.com",
+      "avatar": "",
+      "fullName": "abc",
+      "email": "",
       "isActive": false,
-      "registeredDate": null,
+      "registeredDate": "2023-12-24T18:50:09.244Z",
       "lastVisitedDate": null,
-      "details": ""
+      "details": "",
+      "bgColor": "#3afbfe",
+      "id": 2
     }
   ]
 }

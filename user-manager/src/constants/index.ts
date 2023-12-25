@@ -9,3 +9,8 @@ export const TOAST = {
   ERROR: 'error',
   SUCCESS: 'success'
 };
+
+export const LOADING = {
+  TIMER_LOADING: 1000,
+  TIMER_HIDE_LOADING: 2000
+};

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import '@components/DataDisplay/Toast/Toast.css';
 
 // Constants
-import { TOAST } from '@constants';
+import { LOADING, TOAST } from '@constants';
 
 interface IToastProps {
   isError?: boolean;
@@ -24,11 +24,11 @@ const Toast = ({
     const loadingTimer = setTimeout(() => {
       setShowLoading(false);
       setShowToast(true);
-    }, 3000);
+    }, LOADING.TIMER_LOADING);
 
     const hideToastTimer = setTimeout(() => {
       setShowToast(false);
-    }, 9000);
+    }, LOADING.TIMER_HIDE_LOADING);
 
     return () => {
       clearTimeout(loadingTimer);
