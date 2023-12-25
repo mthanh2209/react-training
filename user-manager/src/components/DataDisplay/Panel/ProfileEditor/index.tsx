@@ -10,11 +10,11 @@ import TextArea from '@components/Inputs/TextArea';
 import TextField from '@components/Inputs/TextField';
 import TextView from '@components/DataDisplay/Panel/TextView';
 
-// Types
-import { IUserProps } from '@types/interface';
+// Interfaces
+import { IUserProps } from '@interfaces/users';
 
 // Helpers
-import { formatDate } from '@helpers';
+import { formatDate } from '@helpers/formatDate';
 
 interface IProfileEditor {
   activeItemBar: string;

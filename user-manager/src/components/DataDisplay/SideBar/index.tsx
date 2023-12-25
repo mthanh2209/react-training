@@ -5,8 +5,8 @@ import Status from '@components/DataDisplay/Status';
 import Button from '@components/Inputs/Button';
 import Avatar from '@components/DataDisplay/Avatar/index';
 
-// Types
-import { IInfoList } from '@types/interface';
+// Interfaces
+import { IInfoList } from '@interfaces/infoList';
 
 // Icons
 import iconEdit from '@assets/images/edit-icon.svg';

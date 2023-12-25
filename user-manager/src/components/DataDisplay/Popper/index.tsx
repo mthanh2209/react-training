@@ -7,8 +7,8 @@ import Modal from '@components/DataDisplay/Modal';
 // Hooks
 import useBackDrop from '@hooks/useBackDrop';
 
-// Types
-import { IPopperOption } from '@types/interface';
+// Interfaces
+import { IPopperOption } from '@interfaces/popperOption';
 
 interface IPopperProps {
   isOpen?: boolean;

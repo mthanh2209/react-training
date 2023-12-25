@@ -6,12 +6,12 @@ import { createPortal } from 'react-dom';
 import Drawer from '@components/DataDisplay/Drawer';
 import Table from '@components/DataDisplay/Table';
 import Toolbar from '@components/DataDisplay/Toolbar';
-import InformationSidebar from '@components/DataDisplay/Sidebar';
+import InformationSidebar from '@components/DataDisplay/SideBar';
 import Panel from '@components/DataDisplay/Panel';
 import Toast from '@components/DataDisplay/Toast';
 
-// Types
-import { IUserProps as IUser } from '@types/interface';
+// Interfaces
+import { IUserProps as IUser } from '@interfaces/users';
 
 // Services
 import {

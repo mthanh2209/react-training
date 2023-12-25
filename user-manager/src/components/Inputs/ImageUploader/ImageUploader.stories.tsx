@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import ImageUploader from '@components/Inputs/ImageUploader/index';
 
 // Helpers
-import { getRandomColor } from '@helpers';
+import { getRandomColor } from '@helpers/getRandomColor';
 
 // Icons
 import uploadIcon from '@assets/images/upload-icon.svg';

@@ -1,4 +1,4 @@
-import { IInfoList } from "@types/interface";
+import { IInfoList } from "@interfaces/infoList";
 
 const InformationList = ({
   icon,

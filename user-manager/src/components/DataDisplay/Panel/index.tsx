@@ -6,8 +6,8 @@ import Button from '@components/Inputs/Button';
 import Tabs from '@components/DataDisplay/Panel/Tabs';
 import ProfileEditor from '@components/DataDisplay/Panel/ProfileEditor';
 
-// Types
-import { IUserProps } from '@types/interface';
+// Interfaces
+import { IUserProps } from '@interfaces/users';
 
 // Icons
 import backIcon from '@assets/images/back-icon.svg';

@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 // Components
-import Sidebar from '@components/DataDisplay/Sidebar/index';
+import Sidebar from '@components/DataDisplay/SideBar/index';
 
 // Helpers
-import { getRandomColor, formatDate } from '@helpers';
+import { getRandomColor } from '@helpers/getRandomColor';
+import { formatDate } from '@helpers/formatDate';
 
 export default {
   title: 'Components/Sidebar',

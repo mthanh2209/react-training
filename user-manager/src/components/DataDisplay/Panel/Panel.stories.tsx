@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Panel from '@components/DataDisplay/Panel/index';
 
 // Helpers
-import { getRandomColor } from '@helpers';
+import { getRandomColor } from '@helpers/getRandomColor';
 
 export default {
   title: 'Components/Panel',
