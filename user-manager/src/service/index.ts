@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Constants
 import { API_URL, USERS_URL } from '@constants/urls';
-import { API_REQUEST } from '@constants';
+import { API_REQUEST, LOADING } from '@constants';
 
 // Helpers
 import { getRandomColor } from '@helpers/getRandomColor';
@@ -35,6 +35,15 @@ const makeRequest = async (
   data?: any
 ): Promise<IServiceProps> => {
   try {
+    const setLoadingTimeout = (time: number): Promise<void> => {
+      return new Promise((resolve) => {
+        const loadingTimer = setTimeout(() => {
+          resolve();
+          clearTimeout(loadingTimer);
+        }, time);
+      });
+    };
+
     let response;
     if (method === API_REQUEST.GET) {
       response = await axios.get(url);
@@ -45,6 +54,8 @@ const makeRequest = async (
     } else if (method === API_REQUEST.DELETE) {
       response = await axios.delete(url);
     }
+
+    await setLoadingTimeout(LOADING.TIMER_LOADING);
 
     if (response && response.data) {
       return handleResponse(response.data);
