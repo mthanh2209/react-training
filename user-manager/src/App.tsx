@@ -1,5 +1,6 @@
 import '@App.css';
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 // Components
 import Drawer from '@components/DataDisplay/Drawer';
@@ -36,9 +37,19 @@ const App = () => {
   const [userInfoList, setUserInfoList] = useState<any[]>([]);
   const [showSidebar, setShowSidebar] = useState(true);
   const [searchKeyword, setSearchKeyword] = useState('');
-  const [showToast, setShowToast] = useState(false);
-  const [toastError, setToastError] = useState(false);
-  const [toastKey, setToastKey] = useState(0);
+  const [showToast, setShowToast] = useState({
+    show: false,
+    isError: false,
+    key: 0,
+  });
+
+  const handleShowToast = (show = true, isError = false) => {
+    setShowToast((prevToast) => ({
+      show,
+      isError,
+      key: prevToast.key + 1,
+    }));
+  };
 
   const handleGetUsers = async () => {
     const response = await getUsers();
@@ -62,12 +73,9 @@ const App = () => {
       setRowIndex(data.length);
       setRowData(data[data.length - 1]);
       setShowSidebar(true);
-      setShowToast(true);
-      setToastError(false);
-      setToastKey((prevKey) => prevKey + 1);
+      handleShowToast(true, false);
     } else {
-      setShowToast(true);
-      setToastError(true);
+      handleShowToast(true, true);
     }
   };
 
@@ -84,12 +92,9 @@ const App = () => {
     if (response.data) {
       setRowData(response.data);
       handleGetUsers();
-      setShowToast(true);
-      setToastError(false);
-      setToastKey((prevKey) => prevKey + 1);
+      handleShowToast(true, false);
     } else {
-      setShowToast(true);
-      setToastError(true);
+      handleShowToast(true, true);
     }
   };
 
@@ -99,12 +104,9 @@ const App = () => {
       if (response.data) {
         setRowData(null);
         handleGetUsers();
-        setShowToast(true);
-        setToastError(false);
-        setToastKey((prevKey) => prevKey + 1);
+        handleShowToast(true, false);
       } else {
-        setShowToast(true);
-        setToastError(true);
+        handleShowToast(true, true);
       }
     }
   };
@@ -132,14 +134,7 @@ const App = () => {
 
   return (
     <>
-      <header className='main-header'>
-        User Manager
-        {showToast &&
-          <Toast
-            isError={toastError}
-            key={toastKey} />
-        }
-      </header>
+      <header className='main-header'>User Manager</header>
       <main className='main-body'>
         <Drawer
           popperOption={POPOVER_OPTION}
@@ -190,6 +185,15 @@ const App = () => {
           />
         )}
       </main>
+
+      {showToast.show &&
+        createPortal(
+          <Toast
+            isError={showToast.isError}
+            key={showToast.key}
+          />,
+          document.querySelector('.main-header') as HTMLElement
+        )}
     </>
   );
 };
