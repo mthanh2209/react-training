@@ -6,10 +6,10 @@ import { API_REQUEST, LOADING } from '@constants';
 
 // Helpers
 import { setLoadingTimeout } from '@helpers/setLoadingTimeout';
+import { generateNewUser } from '@helpers/generateNewUser';
 
 // Interfaces
 import { IUserProps as IData } from '@interfaces/users';
-import { POST_DATA } from '@constants/postData';
 
 axios.defaults.baseURL = API_URL;
 
@@ -78,7 +78,7 @@ export const addUsers = async (
   return makeRequest(
     API_REQUEST.POST,
     USERS_URL,
-    POST_DATA(fullName)
+    generateNewUser(fullName)
   );
 };
 

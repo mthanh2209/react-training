@@ -1,6 +1,6 @@
 import { getRandomColor } from "@helpers/getRandomColor";
 
-export const POST_DATA = (fullName: string) => {
+export const generateNewUser = (fullName: string) => {
   const registeredDate = new Date().getTime();
   return {
     avatar: '',
