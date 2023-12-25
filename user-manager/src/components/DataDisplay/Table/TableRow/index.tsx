@@ -2,8 +2,8 @@
 import TableRowItem from "@components/DataDisplay/Table/TableRow/TableRowItem";
 import TableRowCell from "@components/DataDisplay/Table/TableRow/TableRowCell";
 
-// Types
-import { IColumnProps } from "@types/interface";
+// Interfaces
+import { IColumnProps } from "@interfaces/columns";
 
 interface ITableRow<T> {
   rowData: T[];

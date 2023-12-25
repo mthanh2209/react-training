@@ -1,11 +1,11 @@
 // Components
 import TableCell from "@components/DataDisplay/Table/TableRow/TableRowCell/TableCell"
 
-// Types
-import { IColumnProps } from "@types/interface";
+// Interfaces
+import { IColumnProps } from "@interfaces/columns";
 
 // Helpers
-import { getObjValue } from "@helpers";
+import { getObjValue } from "@helpers/getObjValue";
 
 interface ITableRowCell<T> {
   item: T,

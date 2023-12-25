@@ -5,10 +5,10 @@ import { API_URL, USERS_URL } from '@constants/urls';
 import { API_REQUEST } from '@constants';
 
 // Helpers
-import { getRandomColor } from '@helpers';
+import { getRandomColor } from '@helpers/getRandomColor';
 
-// Types
-import { IUserProps as IData } from '@types/interface';
+// Interfaces
+import { IUserProps as IData } from '@interfaces/users';
 
 axios.defaults.baseURL = API_URL;
 

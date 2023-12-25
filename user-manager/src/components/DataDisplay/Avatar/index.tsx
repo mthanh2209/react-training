@@ -2,7 +2,7 @@
 import '@components/DataDisplay/Avatar/Avatar.css';
 
 // Helpers
-import { capitalizeLetter } from '@helpers';
+import { capitalizeLetter } from '@helpers/capitalizeLetter';
 
 interface IAvatar {
   src?: string;

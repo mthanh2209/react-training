@@ -1,8 +1,8 @@
 // Helpers
-import { formatDate } from "@helpers";
+import { formatDate } from "@helpers/formatDate";
 
-// Types
-import { IUserProps } from "@types/interface";
+// Interfaces
+import { IUserProps } from "@interfaces/users";
 
 export const INFO_LIST = (data: IUserProps | null) => {
   if (!data) return [];

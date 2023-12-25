@@ -1,4 +1,4 @@
-import { IUserProps } from "@types/interface";
+import { IUserProps } from "@interfaces/users";
 
 export const filterUsers = (
   users: IUserProps[],

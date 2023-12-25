@@ -6,10 +6,11 @@ import Avatar from '@components/DataDisplay/Avatar';
 import Status from '@components/DataDisplay/Status';
 
 // Helpers
-import { getRandomColor } from '@helpers';
+import { getRandomColor } from '@helpers/getRandomColor';
 
-// Types
-import { IColumnProps, IUserProps } from '@types/interface';
+// Interfaces
+import { IUserProps } from '@interfaces/users';
+import { IColumnProps } from '@interfaces/columns';
 
 export default {
   title: 'Components/Table',

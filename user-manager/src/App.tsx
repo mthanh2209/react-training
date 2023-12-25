@@ -5,11 +5,11 @@ import { useEffect, useState } from 'react';
 import Drawer from '@components/DataDisplay/Drawer';
 import Table from '@components/DataDisplay/Table';
 import Toolbar from '@components/DataDisplay/Toolbar';
-import InformationSidebar from '@components/DataDisplay/Sidebar';
+import InformationSidebar from '@components/DataDisplay/SideBar';
 import Panel from '@components/DataDisplay/Panel';
 
-// Types
-import { IUserProps as IUser } from '@types/interface';
+// Interfaces
+import { IUserProps as IUser } from '@interfaces/users';
 
 // Services
 import {

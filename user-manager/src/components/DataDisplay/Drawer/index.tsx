@@ -5,8 +5,9 @@ import '@components/DataDisplay/Drawer/Drawer.css';
 import ListNav from '@components/DataDisplay/ListNav';
 import Popper from '@components/DataDisplay/Popper';
 
-// Types
-import { IItemNav, IPopperOption } from '@types/interface';
+// Interfaces
+import { IPopperOption } from '@interfaces/popperOption';
+import { IItemNav } from '@interfaces/itemNav';
 
 // Icons
 import plusIcon from '@assets/images/plus-icon.svg';

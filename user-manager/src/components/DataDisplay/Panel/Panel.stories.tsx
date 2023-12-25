@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Panel from '@components/DataDisplay/Panel/index';
 
 // Helpers
-import { getRandomColor } from '@helpers';
+import { getRandomColor } from '@helpers/getRandomColor';
 
 export default {
   title: 'Components/Panel',
@@ -17,7 +17,7 @@ const date = new Date().toISOString()
 
 export const Default: Story = {
   args: {
-    listBar: ['General'],
+    tabs: ['General'],
     id: 1,
     avatar: '',
     fullName: 'UserName',

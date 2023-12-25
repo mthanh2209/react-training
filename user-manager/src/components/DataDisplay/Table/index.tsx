@@ -3,8 +3,8 @@ import '@components/DataDisplay/Table/Table.css';
 import TableHeader from "@components/DataDisplay/Table/TableHeader";
 import TableRow from "@components/DataDisplay/Table/TableRow";
 
-// Types
-import { IColumnProps } from "@types/interface";
+// Interfaces
+import { IColumnProps } from '@interfaces/columns';
 
 interface ITableProps<T> {
   rowData: T[];

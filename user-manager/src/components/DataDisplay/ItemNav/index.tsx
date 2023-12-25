@@ -1,8 +1,8 @@
 // Components
 import '@components/DataDisplay/ItemNav/ItemNav.css';
 
-// Types
-import { IItemNav } from '@types/interface';
+// Interfaces
+import { IItemNav } from '@interfaces/itemNav';
 
 const ItemNav = ({
   icon,

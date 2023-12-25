@@ -2,9 +2,9 @@
 import Avatar from '@components/DataDisplay/Avatar';
 import Status from '@components/DataDisplay/Status';
 
-// Types
-import { IUserProps } from '@types/interface';
-import { IColumnProps } from '@types/interface';
+// Interfaces
+import { IColumnProps } from '@interfaces/columns';
+import { IUserProps } from '@interfaces/users';
 
 // Helpers
 import { highlightKeyword } from '@helpers/highlightKeyword';

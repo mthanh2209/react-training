@@ -1,8 +1,8 @@
 // Components
 import ItemNav from '@components/DataDisplay/ItemNav/index';
 
-// Types
-import { IItemNav } from '@types/interface';
+// Interfaces
+import { IItemNav } from '@interfaces/itemNav';
 
 interface IListNavProps {
   items: IItemNav[];

@@ -4,8 +4,8 @@ import { ChangeEvent, useState } from 'react';
 import '@components/Inputs/ImageUploader/ImageUploader.css';
 import Avatar from '@components/DataDisplay/Avatar';
 
-// Types
-import { convertToDataURL } from '@helpers';
+// Helpers
+import { convertToDataURL } from '@helpers/convertURL';
 
 // Icons
 import uploadIcon from '@assets/images/upload-icon.svg';
