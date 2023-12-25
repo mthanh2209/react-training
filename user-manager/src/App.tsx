@@ -1,5 +1,6 @@
 import '@App.css';
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 // Components
 import Drawer from '@components/DataDisplay/Drawer';
@@ -7,6 +8,7 @@ import Table from '@components/DataDisplay/Table';
 import Toolbar from '@components/DataDisplay/Toolbar';
 import InformationSidebar from '@components/DataDisplay/SideBar';
 import Panel from '@components/DataDisplay/Panel';
+import Toast from '@components/DataDisplay/Toast';
 
 // Interfaces
 import { IUserProps as IUser } from '@interfaces/users';
@@ -35,6 +37,19 @@ const App = () => {
   const [userInfoList, setUserInfoList] = useState<any[]>([]);
   const [showSidebar, setShowSidebar] = useState(true);
   const [searchKeyword, setSearchKeyword] = useState('');
+  const [showToast, setShowToast] = useState({
+    show: false,
+    isError: false,
+    key: 0,
+  });
+
+  const handleShowToast = (show = true, isError = false) => {
+    setShowToast((prevToast) => ({
+      show,
+      isError,
+      key: prevToast.key + 1,
+    }));
+  };
 
   const handleGetUsers = async () => {
     const response = await getUsers();
@@ -58,6 +73,9 @@ const App = () => {
       setRowIndex(data.length);
       setRowData(data[data.length - 1]);
       setShowSidebar(true);
+      handleShowToast(true, false);
+    } else {
+      handleShowToast(true, true);
     }
   };
 
@@ -74,6 +92,9 @@ const App = () => {
     if (response.data) {
       setRowData(response.data);
       handleGetUsers();
+      handleShowToast(true, false);
+    } else {
+      handleShowToast(true, true);
     }
   };
 
@@ -82,7 +103,10 @@ const App = () => {
       const response = await deleteUsers(rowData.id);
       if (response.data) {
         setRowData(null);
-        handleGetUsers()
+        handleGetUsers();
+        handleShowToast(true, false);
+      } else {
+        handleShowToast(true, true);
       }
     }
   };
@@ -161,6 +185,15 @@ const App = () => {
           />
         )}
       </main>
+
+      {showToast.show &&
+        createPortal(
+          <Toast
+            isError={showToast.isError}
+            key={showToast.key}
+          />,
+          document.querySelector('.main-header') as HTMLElement
+        )}
     </>
   );
 };

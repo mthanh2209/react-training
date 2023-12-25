@@ -44,7 +44,6 @@ const Panel = ({
   onDeleteUser
 }: IPanelProp) => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
-  console.log(activeTabIndex)
   const handleActiveTab = (index: number) => {
     setActiveTabIndex(index);
   };
