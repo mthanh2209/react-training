@@ -112,116 +112,116 @@ const ProfileEditor = ({
     setAvatar(avatar);
   }, [fullName, email, isActive, details, avatar]);
 
-  switch (activeItemBar) {
-    case contentItem:
-      return (
-        <>
-          <div className='confirm-buttons'>
-            <Button
-              variants='secondary'
-              withIcon='none'
-              type='button'
-              content='Delete'
-              onClick={handleOpenModal}
-            />
-            <Button
-              variants='primary'
-              withIcon='none'
-              type='submit'
-              form='form-edit-profile'
-              content='Save'
+  if (activeItemBar === contentItem) {
+    return (
+      <>
+        <div className='confirm-buttons'>
+          <Button
+            variants='secondary'
+            withIcon='none'
+            type='button'
+            content='Delete'
+            onClick={handleOpenModal}
+          />
+          <Button
+            variants='primary'
+            withIcon='none'
+            type='submit'
+            form='form-edit-profile'
+            content='Save'
+          />
+        </div>
+
+        {isOpenModal && (
+          <Modal
+            isOpen={isOpenModal}
+            type='confirm'
+            modalTitle='Delete'
+            modalDesc='Are you sure to delete this user?'
+            confirmText='Delete'
+            denyText='Cancel'
+            onClose={handleCloseModal}
+            onConfirmText={handleDeleteButton}
+            onDenyText={handleCloseModal}
+          />
+        )}
+
+        <form
+          id='form-edit-profile'
+          className='form-edit-profile'
+          onSubmit={handleFormSubmit}
+        >
+          <div className='form-item form-item-input'>
+            <TextField
+              isShowLabel={true}
+              label='Full Name'
+              additionalClass='input-text'
+              value={currentFullName}
+              onChange={handleFullNameChange}
             />
           </div>
 
-          {isOpenModal && (
-            <Modal
-              isOpen={isOpenModal}
-              type='confirm'
-              modalTitle='Delete'
-              modalDesc='Are you sure to delete this user?'
-              confirmText='Delete'
-              denyText='Cancel'
-              onClose={handleCloseModal}
-              onConfirmText={handleDeleteButton}
-              onDenyText={handleCloseModal}
+          <div className='form-item form-item-input'>
+            <TextField
+              isShowLabel={true}
+              label='Email'
+              additionalClass='input-text'
+              value={currentEmail}
+              onChange={handleEmailChange}
             />
-          )}
+          </div>
 
-          <form
-            id='form-edit-profile'
-            className='form-edit-profile'
-            onSubmit={handleFormSubmit}
-          >
-            <div className='form-item form-item-input'>
-              <TextField
-                isShowLabel={true}
-                label='Full Name'
-                additionalClass='input-text'
-                value={currentFullName}
-                onChange={handleFullNameChange}
-              />
-            </div>
+          <div className='form-item form-item-avatar'>
+            <span className='form-item-title'>Avatar</span>
+            <ImageUploader
+              initialImage={currentAvatar}
+              alt={currentFullName}
+              bgColor={bgColor}
+              onChange={handleAvatarChange}
+            />
+          </div>
 
-            <div className='form-item form-item-input'>
-              <TextField
-                isShowLabel={true}
-                label='Email'
-                additionalClass='input-text'
-                value={currentEmail}
-                onChange={handleEmailChange}
-              />
-            </div>
-
-            <div className='form-item form-item-avatar'>
-              <span className='form-item-title'>Avatar</span>
-              <ImageUploader
-                initialImage={currentAvatar}
-                alt={currentFullName}
-                bgColor={bgColor}
-                onChange={handleAvatarChange}
-              />
-            </div>
-
-            <div className='form-item form-item-status'>
-              <span className='form-item-title'>Status</span>
-              <SwitchStatus
-                isChecked={currentStatus}
-                onChange={handleSwitchChange}
-              />
-
-              <div className='status-wrapper'>
-                <Status isActive={currentStatus} />
-              </div>
-            </div>
-
-            <TextView
-              label='Registered'
-              content={
-                registeredDate === null || registeredDate === undefined
-                  ? 'Unknown'
-                  : formatDate(registeredDate)
-              }
+          <div className='form-item form-item-status'>
+            <span className='form-item-title'>Status</span>
+            <SwitchStatus
+              isChecked={currentStatus}
+              onChange={handleSwitchChange}
             />
 
-            <TextView
-              label='Last visited'
-              content={
-                lastVisitedDate === null || lastVisitedDate === undefined
-                  ? 'Unknown'
-                  : formatDate(lastVisitedDate)
-              }
-            />
-
-            <div className='form-item form-item-details'>
-              <span className='form-item-title'>Details</span>
-              <TextArea onChange={handleDetailsChange} value={currentDetails} />
+            <div className='status-wrapper'>
+              <Status isActive={currentStatus} />
             </div>
-          </form>
-        </>
-      );
+          </div>
 
-    default:
-      return null;
+          <TextView
+            label='Registered'
+            content={
+              registeredDate === null || registeredDate === undefined
+                ? 'Unknown'
+                : formatDate(registeredDate)
+            }
+          />
+
+          <TextView
+            label='Last visited'
+            content={
+              lastVisitedDate === null || lastVisitedDate === undefined
+                ? 'Unknown'
+                : formatDate(lastVisitedDate)
+            }
+          />
+
+          <div className='form-item form-item-details'>
+            <span className='form-item-title'>Details</span>
+            <TextArea
+              onChange={handleDetailsChange}
+              value={currentDetails} />
+          </div>
+        </form>
+      </>
+    );
+  } else {
+    return null;
   }
 };
 
