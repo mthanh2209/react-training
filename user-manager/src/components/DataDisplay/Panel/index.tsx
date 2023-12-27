@@ -5,11 +5,14 @@ import '@components/DataDisplay/Panel/Panel.css';
 import Button from '@components/Inputs/Button';
 import Tabs from '@components/DataDisplay/Panel/Tabs';
 
-// Interfaces
-import { IContent } from '@interfaces/contentsPanel';
-
 // Icons
 import backIcon from '@assets/images/back-icon.svg';
+
+// Interfaces
+interface IContent {
+  content: React.ReactNode;
+  title: string;
+}
 
 interface IPanelProp {
   tabs: IContent[];

@@ -2,7 +2,9 @@
 import '@components/Inputs/Button/Button.css'
 
 // Types
-import { TType, TVariant, TWithIcon } from '@types';
+type TVariant = 'primary' | 'secondary' | 'withIcon';
+type TType = 'button' | 'submit';
+type TWithIcon = 'none' | 'block';
 
 export interface IButtonProps {
   variants?: TVariant;

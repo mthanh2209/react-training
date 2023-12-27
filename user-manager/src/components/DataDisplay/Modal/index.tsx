@@ -6,7 +6,7 @@ import ModalHeader from '@components/DataDisplay/Modal/ModalHeader';
 import ModalBody from '@components/DataDisplay/Modal/ModalBody';
 
 // Types
-import { TModal } from '@types';
+type TModal = 'submit' | 'confirm'
 
 interface IModalProps {
   isOpen?: boolean;
