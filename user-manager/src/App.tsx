@@ -69,9 +69,13 @@ const App = () => {
     const response = await addUsers(userName);
     if (response.data) {
       const { data } = await getUsers();
+      const lengthData = {
+        rowIndex: data.length,
+        rowData: data[data.length - 1]
+      };
       setUsers(data);
-      setRowIndex(data.length);
-      setRowData(data[data.length - 1]);
+      setRowIndex(lengthData.rowIndex);
+      setRowData(lengthData.rowData);
       setShowSidebar(true);
       handleShowToast(true, false);
     } else {
