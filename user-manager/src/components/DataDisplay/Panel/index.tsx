@@ -4,50 +4,27 @@ import { useState } from 'react';
 import '@components/DataDisplay/Panel/Panel.css';
 import Button from '@components/Inputs/Button';
 import Tabs from '@components/DataDisplay/Panel/Tabs';
-import ProfileEditor from '@components/DataDisplay/Panel/ProfileEditor';
 
 // Interfaces
-import { IUserProps } from '@interfaces/users';
+import { IContent } from '@interfaces/contentsPanel';
 
 // Icons
 import backIcon from '@assets/images/back-icon.svg';
 
 interface IPanelProp {
-  tabs: string[];
-  id: number;
-  avatar: string;
-  fullName: string;
-  email: string;
-  isActive: boolean;
-  registeredDate: string | null;
-  lastVisitedDate: string | null;
-  details: string;
-  bgColor: string;
+  tabs: IContent[];
   onReturnClick: () => void;
-  onSaveUser: (itemData: IUserProps) => void;
-  onDeleteUser: (id: number) => void;
 }
 
 const Panel = ({
   tabs,
-  id,
-  avatar,
-  fullName,
-  email,
-  isActive,
-  registeredDate,
-  lastVisitedDate,
-  details,
-  bgColor,
   onReturnClick,
-  onSaveUser,
-  onDeleteUser
 }: IPanelProp) => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const handleActiveTab = (index: number) => {
     setActiveTabIndex(index);
   };
-  const tabData = tabs[activeTabIndex];
+  const content = tabs[activeTabIndex].content;
 
   return (
     <div className='panel-wrapper'>
@@ -60,31 +37,17 @@ const Panel = ({
           onClick={onReturnClick}
         />
 
-        {tabs.map((tab, index) => (
+        {tabs.map((item, index) => (
           <Tabs
             key={index}
-            title={tab}
+            title={item.title}
             isActive={activeTabIndex === index}
             index={index}
             onClick={handleActiveTab}
           />
         ))}
       </div>
-
-      <ProfileEditor
-        activeItemBar={tabData}
-        id={id}
-        avatar={avatar}
-        fullName={fullName}
-        email={email}
-        isActive={isActive}
-        registeredDate={registeredDate}
-        lastVisitedDate={lastVisitedDate}
-        details={details}
-        bgColor={bgColor}
-        onSaveUser={onSaveUser}
-        onDeleteUser={onDeleteUser}
-      />
+      {content}
     </div>
   );
 };
