@@ -33,22 +33,27 @@ import { filterUsers } from '@helpers/filterUsers';
 
 const App = () => {
   const [users, setUsers] = useState([]);
-  const [rowIndex, setRowIndex] = useState(0);
-  const [rowData, setRowData] = useState<IUser | null>(null);
+  const [selectedRow, setSelectedRow] = useState<{
+    index: number;
+    data: IUser | null;
+  }>({
+    index: 0,
+    data: null
+  });
   const [userInfoList, setUserInfoList] = useState<any[]>([]);
   const [showSidebar, setShowSidebar] = useState(true);
   const [searchKeyword, setSearchKeyword] = useState('');
   const [showToast, setShowToast] = useState({
     show: false,
     isError: false,
-    key: 0,
+    key: 0
   });
 
   const handleShowToast = (show = true, isError = false) => {
     setShowToast((prevToast) => ({
       show,
       isError,
-      key: prevToast.key + 1,
+      key: prevToast.key + 1
     }));
   };
 
@@ -60,23 +65,22 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (rowData) {
-      setUserInfoList(INFO_LIST(rowData));
+    if (selectedRow.data) {
+      setUserInfoList(INFO_LIST(selectedRow.data));
     }
     handleGetUsers();
-  }, [rowData]);
+  }, [selectedRow.data]);
 
   const handleAddUsers = async (userName: string) => {
     const response = await addUsers(userName);
     if (response.data) {
       const { data } = await getUsers();
-      const lengthData = {
-        rowIndex: data.length,
-        rowData: data[data.length - 1]
-      };
+
       setUsers(data);
-      setRowIndex(lengthData.rowIndex);
-      setRowData(lengthData.rowData);
+      setSelectedRow({
+        index: data.length,
+        data: data[data.length - 1]
+      });
       setShowSidebar(true);
       handleShowToast(true, false);
     } else {
@@ -95,7 +99,10 @@ const App = () => {
   const handleUpdateUsers = async (itemData: IUser) => {
     const response = await updateUsers(itemData);
     if (response.data) {
-      setRowData(response.data);
+      setSelectedRow({
+        index: selectedRow.index,
+        data: response.data
+      });
       handleGetUsers();
       handleShowToast(true, false);
     } else {
@@ -104,10 +111,10 @@ const App = () => {
   };
 
   const handleDeleteUsers = async () => {
-    if (rowData) {
-      const response = await deleteUsers(rowData.id);
+    if (selectedRow.data) {
+      const response = await deleteUsers(selectedRow.data.id);
       if (response.data) {
-        setRowData(null);
+        setSelectedRow({ index: 0, data: null });
         handleGetUsers();
         handleShowToast(true, false);
       } else {
@@ -117,8 +124,7 @@ const App = () => {
   };
 
   const handleSelectedRow = (index: number, dataItem: IUser): void => {
-    setRowData(dataItem);
-    setRowIndex(index);
+    setSelectedRow({ index, data: dataItem });
     if (showSidebar || showSidebar === null) {
       setShowSidebar(true);
     } else if (!showSidebar) {
@@ -155,40 +161,42 @@ const App = () => {
           <Table
             rowData={filteredUsers}
             columns={columns}
-            selectedRowIndex={rowIndex}
+            selectedRowIndex={selectedRow.index}
             onRowClick={handleSelectedRow}
           />
         </div>
 
-        {showSidebar && rowData !== null && (
+        {showSidebar && selectedRow.data !== null && (
           <InformationSidebar
             title='User information'
-            isActive={rowData.isActive}
-            src={rowData.avatar}
-            bgColor={rowData.bgColor}
-            fullName={rowData.fullName}
+            isActive={selectedRow.data.isActive}
+            src={selectedRow.data.avatar}
+            bgColor={selectedRow.data.bgColor}
+            fullName={selectedRow.data.fullName}
             infoList={userInfoList}
             onEditButton={handleShowPanel}
           />
         )}
 
-        {!showSidebar && rowData !== null && (
+        {!showSidebar && selectedRow.data !== null && (
           <Panel
             tabs={[
               {
-                content: <ProfileEditor
-                  id={rowData.id}
-                  avatar={rowData.avatar}
-                  fullName={rowData.fullName}
-                  email={rowData.email}
-                  isActive={rowData.isActive}
-                  registeredDate={rowData.registeredDate}
-                  lastVisitedDate={rowData.lastVisitedDate}
-                  details={rowData.details}
-                  bgColor={rowData.bgColor}
-                  onSaveUser={handleUpdateUsers}
-                  onDeleteUser={handleDeleteUsers}
-                />,
+                content: (
+                  <ProfileEditor
+                    id={selectedRow.data.id}
+                    avatar={selectedRow.data.avatar}
+                    fullName={selectedRow.data.fullName}
+                    email={selectedRow.data.email}
+                    isActive={selectedRow.data.isActive}
+                    registeredDate={selectedRow.data.registeredDate}
+                    lastVisitedDate={selectedRow.data.lastVisitedDate}
+                    details={selectedRow.data.details}
+                    bgColor={selectedRow.data.bgColor}
+                    onSaveUser={handleUpdateUsers}
+                    onDeleteUser={handleDeleteUsers}
+                  />
+                ),
                 title: 'General'
               }
             ]}
