@@ -1,22 +1,11 @@
-// See https://github.com/typicode/json-server#module
-import { create, router as _router, defaults, rewriter } from 'json-server'
+import pkg from "json-server";
+const { create, router: _router, defaults } = pkg; // importing json-server library
+const server = create();
+const router = _router("db.json");
+const middlewares = defaults();
+const port = process.env.PORT || 3000;
 
-const server = create()
+server.use(middlewares);
+server.use(router);
 
-// Comment out to allow write operations
-const router = _router('db.json')
-
-const middlewares = defaults()
-
-server.use(middlewares)
-// Add this before server.use(router)
-server.use(rewriter({
-    '/api/*': '/$1',
-}))
-server.use(router)
-server.listen(3000, () => {
-    console.log('JSON Server is running')
-})
-
-// Export the Server API
-export default server
+server.listen(port);
