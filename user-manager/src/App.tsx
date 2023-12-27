@@ -9,6 +9,7 @@ import Toolbar from '@components/DataDisplay/Toolbar';
 import InformationSidebar from '@components/DataDisplay/SideBar';
 import Panel from '@components/DataDisplay/Panel';
 import Toast from '@components/DataDisplay/Toast';
+import ProfileEditor from '@components/DataDisplay/Panel/ProfileEditor';
 
 // Interfaces
 import { IUserProps as IUser } from '@interfaces/users';
@@ -173,19 +174,25 @@ const App = () => {
 
         {!showSidebar && rowData !== null && (
           <Panel
-            tabs={['General']}
-            id={rowData.id}
-            avatar={rowData.avatar}
-            fullName={rowData.fullName}
-            email={rowData.email}
-            isActive={rowData.isActive}
-            registeredDate={rowData.registeredDate}
-            lastVisitedDate={rowData.lastVisitedDate}
-            details={rowData.details}
-            bgColor={rowData.bgColor}
+            tabs={[
+              {
+                content: <ProfileEditor
+                  id={rowData.id}
+                  avatar={rowData.avatar}
+                  fullName={rowData.fullName}
+                  email={rowData.email}
+                  isActive={rowData.isActive}
+                  registeredDate={rowData.registeredDate}
+                  lastVisitedDate={rowData.lastVisitedDate}
+                  details={rowData.details}
+                  bgColor={rowData.bgColor}
+                  onSaveUser={handleUpdateUsers}
+                  onDeleteUser={handleDeleteUsers}
+                />,
+                title: 'General'
+              }
+            ]}
             onReturnClick={handleClosePanel}
-            onSaveUser={handleUpdateUsers}
-            onDeleteUser={handleDeleteUsers}
           />
         )}
       </main>
