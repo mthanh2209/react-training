@@ -4,7 +4,7 @@ import { FormEvent } from 'react';
 import '@components/Inputs/TextField/TextField.css';
 
 // Types
-import { TInput } from '@types';
+type TInput = 'input-text' | 'input-submit' | 'input-search'
 
 interface ITextFieldProps {
   isShowLabel?: boolean
