@@ -79,6 +79,10 @@
 
 [Vercel - User manager](https://react-training-mthanh2209.vercel.app/)
 
+## StoryBook
+
+[Vercel - StoryBook](https://storybook-mthanh2209.vercel.app/)
+
 ## Install repository
 
 Open Windows PowerShell or cmd or [Windows Terminal](https://www.microsoft.com/en-gb/p/windows-terminal/9n0dx20hk701?rtc=1&activetab=pivot:overviewtab)
