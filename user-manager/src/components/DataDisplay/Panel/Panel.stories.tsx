@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 // Components
 import Panel from '@components/DataDisplay/Panel/index';
+import ProfileEditor from '@components/DataDisplay/Panel/ProfileEditor';
 
 // Helpers
 import { getRandomColor } from '@helpers/getRandomColor';
@@ -13,19 +14,27 @@ export default {
 
 type Story = StoryObj<typeof Panel>;
 
-const date = new Date().toISOString()
-
 export const Default: Story = {
   args: {
-    tabs: ['General'],
-    id: 1,
-    avatar: '',
-    fullName: 'UserName',
-    email: 'user@example.com',
-    isActive: false,
-    registeredDate: date,
-    lastVisitedDate: null,
-    details: '',
-    bgColor: getRandomColor()
+    tabs: [
+      {
+        title: 'General',
+        content: (
+          <ProfileEditor
+            id={1}
+            avatar={''}
+            fullName={'Username'}
+            email={''}
+            isActive={true}
+            registeredDate={null}
+            lastVisitedDate={null}
+            details={''}
+            bgColor={getRandomColor()}
+            onSaveUser={() => {}}
+            onDeleteUser={() => {}}
+          />
+        )
+      }
+    ]
   }
 };
