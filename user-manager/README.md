@@ -2,7 +2,7 @@
 
 ## Description
 
-- Getting started with react basic and using storybook
+- Getting started with React basic and using Storybook
 
 ## Design
 
@@ -24,7 +24,7 @@
 
 - Technologies: **React + Vite**
 - Editor: **VSCode**
-- Timeline: **15 days** (Nov 24, 2023 - Dev 20, 2022)
+- Timeline: **15 days** (Nov 24, 2023 - Dec 27, 2023)
 - Team size: **1 developer**
 - Source code manager: **GitHub**
 - Estimation details plan: [Plan](https://docs.google.com/document/d/1QS_4veFpgx4NUnekuxGgWG_bd-nI8TLtnyQGeW4Cy9E/edit?usp=sharing)
@@ -75,29 +75,55 @@
 - Node: v18.16.1
 - Vite: Vite requires Node.js version 14.18+, 16+. However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it.
 
-## Install and Run
+## Deploy
+
+[Vercel - User manager](https://react-training-mthanh2209.vercel.app/)
+
+## Install repository
 
 Open Windows PowerShell or cmd or [Windows Terminal](https://www.microsoft.com/en-gb/p/windows-terminal/9n0dx20hk701?rtc=1&activetab=pivot:overviewtab)
 
-- **Step 01: Clone repository with HTTPS**
+- **Step 1: Clone repository with HTTPS**
 
 ```bash
 git clone https://github.com/mthanh2209/react-training.git
 ```
 
-- **Step 2: Move to user-manager folder**
+## Run server
+
+- **Step 2: Move to json-server folder**
 
 ```bash
-cd user-manager
+cd json-server
 ```
 
-- **Step 3: Install project**
+- **Step 3: Install server**
 
 ```bash
 npm install
 ```
 
-- **Step 5: Run project**
+- **Step 4: Run json-server**
+
+```bash
+npm start
+```
+
+## Run app
+
+- **Step 5: Move to user-manager folder**
+
+```bash
+cd user-manager
+```
+
+- **Step 6: Install project**
+
+```bash
+npm install
+```
+
+- **Step 7: Run project**
 
 ```bash
 npm run dev
