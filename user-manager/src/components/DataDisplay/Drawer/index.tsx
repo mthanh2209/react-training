@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import '@components/DataDisplay/Drawer/Drawer.css';
 import ListNav from '@components/DataDisplay/ListNav';
 import Popper from '@components/DataDisplay/Popper';
+import Modal from '@components/DataDisplay/Modal';
 
 // Interfaces
 import { IPopperOption } from '@interfaces/popperOption';
@@ -12,7 +13,7 @@ import { IItemNav } from '@interfaces/itemNav';
 // Icons
 import plusIcon from '@assets/images/plus-icon.svg';
 
-type TAnchor = 'top' | 'left' | 'bottom' | 'right'
+type TAnchor = 'top' | 'left' | 'bottom' | 'right';
 
 interface IDrawerProps {
   anchor?: TAnchor;
@@ -25,7 +26,7 @@ interface IDrawerProps {
 
 const Drawer = ({
   anchor = 'left',
-  text = 'Add',
+  text = 'New',
   icon = plusIcon,
   popperOption,
   listNav,
@@ -33,6 +34,25 @@ const Drawer = ({
 }: IDrawerProps) => {
   const [isSelected, setSelected] = useState<number>(0);
   const [toggleAnchor, setToggleAnchor] = useState<TAnchor>('left');
+  const [isOpenModal, setOpenModal] = useState(false);
+  const [textInput, setTextInput] = useState('');
+
+  const handleInputChange = (value: string) => {
+    setTextInput(value);
+  };
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
+  const handleOnSubmit = () => {
+    onSubmit(textInput);
+    setOpenModal(false);
+  };
 
   useEffect(() => {
     setToggleAnchor(toggleAnchor);
@@ -44,7 +64,7 @@ const Drawer = ({
         icon={icon}
         children={text}
         options={popperOption}
-        onSubmit={onSubmit}
+        onOpenModal={handleOpenModal}
       />
 
       <ListNav
@@ -52,6 +72,18 @@ const Drawer = ({
         selected={isSelected}
         onClick={(index: number) => setSelected(index)}
       />
+
+      {isOpenModal && (
+        <Modal
+          isOpen={isOpenModal}
+          type='submit'
+          modalDesc='Enter user name'
+          confirmText='Save'
+          onClose={handleCloseModal}
+          onConfirmText={handleOnSubmit}
+          onChangeText={handleInputChange}
+        />
+      )}
     </div>
   );
 };

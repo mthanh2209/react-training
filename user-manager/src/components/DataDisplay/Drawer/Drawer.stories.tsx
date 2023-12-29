@@ -14,7 +14,6 @@ type Story = StoryObj<typeof Drawer>;
 
 export const Default: Story = {
   args: {
-    text: 'Add',
     icon: plusIcon,
     popperOption: [
       {

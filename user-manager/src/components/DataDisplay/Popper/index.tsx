@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 
 // Components
 import '@components/DataDisplay/Popper/Popper.css';
-import Modal from '@components/DataDisplay/Modal';
 
 // Hooks
 import useBackDrop from '@hooks/useBackDrop';
@@ -15,24 +14,18 @@ interface IPopperProps {
   icon?: string;
   children?: string;
   options: IPopperOption[];
-  onSubmit: (data: string) => void;
+  onOpenModal: () => void;
 }
 
 const Popper = ({
   isOpen = false,
   icon,
-  children,
+  children = 'New',
   options,
-  onSubmit
+  onOpenModal
 }: IPopperProps) => {
   const optionRef = useRef(null);
   const [isShowOption, setShowOption] = useState(false);
-  const [isOpenModal, setOpenModal] = useState(false);
-  const [textInput, setTextInput] = useState('');
-
-  const handleInputChange = (value: string) => {
-    setTextInput(value);
-  };
 
   const closeOption = () => {
     setShowOption(false);
@@ -40,19 +33,6 @@ const Popper = ({
 
   const handleTogglePopper = () => {
     setShowOption(true);
-  };
-
-  const handleOpenModal = () => {
-    setOpenModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setOpenModal(false);
-  };
-
-  const handleOnSubmit = () => {
-    onSubmit(textInput);
-    setOpenModal(false);
   };
 
   useBackDrop({
@@ -83,24 +63,12 @@ const Popper = ({
               key={index}
               className='btn-popper btn-option'
               type='button'
-              onClick={handleOpenModal}
+              onClick={onOpenModal}
             >
               {option.text}
             </button>
           ))}
         </div>
-      )}
-
-      {isOpenModal && (
-        <Modal
-          isOpen={isOpenModal}
-          type='submit'
-          modalDesc='Enter user name'
-          confirmText='Save'
-          onClose={handleCloseModal}
-          onConfirmText={handleOnSubmit}
-          onChangeText={handleInputChange}
-        />
       )}
     </div>
   );
