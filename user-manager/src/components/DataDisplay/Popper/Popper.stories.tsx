@@ -17,7 +17,6 @@ export const Default: Story = {
   args: {
     isOpen: false,
     icon: plusIcon,
-    children: 'Add',
     options: [{
       text: 'Add new user',
       onClick: () => { }
