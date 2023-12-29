@@ -25,7 +25,6 @@ import {
 // Constants
 import { INFO_LIST } from '@constants/infoList';
 import { POPOVER_OPTION } from '@constants/popperOption';
-import { LIST_NAV } from '@constants/listNav';
 import { COLUMNS } from '@constants/columns';
 
 // Helpers
@@ -143,13 +142,24 @@ const App = () => {
     setSearchKeyword('');
   };
 
+  const handleItemClick = (itemKey: string) => {
+    switch (itemKey) {
+      case 'users':
+        handleGetUsers();
+        break;
+
+      default:
+        break;
+    }
+  };
+
   return (
     <>
       <header className='main-header'>User Manager</header>
       <main className='main-body'>
         <Drawer
           popperOption={POPOVER_OPTION}
-          listNav={LIST_NAV}
+          onItemClick={handleItemClick}
           onSubmit={handleAddUsers}
         />
 
