@@ -5,8 +5,6 @@ import Drawer from '@components/DataDisplay/Drawer/index';
 
 // Icons
 import plusIcon from '@assets/images/plus-icon.svg';
-import userIcon from '@assets/images/user-icon.svg';
-import userIconSelected from '@assets/images/user-icon-selected.svg';
 
 export default {
   title: 'Components/Drawer',
@@ -30,14 +28,12 @@ export const Default: Story = {
     ],
     listNav: [
       {
-        icon: userIcon,
-        iconSelected: userIconSelected,
-        content: 'Users'
+        content: 'Users',
+        isSelected: false
       },
       {
-        icon: userIcon,
-        iconSelected: userIconSelected,
-        content: 'Roles'
+        content: 'Roles',
+        isSelected: true
       }
     ]
   }
