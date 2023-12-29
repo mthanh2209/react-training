@@ -16,7 +16,17 @@
   background-color: #3e424b;
 }
 
-.icon-item {
+.item-icon {
   width: 23px;
   height: 23px;
+}
+
+.user-icon-selected {
+  background: url('../../../assets/images/user-icon-selected.svg') no-repeat;
+  background-size: 23px 23px;
+}
+
+.user-icon {
+  background: url('../../../assets/images/user-icon.svg') no-repeat;
+  background-size: 23px 23px;
 }

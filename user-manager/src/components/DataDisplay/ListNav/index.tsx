@@ -20,8 +20,6 @@ const ListNav = ({
       {items.map((item, index) => (
         <ItemNav
           key={index}
-          icon={item.icon}
-          iconSelected={item.iconSelected}
           content={item.content}
           isSelected={index === selected}
           onClick={() => onClick(index)}
