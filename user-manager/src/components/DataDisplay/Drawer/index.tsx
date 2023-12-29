@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // Components
 import '@components/DataDisplay/Drawer/Drawer.css';
@@ -12,7 +12,10 @@ import { IItemNav } from '@interfaces/itemNav';
 // Icons
 import plusIcon from '@assets/images/plus-icon.svg';
 
+type TAnchor = 'top' | 'left' | 'bottom' | 'right'
+
 interface IDrawerProps {
+  anchor?: TAnchor;
   text?: string;
   icon?: string;
   popperOption: IPopperOption[];
@@ -21,6 +24,7 @@ interface IDrawerProps {
 }
 
 const Drawer = ({
+  anchor = 'left',
   text = 'Add',
   icon = plusIcon,
   popperOption,
@@ -28,9 +32,14 @@ const Drawer = ({
   onSubmit
 }: IDrawerProps) => {
   const [isSelected, setSelected] = useState<number>(0);
+  const [toggleAnchor, setToggleAnchor] = useState<TAnchor>('left');
+
+  useEffect(() => {
+    setToggleAnchor(toggleAnchor);
+  }, [toggleAnchor]);
 
   return (
-    <div className='drawer-wrapper'>
+    <div className={`drawer-wrapper ${anchor}`}>
       <Popper
         icon={icon}
         children={text}
