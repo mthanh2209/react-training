@@ -11,7 +11,7 @@
 }
 
 .selected {
-  color: #1ca1c1;
+  color: var(--secondary-color);
   box-shadow: 2px 0 var(--secondary-color) inset;
   background-color: #3e424b;
 }
@@ -19,14 +19,4 @@
 .item-icon {
   width: 23px;
   height: 23px;
-}
-
-.user-icon-selected {
-  background: url('../../../assets/images/user-icon-selected.svg') no-repeat;
-  background-size: 23px 23px;
-}
-
-.user-icon {
-  background: url('../../../assets/images/user-icon.svg') no-repeat;
-  background-size: 23px 23px;
 }

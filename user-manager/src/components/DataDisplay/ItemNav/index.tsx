@@ -1,22 +1,32 @@
 // Components
 import '@components/DataDisplay/ItemNav/ItemNav.css';
+import { capitalizeLetter } from '@helpers/capitalizeLetter';
 
-// Interfaces
-import { IItemNav } from '@interfaces/itemNav';
+interface IItemNav {
+  icon?: string;
+  content: string;
+  additionalClass?: string;
+  isSelected?: boolean;
+  onClick?: () => void;
+}
 
 const ItemNav = ({
+  icon,
   content,
+  additionalClass,
   isSelected,
   onClick
 }: IItemNav) => (
   <li
-    className={`item-nav ${isSelected ? 'selected' : ''}`}
-    onClick={onClick} >
-    <span
-      className={`item-icon
-        ${isSelected ? 'user-icon-selected' : 'user-icon'}`}>
+    className={`item-nav ${isSelected ? additionalClass : ''}`}
+    onClick={onClick}>
+    <span>
+      <img
+        className='item-icon'
+        src={`${icon}`}
+        alt='icon' />
     </span>
-    <p className='item-content'>{content}</p>
+    <p className='item-content'>{capitalizeLetter(content)}</p>
   </li>
 );
 
