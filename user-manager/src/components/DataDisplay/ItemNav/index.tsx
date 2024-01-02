@@ -1,5 +1,7 @@
 // Components
 import '@components/DataDisplay/ItemNav/ItemNav.css';
+
+// Helpers
 import { capitalizeLetter } from '@helpers/capitalizeLetter';
 
 interface IItemNav {
@@ -18,7 +20,7 @@ const ItemNav = ({
   onClick
 }: IItemNav) => (
   <li
-    className={`item-nav ${isSelected ? additionalClass : ''}`}
+    className={`item-nav ${isSelected ? 'selected' : ''} ${additionalClass}`}
     onClick={onClick}>
     <span>
       <img
