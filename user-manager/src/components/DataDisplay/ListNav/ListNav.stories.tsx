@@ -12,7 +12,6 @@ type Story = StoryObj<typeof ListNav>;
 
 export const Default: Story = {
   args: {
-    items: ['users', 'roles', 'rules'],
-
+    items: ['users', 'roles', 'rules']
   }
 };

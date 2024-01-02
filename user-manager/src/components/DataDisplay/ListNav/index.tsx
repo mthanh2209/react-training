@@ -18,19 +18,9 @@ const ListNav = ({
 }: IListNav) => {
   const [itemSelected, setItemSelected] = useState<number | null>(null);
 
-  const renderIcon = (
-    type: string,
-    index: number
-  ) => {
-    switch (type) {
-      case 'users':
-        const condition = itemSelected === index
-          ? userIconSelected
-          : userIcon;
-          return condition;
-
-        default:
-        break;
+  const renderIcon = (type: string, index: number) => {
+    if (type === 'users') {
+      return itemSelected === index ? userIconSelected : userIcon;
     }
   };
 
