@@ -1,9 +1,3 @@
-// Components
-import Button from '@components/Inputs/Button/index';
-
-// Icons
-import closeIcon from '@assets/images/close-icon.svg';
-
 interface IModalHeaderProps {
   type?: string;
   modalTitle?: string;
@@ -27,14 +21,7 @@ const ModalHeader = ({
       ) : (
         <>
           <p className='modal-title'>{modalDesc}</p>
-          <Button
-            variants='withIcon'
-            withIcon='block'
-            type='button'
-            icon={closeIcon}
-            content=''
-            onClick={onClose}
-          />
+          <span className='icon-close' onClick={onClose}></span>
         </>
       )}
     </div>

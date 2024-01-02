@@ -4,7 +4,7 @@
   cursor: pointer;
   font-size: var(--font-sm);
   font-family: var(--medium-font);
-  padding: 0.625rem 2rem;
+  padding: 0.5rem 1.7rem 
 }
 
 .btn-primary {
@@ -34,5 +34,5 @@
 }
 
 .btn-withIcon {
-  background-color: rgba(236, 236, 236, 0);
+  background-color: var(--white-color);
 }
