@@ -24,12 +24,15 @@ import {
 
 // Constants
 import { INFO_LIST } from '@constants/infoList';
-import { POPOVER_OPTION } from '@constants/popperOption';
+import { POPPER_OPTION } from '@constants/popperOption';
 import { COLUMNS } from '@constants/columns';
 
 // Helpers
 import { filterUsers } from '@helpers/filterUsers';
 
+/**
+ * Main application component managing user data and UI interactions.
+ */
 const App = () => {
   const [users, setUsers] = useState([]);
   const [selectedRow, setSelectedRow] = useState<{
@@ -48,6 +51,11 @@ const App = () => {
     key: 0
   });
 
+  /**
+   * Function to handle displaying or hiding toast messages.
+   * @param {boolean} show - Determines whether to display the toast (default: true).
+   * @param {boolean} isError - Indicates if the toast is an error message (default: false).
+   */
   const handleShowToast = (show = true, isError = false) => {
     setShowToast((prevToast) => ({
       show,
@@ -56,6 +64,9 @@ const App = () => {
     }));
   };
 
+  /**
+   * Retrieves user data from the API.
+   */
   const handleGetUsers = async () => {
     const response = await getUsers();
     if (response.data) {
@@ -63,6 +74,11 @@ const App = () => {
     }
   };
 
+  /**
+   * Triggers an effect when the selectedRow.data changes to update the userInfoList and fetches user data.
+   * If selectedRow.data exists, updates the userInfoList based on the selectedRow.data.
+   * Always fetches the latest user data by calling handleGetUsers().
+   */
   useEffect(() => {
     if (selectedRow.data) {
       setUserInfoList(INFO_LIST(selectedRow.data));
@@ -70,6 +86,10 @@ const App = () => {
     handleGetUsers();
   }, [selectedRow.data]);
 
+  /**
+   * Adds a new user.
+   * @param userName - The name of the user to add.
+   */
   const handleAddUsers = async (userName: string) => {
     const response = await addUsers(userName);
     if (response.data) {
@@ -87,14 +107,24 @@ const App = () => {
     }
   };
 
+  /**
+   * Shows the panel for editing user details.
+   */
   const handleShowPanel = () => {
     setShowSidebar(false);
   };
 
+  /**
+   * Shows the sidebar for display user information.
+   */
   const handleClosePanel = () => {
     setShowSidebar(true);
   };
 
+  /**
+   * Updates user information based on the changes made and retrieves updated user data.
+   * @param {IUser} itemData - Updated user data.
+   */
   const handleUpdateUsers = async (itemData: IUser) => {
     const response = await updateUsers(itemData);
     if (response.data) {
@@ -109,6 +139,9 @@ const App = () => {
     }
   };
 
+  /**
+   * Deletes the selected user and updates the user list.
+   */
   const handleDeleteUsers = async () => {
     if (selectedRow.data) {
       const response = await deleteUsers(selectedRow.data.id);
@@ -122,6 +155,11 @@ const App = () => {
     }
   };
 
+  /**
+   * Handles selecting a row in the table and displaying user information.
+   * @param {number} index - Index of the selected row.
+   * @param {IUser} dataItem - Data of the selected user.
+   */
   const handleSelectedRow = (index: number, dataItem: IUser): void => {
     setSelectedRow({ index, data: dataItem });
     if (showSidebar || showSidebar === null) {
@@ -131,17 +169,37 @@ const App = () => {
     }
   };
 
+  /**
+   * Represents the filtered list of users based on the search keyword.
+   * @type {IUser[]}
+   */
   const filteredUsers: IUser[] = filterUsers(users, searchKeyword);
+
+  /**
+   * Represents the columns configuration based on the search keyword.
+   * @type {any}
+   */
   const columns = COLUMNS(searchKeyword);
 
+  /**
+   * Handles searching for users based on a keyword.
+   * @param {string} keyword - The keyword used for filtering users.
+   */
   const handleSearch = (keyword: string): void => {
     setSearchKeyword(keyword);
   };
 
+  /**
+   * Closes the search bar by resetting the search keyword.
+   */
   const handleCloseSearchBar = () => {
     setSearchKeyword('');
   };
 
+  /**
+   * Handles item click events in the drawer.
+   * @param {string} itemKey - The key of the clicked item.
+   */
   const handleItemClick = (itemKey: string) => {
     switch (itemKey) {
       case 'users':
@@ -158,7 +216,7 @@ const App = () => {
       <header className='main-header'>User Manager</header>
       <main className='main-body'>
         <Drawer
-          popperOption={POPOVER_OPTION}
+          popperOption={POPPER_OPTION}
           onItemClick={handleItemClick}
           onSubmit={handleAddUsers}
         />
