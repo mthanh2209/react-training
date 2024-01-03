@@ -18,11 +18,21 @@ type IResponse = {
   error: string | null;
 };
 
+/**
+ * Handles a successful response.
+ * @param data - The response data.
+ * @returns An object representing a successful response.
+ */
 const handleResponse = (data: any): IResponse => ({
   data,
   error: null
 });
 
+/**
+ * Handles an error response.
+ * @param error - The error object.
+ * @returns An object representing an error response.
+ */
 const handleError = (error?: any): IResponse => ({
   error: error
     ? error.message
@@ -30,6 +40,13 @@ const handleError = (error?: any): IResponse => ({
   data: null
 });
 
+/**
+ * Makes an HTTP request.
+ * @param method - The HTTP method for the request.
+ * @param url - The URL for the request.
+ * @param data - Optional data for POST or PUT requests.
+ * @returns A Promise resolving to the response object.
+ */
 const makeRequest = async (
   method: string,
   url: string,
@@ -66,12 +83,21 @@ const makeRequest = async (
   }
 };
 
+/**
+ * Fetches users from the API.
+ * @returns A Promise resolving to the response object.
+ */
 export const getUsers = async (): Promise<IResponse> =>
   makeRequest(
     API_REQUEST.GET,
     USERS_URL
   );
 
+/**
+ * Adds a user to the API.
+ * @param fullName - The full name of the user to add.
+ * @returns A Promise resolving to the response object.
+ */
 export const addUsers = async (
   fullName: string
 ): Promise<IResponse> => {
@@ -82,6 +108,11 @@ export const addUsers = async (
   );
 };
 
+/**
+ * Updates a user in the API.
+ * @param dataItem - The user data to update.
+ * @returns A Promise resolving to the response object.
+ */
 export const updateUsers = async (dataItem: IData): Promise<IResponse> =>
   makeRequest(
     API_REQUEST.PUT,
@@ -89,6 +120,11 @@ export const updateUsers = async (dataItem: IData): Promise<IResponse> =>
     dataItem
   );
 
+/**
+ * Deletes a user from the API.
+ * @param id - The ID of the user to delete.
+ * @returns A Promise resolving to the response object.
+ */
 export const deleteUsers = async (id: number): Promise<IResponse> =>
   makeRequest(
     API_REQUEST.DELETE,
