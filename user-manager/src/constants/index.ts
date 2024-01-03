@@ -5,7 +5,7 @@ export const API_REQUEST = {
   PUT: 'put'
 };
 
-export const TOAST = {
+export const TOAST_TYPE = {
   ERROR: 'error',
   SUCCESS: 'success'
 };
