@@ -10,9 +10,12 @@ import InformationSidebar from '@components/DataDisplay/SideBar';
 import Panel from '@components/DataDisplay/Panel';
 import Toast from '@components/DataDisplay/Toast';
 import ProfileEditor from '@components/DataDisplay/Panel/ProfileEditor';
+import Avatar from '@components/DataDisplay/Avatar';
+import Status from '@components/DataDisplay/Status';
 
 // Interfaces
 import { IUserProps as IUser } from '@interfaces/users';
+import { IColumnProps } from '@interfaces/columns';
 
 // Services
 import {
@@ -25,10 +28,73 @@ import {
 // Constants
 import { INFO_LIST } from '@constants/infoList';
 import { POPPER_OPTION } from '@constants/popperOption';
-import { COLUMNS } from '@constants/columns';
 
 // Helpers
 import { filterUsers } from '@helpers/filterUsers';
+import { highlightKeyword } from '@helpers/highlightKeyword';
+
+/**
+ * Generates columns configuration for a user list.
+ * @param searchKeyword - The keyword used for highlighting.
+ * @returns An array of column configurations for IUser.
+ */
+const COLUMNS = (searchKeyword: string): IColumnProps<IUser>[] => {
+  return [
+    {
+      key: 'avatar',
+      title: '',
+      /**
+       * Renders an avatar component.
+       * @param _ - Placeholder for column-related data.
+       * @param item - The user item for which the avatar is rendered.
+       * @returns JSX for displaying an avatar.
+       */
+      render: (_, item) => (
+        <Avatar
+          src={item.avatar}
+          alt={item.fullName}
+          bgColor={item.bgColor}
+          additionalClass='avatar-circle'
+        />
+      )
+    },
+    {
+      key: 'fullName',
+      title: 'Full Name',
+      /**
+       * Renders the user's full name with highlighted search keyword.
+       * @returns JSX for displaying the full name with highlighted keyword.
+       */
+      render: (_, item) => (
+        <span dangerouslySetInnerHTML={{
+          __html: highlightKeyword(item.fullName, searchKeyword)
+        }} />
+      )
+    },
+    {
+      key: 'isActive',
+      title: 'Status',
+      /**
+       * Renders the user's status.
+       * @returns JSX for displaying the user's status.
+       */
+      render: (_, item) => <Status isActive={item.isActive} />
+    },
+    {
+      key: 'email',
+      title: 'Email',
+      /**
+       * Renders the user's email with highlighted search keyword.
+       * @returns JSX for displaying the email with highlighted keyword.
+       */
+      render: (_, item) => (
+        <span dangerouslySetInnerHTML={{
+          __html: highlightKeyword(item.email, searchKeyword)
+        }} />
+      )
+    }
+  ];
+};
 
 /**
  * Main application component managing user data and UI interactions.
