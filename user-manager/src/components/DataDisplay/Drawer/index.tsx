@@ -8,7 +8,6 @@ import Modal from '@components/DataDisplay/Modal';
 
 // Interfaces
 import { IPopperOption } from '@interfaces/popperOption';
-import { IItemNav } from '@interfaces/itemNav';
 
 // Icons
 import plusIcon from '@assets/images/plus-icon.svg';
@@ -20,7 +19,7 @@ interface IDrawerProps {
   text?: string;
   icon?: string;
   popperOption: IPopperOption[];
-  listNav: IItemNav[];
+  onItemClick: (data: string) => void;
   onSubmit: (data: string) => void;
 }
 
@@ -29,10 +28,9 @@ const Drawer = ({
   text = 'New',
   icon = plusIcon,
   popperOption,
-  listNav,
+  onItemClick,
   onSubmit
 }: IDrawerProps) => {
-  const [isSelected, setSelected] = useState<number>(0);
   const [toggleAnchor, setToggleAnchor] = useState<TAnchor>('left');
   const [isOpenModal, setOpenModal] = useState(false);
   const [textInput, setTextInput] = useState('');
@@ -68,9 +66,8 @@ const Drawer = ({
       />
 
       <ListNav
-        items={listNav}
-        selected={isSelected}
-        onClick={(index: number) => setSelected(index)}
+        items={['users']}
+        onClick={onItemClick}
       />
 
       {isOpenModal && (

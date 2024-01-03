@@ -24,16 +24,6 @@ export const Default: Story = {
         text: 'Add new role',
         onClick: () => {}
       }
-    ],
-    listNav: [
-      {
-        content: 'Users',
-        isSelected: false
-      },
-      {
-        content: 'Roles',
-        isSelected: true
-      }
     ]
   }
 };

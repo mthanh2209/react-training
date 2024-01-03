@@ -1,28 +1,51 @@
+import { useEffect, useState } from 'react';
+
 // Components
 import ItemNav from '@components/DataDisplay/ItemNav/index';
 
-// Interfaces
-import { IItemNav } from '@interfaces/itemNav';
+// Icons
+import userIconSelected from '@assets/images/user-icon-selected.svg';
+import userIcon from '@assets/images/user-icon.svg';
 
-interface IListNavProps {
-  items: IItemNav[];
-  selected?: number;
-  onClick: (index: number) => void;
+interface IListNav {
+  items: string[];
+  onClick: (key: string) => void;
 }
 
 const ListNav = ({
   items,
-  selected,
   onClick
-}: IListNavProps) => {
+}: IListNav) => {
+  const [itemSelected, setItemSelected] = useState<number | null>(null);
+
+  const renderIcon = (type: string, index: number) => {
+    if (type === 'users') {
+      return itemSelected === index ? userIconSelected : userIcon;
+    }
+  };
+
+  const handleClickedItem = (item: string, index: number) => {
+    setItemSelected(index);
+    onClick(item);
+  };
+
+  useEffect(() => {
+    handleClickedItem('users', 0);
+  }, []);
+
   return (
     <ul>
       {items.map((item, index) => (
         <ItemNav
-          key={index}
-          content={item.content}
-          isSelected={index === selected}
-          onClick={() => onClick(index)}
+          key={item}
+          additionalClass={
+            itemSelected === index
+            ? 'selected'
+            : ''
+          }
+          icon={renderIcon(item, index)}
+          content={item}
+          onClick={() => handleClickedItem(item, index)}
         />
       ))}
     </ul>
