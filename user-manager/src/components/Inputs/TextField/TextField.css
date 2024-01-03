@@ -45,4 +45,5 @@
   font-family: var(--regular-font);
   color: var(--not-active-color);
   margin: 0.3rem;
+  text-align: start;
 }
