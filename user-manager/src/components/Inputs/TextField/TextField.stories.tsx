@@ -9,10 +9,27 @@ export default {
 } as Meta;
 type Story = StoryObj<typeof TextField>;
 
-export const Default: Story = {
+export const InputSearch: Story = {
   args: {
-    isShowLabel: false,
+    isShowLabel: true,
+    label: 'Label',
     additionalClass: 'input-search',
     placeholder: 'Full Name',
+  },
+};
+
+export const InputText: Story = {
+  ...InputSearch,
+  args: {
+    ...InputSearch.args,
+    additionalClass: 'input-text',
+  },
+};
+
+export const InputSubmit: Story = {
+  ...InputSearch,
+  args: {
+    ...InputSearch.args,
+    additionalClass: 'input-submit',
   },
 };

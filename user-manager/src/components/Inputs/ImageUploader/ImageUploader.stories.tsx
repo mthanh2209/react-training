@@ -25,3 +25,11 @@ export const Default: Story = {
     icon: uploadIcon
   }
 };
+
+export const ImageUploaded: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    initialImage: 'https://mdbcdn.b-cdn.net/img/new/avatars/2.webp',
+  }
+};

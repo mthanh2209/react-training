@@ -10,8 +10,14 @@ export default {
 
 type Story = StoryObj<typeof Toast>;
 
-export const Default: Story = {
+export const SuccessToast: Story = {
   args: {
     isError: false
+  }
+};
+
+export const FailToast: Story = {
+  args: {
+    isError: true
   }
 };

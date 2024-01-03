@@ -68,3 +68,11 @@ export const Default: Story = {
     ] as IColumnProps<unknown>[]
   }
 };
+
+export const UserSelected: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    selectedRowIndex: 1
+  }
+};
