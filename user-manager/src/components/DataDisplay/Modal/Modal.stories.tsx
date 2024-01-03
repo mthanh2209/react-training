@@ -10,12 +10,21 @@ export default {
 
 type Story = StoryObj<typeof Modal>;
 
-export const Default: Story = {
+export const ModalSubmit: Story = {
+  args: {
+    isOpen: true,
+    modalDesc: 'Enter user name',
+    type: 'submit',
+    confirmText: 'Save'
+  }
+};
+
+export const ConfirmDialog: Story = {
   args: {
     isOpen: true,
     modalTitle: 'Delete',
     modalDesc: 'Are you sure to delete this user?',
-    type: 'submit',
+    type: 'confirm',
     confirmText: 'Delete',
     denyText: 'Cancel'
   }

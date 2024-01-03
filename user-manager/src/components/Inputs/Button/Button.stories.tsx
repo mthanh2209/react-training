@@ -10,11 +10,18 @@ export default {
 
 type Story = StoryObj<typeof Button>;
 
-export const Default: Story = {
+export const Primary: Story = {
   args: {
     variants: 'primary',
-    withIcon: 'none',
     type: 'button',
     content: 'Save',
+  },
+};
+
+export const Secondary: Story = {
+  ...Primary,
+  args: {
+    ...Primary.args,
+    variants: 'secondary'
   },
 };
