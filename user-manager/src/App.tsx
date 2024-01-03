@@ -329,6 +329,7 @@ const App = () => {
                     bgColor={selectedRow.data.bgColor}
                     onSaveUser={handleUpdateUsers}
                     onDeleteUser={handleDeleteUsers}
+                    showToast={handleShowToast}
                   />
                 ),
                 title: 'General'
