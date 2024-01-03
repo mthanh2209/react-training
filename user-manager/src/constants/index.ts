@@ -11,7 +11,7 @@ export const API_REQUEST = {
 /**
  * Enum representing different types of toast messages.
  */
-export const TOAST_TYPE = {
+export const TOAST_MESSAGE = {
   ERROR: 'error',
   SUCCESS: 'success'
 };
