@@ -1,3 +1,7 @@
+/**
+ * Generates a random hexadecimal color code.
+ * @returns A random hexadecimal color code (e.g., '#RRGGBB').
+ */
 export const getRandomColor = () => {
   const letters = '0123456789ABCDEF';
   let color = '#';

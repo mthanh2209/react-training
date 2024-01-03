@@ -1,3 +1,8 @@
+/**
+ * Converts a File object to a Data URL asynchronously.
+ * @param file - The File object to convert.
+ * @returns A Promise that resolves with the Data URL of the file or rejects with an error message.
+ */
 export const convertToDataURL = (file?: File) => {
   return new Promise((resolve, reject) => {
     if (!file) {
