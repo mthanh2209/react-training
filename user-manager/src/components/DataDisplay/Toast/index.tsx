@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import '@components/DataDisplay/Toast/Toast.css';
 
 // Constants
-import { LOADING, TOAST_MESSAGE } from '@constants';
+import { LOADING, TOAST_TYPE } from '@constants';
 
 interface IToastProps {
   isError?: boolean;
@@ -54,8 +54,8 @@ const Toast = ({
       <span
         className={`toast-icon toast-icon-${
           isError
-          ? TOAST_MESSAGE.ERROR
-          : TOAST_MESSAGE.SUCCESS
+          ? TOAST_TYPE.ERROR
+          : TOAST_TYPE.SUCCESS
         }`}>
       </span>
     </div>

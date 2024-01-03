@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import validator from 'validator';
 
 // Components
 import Modal from '@components/DataDisplay/Modal';
@@ -16,6 +17,9 @@ import { IUserProps } from '@interfaces/users';
 // Helpers
 import { formatDate } from '@helpers/formatDate';
 
+//Constants
+import { VALIDATION_MESSAGE } from '@constants';
+
 interface IProfileEditor {
   id: number;
   avatar: string;
@@ -28,6 +32,7 @@ interface IProfileEditor {
   bgColor: string;
   onSaveUser: (itemData: IUserProps) => void;
   onDeleteUser: (id: number) => void;
+  showToast: (show: boolean, isError: boolean) => void;
 }
 
 const ProfileEditor = ({
@@ -41,7 +46,8 @@ const ProfileEditor = ({
   details,
   bgColor,
   onSaveUser,
-  onDeleteUser
+  onDeleteUser,
+  showToast
 }: IProfileEditor) => {
   const [currentAvatar, setAvatar] = useState(avatar);
   const [currentFullName, setFullName] = useState(fullName);
@@ -72,6 +78,15 @@ const ProfileEditor = ({
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    const emailError = isEmailValid(currentEmail);
+    const fullNameError = isFullNameValid(currentFullName);
+
+    if (emailError || fullNameError) {
+      showToast(true, true);
+      return;
+    }
+
     const currentDate = new Date().toString();
     const updatedItem = {
       id: id,
@@ -85,6 +100,7 @@ const ProfileEditor = ({
       bgColor: bgColor
     };
     onSaveUser(updatedItem as IUserProps);
+    showToast(true, false);
   };
 
   const handleOpenModal = () => {
@@ -107,6 +123,22 @@ const ProfileEditor = ({
     setDetails(details);
     setAvatar(avatar);
   }, [fullName, email, isActive, details, avatar]);
+
+  const isEmailValid = (value: string): string | undefined => {
+    if (!value) {
+      return VALIDATION_MESSAGE.EMAIL_REQUIRED;
+    } else if (!validator.isEmail(value)) {
+      return VALIDATION_MESSAGE.INVALID_EMAIL;
+    }
+    return undefined;
+  };
+
+  const isFullNameValid = (value: string): string | undefined => {
+    if (!value.trim()) {
+      return VALIDATION_MESSAGE.INVALID_NAME;
+    }
+    return undefined;
+  };
 
   return (
     <>
@@ -153,6 +185,7 @@ const ProfileEditor = ({
             additionalClass='input-text'
             value={currentFullName}
             onChange={handleFullNameChange}
+            validate={isFullNameValid}
           />
         </div>
 
@@ -163,6 +196,7 @@ const ProfileEditor = ({
             additionalClass='input-text'
             value={currentEmail}
             onChange={handleEmailChange}
+            validate={isEmailValid}
           />
         </div>
 

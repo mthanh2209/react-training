@@ -32,6 +32,7 @@ export const Default: Story = {
             bgColor={getRandomColor()}
             onSaveUser={() => {}}
             onDeleteUser={() => {}}
+            showToast={() => {}}
           />
         )
       }

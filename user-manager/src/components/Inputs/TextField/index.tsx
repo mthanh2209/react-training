@@ -4,16 +4,16 @@ import { FormEvent } from 'react';
 import '@components/Inputs/TextField/TextField.css';
 
 // Types
-type TInput = 'input-text' | 'input-submit' | 'input-search'
+type TInput = 'input-text' | 'input-submit' | 'input-search';
 
 interface ITextFieldProps {
-  isShowLabel?: boolean
+  isShowLabel?: boolean;
   label?: string;
   additionalClass?: TInput;
   value?: string;
   placeholder?: string;
-  errorText?: string;
   onChange?: (value: string) => void;
+  validate?: (value: string) => string | undefined;
 }
 
 const TextField = ({
@@ -22,12 +22,14 @@ const TextField = ({
   additionalClass,
   value,
   placeholder,
-  errorText,
-  onChange
+  onChange,
+  validate
 }: ITextFieldProps) => {
   const handleChangeInput = (event: FormEvent<HTMLInputElement>) => {
     onChange?.(event.currentTarget.value);
   };
+
+  const error = validate ? validate(value || '') : undefined;
 
   return (
     <>
@@ -42,7 +44,7 @@ const TextField = ({
           onChange={handleChangeInput}
         />
 
-        <span className='error-message'>{errorText}</span>
+        {error && <span className='error-message'>{error}</span>}
       </div>
     </>
   );
