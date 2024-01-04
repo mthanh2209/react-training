@@ -4,7 +4,7 @@
   cursor: pointer;
   font-size: var(--font-sm);
   font-family: var(--medium-font);
-  padding: 0.5rem 1.7rem 
+  padding: 0.5rem 1.7rem
 }
 
 .btn-primary {
@@ -31,8 +31,4 @@
 
 .btn-secondary:active {
   background: var(--light-grey-active);
-}
-
-.btn-withIcon {
-  background-color: var(--white-color);
 }

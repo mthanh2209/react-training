@@ -145,14 +145,12 @@ const ProfileEditor = ({
       <div className='confirm-buttons'>
         <Button
           variants='secondary'
-          withIcon='none'
           type='button'
           content='Delete'
           onClick={handleOpenModal}
         />
         <Button
           variants='primary'
-          withIcon='none'
           type='submit'
           form='form-edit-profile'
           content='Save'

@@ -2,19 +2,14 @@
 import '@components/DataDisplay/SideBar/SideBar.css';
 import InformationList from '@components/DataDisplay/SideBar/InfoList';
 import Status from '@components/DataDisplay/Status';
-import Button from '@components/Inputs/Button';
 import Avatar from '@components/DataDisplay/Avatar/index';
 
 // Interfaces
 import { IInfoList } from '@interfaces/infoList';
 
-// Icons
-import iconEdit from '@assets/images/edit-icon.svg';
-
 interface ISideBarProps {
   title?: string;
   isActive?: boolean;
-  icon?: string;
   src?: string;
   bgColor?: string;
   fullName: string;
@@ -25,7 +20,6 @@ interface ISideBarProps {
 const InformationSidebar = ({
   title,
   isActive,
-  icon = iconEdit,
   src,
   bgColor,
   fullName,
@@ -37,12 +31,7 @@ const InformationSidebar = ({
       <header className='sidebar-header'>
         <h2 className='sidebar-title'>{title}</h2>
         <Status isActive={isActive} />
-        <Button
-          variants='withIcon'
-          type='button'
-          icon={icon}
-          onClick={onEditButton}
-        />
+        <span className='edit-icon' onClick={onEditButton}></span>
       </header>
 
       <div className='sidebar-info'>

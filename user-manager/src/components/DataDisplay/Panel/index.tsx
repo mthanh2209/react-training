@@ -2,11 +2,7 @@ import { useState } from 'react';
 
 // Components
 import '@components/DataDisplay/Panel/Panel.css';
-import Button from '@components/Inputs/Button';
 import Tabs from '@components/DataDisplay/Panel/Tabs';
-
-// Icons
-import backIcon from '@assets/images/back-icon.svg';
 
 // Interfaces
 interface IContent {
@@ -32,13 +28,7 @@ const Panel = ({
   return (
     <div className='panel-wrapper'>
       <div className='panel-edit'>
-        <Button
-          variants='withIcon'
-          withIcon='block'
-          type='button'
-          icon={backIcon}
-          onClick={onReturnClick}
-        />
+        <span className='back-icon' onClick={onReturnClick}></span>
 
         {tabs.map((item, index) => (
           <Tabs

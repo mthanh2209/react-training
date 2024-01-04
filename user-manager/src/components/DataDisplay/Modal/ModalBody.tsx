@@ -25,17 +25,13 @@ const ModalBody = ({
         <>
           <Button
             variants='secondary'
-            withIcon='none'
             type='button'
-            icon=''
             content={denyText}
             onClick={onDenyText}
           />
           <Button
             variants='primary'
-            withIcon='none'
             type='button'
-            icon=''
             content={confirmText}
             onClick={onConfirmText}
           />
@@ -48,9 +44,7 @@ const ModalBody = ({
           />
           <Button
             variants='primary'
-            withIcon='none'
             type='button'
-            icon=''
             content={confirmText}
             onClick={onConfirmText}
           />
