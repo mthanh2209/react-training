@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 // Components
 import '@components/DataDisplay/Drawer/Drawer.css';
@@ -31,7 +31,6 @@ const Drawer = ({
   onItemClick,
   onSubmit
 }: IDrawerProps) => {
-  const [toggleAnchor, setToggleAnchor] = useState<TAnchor>('left');
   const [isOpenModal, setOpenModal] = useState(false);
   const [textInput, setTextInput] = useState('');
 
@@ -51,10 +50,6 @@ const Drawer = ({
     onSubmit(textInput);
     setOpenModal(false);
   };
-
-  useEffect(() => {
-    setToggleAnchor(toggleAnchor);
-  }, [toggleAnchor]);
 
   return (
     <div className={`drawer-wrapper ${anchor}`}>
