@@ -11,7 +11,15 @@ import uploadIcon from '@assets/images/upload-icon.svg';
 
 export default {
   title: 'Components/ImageUploader',
-  component: ImageUploader
+  component: ImageUploader,
+  tags: ['autodocs'],
+  argTypes: {
+    initialImage: { description: 'The image source.' },
+    alt: { description: 'Content of initial avatar.' },
+    bgColor: { description: 'A randomly generated background color.' },
+    buttonContent: { description: 'Content of button uploader.' },
+    icon: { description: 'The icon source.' }
+  }
 } as Meta;
 
 type Story = StoryObj<typeof ImageUploader>;

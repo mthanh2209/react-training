@@ -6,6 +6,18 @@ import TextField from '@components/Inputs/TextField/index';
 export default {
   title: 'Components/TextField',
   component: TextField,
+  tags: ['autodocs'],
+  argTypes: {
+    isShowLabel: {
+      description: 'One boolean to test for open or close label of input.'
+    },
+    label: { description: 'Content of label.' },
+    validate: { description: 'Validation of input.' },
+    additionalClass: {
+      description: 'Adds the additional class to the avatar.'
+    },
+    placeholder: { description: 'Content of text field.' }
+  }
 } as Meta;
 type Story = StoryObj<typeof TextField>;
 
@@ -14,22 +26,22 @@ export const InputSearch: Story = {
     isShowLabel: true,
     label: 'Label',
     additionalClass: 'input-search',
-    placeholder: 'Full Name',
-  },
+    placeholder: 'Full Name'
+  }
 };
 
 export const InputText: Story = {
   ...InputSearch,
   args: {
     ...InputSearch.args,
-    additionalClass: 'input-text',
-  },
+    additionalClass: 'input-text'
+  }
 };
 
 export const InputSubmit: Story = {
   ...InputSearch,
   args: {
     ...InputSearch.args,
-    additionalClass: 'input-submit',
-  },
+    additionalClass: 'input-submit'
+  }
 };

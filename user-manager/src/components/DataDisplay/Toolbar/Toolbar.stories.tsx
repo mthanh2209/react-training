@@ -8,7 +8,12 @@ import searchIcon from '@assets/images/search-icon.svg';
 
 export default {
   title: 'Components/Toolbar',
-  component: Toolbar
+  component: Toolbar,
+  tags: ['autodocs'],
+  argTypes: {
+    icon: { description: 'The icon source.' },
+    content: { description: 'Content of Toolbar.' }
+  }
 } as Meta;
 
 type Story = StoryObj<typeof Toolbar>;

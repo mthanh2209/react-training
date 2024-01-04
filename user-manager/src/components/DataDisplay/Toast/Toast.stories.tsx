@@ -5,7 +5,13 @@ import Toast from '@components/DataDisplay/Toast/index';
 
 export default {
   title: 'Components/Toast',
-  component: Toast
+  component: Toast,
+  tags: ['autodocs'],
+  argTypes: {
+    isError: { description: 'One boolean to test for error or success.' },
+    failMessage: { description: 'Content of the fail message.' },
+    successMessage: { description: 'Content of the success message.' }
+  }
 } as Meta;
 
 type Story = StoryObj<typeof Toast>;

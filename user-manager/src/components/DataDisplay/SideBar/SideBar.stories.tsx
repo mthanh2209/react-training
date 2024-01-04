@@ -9,7 +9,16 @@ import { formatDate } from '@helpers/formatDate';
 
 export default {
   title: 'Components/Sidebar',
-  component: Sidebar
+  component: Sidebar,
+  tags: ['autodocs'],
+  argTypes: {
+    title: { description: 'Title of Sidebar.' },
+    isActive: { description: 'One boolean to test for active or notActive.' },
+    src: { description: 'The image source.' },
+    bgColor: { description: 'A randomly generated background color.' },
+    fullName: { description: 'Text FullName of user.' },
+    infoList: { description: 'List of information of user.' }
+  }
 } as Meta;
 
 type Story = StoryObj<typeof Sidebar>;
