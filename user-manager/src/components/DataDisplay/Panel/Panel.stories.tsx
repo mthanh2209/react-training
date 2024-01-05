@@ -9,7 +9,13 @@ import { getRandomColor } from '@helpers/getRandomColor';
 
 export default {
   title: 'Components/Panel',
-  component: Panel
+  component: Panel,
+  tags: ['autodocs'],
+  argTypes: {
+    tabs: {
+      description: 'List of tabs, each tab will contain different content.'
+    }
+  }
 } as Meta;
 
 type Story = StoryObj<typeof Panel>;

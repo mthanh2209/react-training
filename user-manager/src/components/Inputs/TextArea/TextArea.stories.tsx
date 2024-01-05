@@ -5,7 +5,12 @@ import TextArea from '@components/Inputs/TextArea/index';
 
 export default {
   title: 'Components/TextArea',
-  component: TextArea
+  component: TextArea,
+  tags: ['autodocs'],
+  argTypes: {
+    value: { description: 'The content inside the text area.' },
+    placeholder: { description: 'Content of text area.' }
+  }
 } as Meta;
 
 type Story = StoryObj<typeof TextArea>;

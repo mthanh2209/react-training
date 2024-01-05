@@ -14,7 +14,19 @@ import { IColumnProps } from '@interfaces/columns';
 
 export default {
   title: 'Components/Table',
-  component: Table
+  component: Table,
+  tags: ['autodocs'],
+  argTypes: {
+    rowData: { description: 'List containing user information.' },
+    columns: { description: 'List containing table columns.' },
+    additionalClass: {
+      description: 'Adds the additional class to the avatar.',
+      table: {
+        defaultValue: { summary: 'table-row-selected' }
+      }
+    },
+    selectedRowIndex: { description: 'Number of the selected table row.' }
+  }
 } as Meta;
 
 type Story = StoryObj<typeof Table>;
