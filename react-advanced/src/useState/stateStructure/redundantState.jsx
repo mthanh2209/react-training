@@ -22,7 +22,7 @@ export const TravelPlan = () => {
         packed: false,
       },
     ]);
-  }
+  };
 
   const handleChangeItem = (nextItem) => {
     setItems(
@@ -34,11 +34,11 @@ export const TravelPlan = () => {
         }
       })
     );
-  }
+  };
 
   const handleDeleteItem = (itemId) => {
     setItems(items.filter((item) => item.id !== itemId));
-  }
+  };
 
   return (
     <>
@@ -53,48 +53,58 @@ export const TravelPlan = () => {
       </b>
     </>
   );
-}
+};
 
 const AddItem = ({ onAddItem }) => {
   const [title, setTitle] = useState("");
+
+  const handleChangeTitle = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleAddTitle = () => {
+    setTitle("");
+    onAddItem(title);
+  };
+
   return (
     <>
       <input
         placeholder="Add item"
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={handleChangeTitle}
       />
-      <button
-        onClick={() => {
-          setTitle("");
-          onAddItem(title);
-        }}
-      >
-        Add
-      </button>
+      <button onClick={handleAddTitle}>Add</button>
     </>
   );
 };
 
 const PackingList = ({ items, onChangeItem, onDeleteItem }) => {
+  const handleChangeItem = (itemId) => (e) => {
+    const updatedItem = items.find((item) => item.id === itemId);
+    if (updatedItem) {
+      updatedItem.packed = e.target.checked;
+      onChangeItem(updatedItem);
+    }
+  };
+
+  const handleDeleteItem = (itemId) => () => {
+    onDeleteItem(itemId);
+  };
+
   return (
     <ul>
       {items.map((item) => (
         <li key={item.id}>
-          <label style={{marginRight: '10px'}}>
+          <label style={{ marginRight: "10px" }}>
             <input
               type="checkbox"
               checked={item.packed}
-              onChange={(e) => {
-                onChangeItem({
-                  ...item,
-                  packed: e.target.checked,
-                });
-              }}
+              onChange={handleChangeItem(item.id)}
             />{" "}
             {item.title}
           </label>
-          <button onClick={() => onDeleteItem(item.id)}>Delete</button>
+          <button onClick={handleDeleteItem(item.id)}>Delete</button>
         </li>
       ))}
     </ul>

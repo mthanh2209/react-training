@@ -23,9 +23,7 @@ export const MailClient = () => {
 
   const selectedCount = selectedIds.length;
 
-  function handleToggle(toggledId) {
-    // const selectedIds = [1, 2, 3];
-    // console.log(selectedIds.includes(2)); => true
+  const handleToggle = (toggledId) => {
     if (selectedIds.includes(toggledId)) {
       setSelectedIds(selectedIds.filter((id) => id !== toggledId));
     } else {
@@ -54,16 +52,22 @@ export const MailClient = () => {
   );
 };
 
-const Letter = ({ letter, onToggle, isSelected }) => {
+const Letter = ({
+  letter,
+  onToggle,
+  isSelected
+}) => {
+  const handleToggle = () => {
+    onToggle(letter.id);
+  }
+
   return (
     <li className={isSelected ? "selected" : ""}>
       <label>
         <input
           type="checkbox"
           checked={isSelected}
-          onChange={() => {
-            onToggle(letter.id);
-          }}
+          onChange={handleToggle}
         />
         {letter.subject}
       </label>

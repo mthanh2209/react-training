@@ -61,21 +61,21 @@ const Letter = ({
   onHover,
   onToggleStar,
 }) => {
+  const handleHover = () => {
+    onHover(letter.id);
+  }
+
+  const handleToggleStar = () => {
+    onToggleStar(letter.id)
+  }
+
   return (
     <li
-      className={
-        isHighlighted ? 'highlighted' : ''
-      }
-      onFocus={() => {
-        onHover(letter.id);
-      }}
-      onPointerMove={() => {
-        onHover(letter.id);
-      }}
+      className={isHighlighted ? 'highlighted' : ''}
+      onFocus={handleHover}
+      onPointerMove={handleHover}
     >
-      <button onClick={() => {
-        onToggleStar(letter.id);
-      }}>
+      <button onClick={handleToggleStar}>
         {letter.isStarred ? 'Unstar' : 'Star'}
       </button>
       {letter.subject}
