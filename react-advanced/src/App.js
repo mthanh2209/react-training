@@ -1,5 +1,12 @@
 import "./App.css";
+import InputState from "./input-state";
 
-function App() {}
+function App() {
+  return (
+    <>
+      <InputState/>
+    </>
+  )
+}
 
 export default App;
