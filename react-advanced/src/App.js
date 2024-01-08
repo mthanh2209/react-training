@@ -1,5 +1,5 @@
 import "./App.css";
-import InputState from "./input-state";
+import { InputState } from "./input-state";
 
 function App() {
   return (

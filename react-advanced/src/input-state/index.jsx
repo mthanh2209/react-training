@@ -1,30 +1,36 @@
 import { useState } from "react";
 
-export default function InputState() {
-  const [isActive, setIsActive] = useState(false)
+export const InputState = () => {
+  const [isActive, setIsActive] = useState(false);
 
-  let backgroundClassName = 'background'
-  let pictureClassName = 'picture'
+  let backgroundClassName = "background";
+  let pictureClassName = "picture";
 
-  if(isActive) {
-    pictureClassName += ' picture--active'
+  if (isActive) {
+    pictureClassName += " picture--active";
   } else {
-    backgroundClassName += ' background--active'
+    backgroundClassName += " background--active";
   }
+
+  const handleBackgroundActive = () => {
+    setIsActive(false);
+  };
+
+  const handlePictureActive = (e) => {
+    e.stopPropagation();
+    setIsActive(true);
+  };
 
   return (
     <div
       className={backgroundClassName}
-      onClick={() => {setIsActive(false)}}>
+      onClick={handleBackgroundActive} >
       <img
         className={pictureClassName}
-        onClick={e => {
-          e.stopPropagation();
-          setIsActive(true);
-        }}
+        onClick={handlePictureActive}
         alt="Rainbow houses in Kampung Pelangi, Indonesia"
         src="https://i.imgur.com/5qwVYb1.jpeg"
       />
     </div>
   );
-}
+};
