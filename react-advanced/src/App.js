@@ -5,6 +5,10 @@ import { InputState } from "./useState/inputState";
 import { MailStar } from "./useState/stateStructure/duplicationState";
 import { MailClient } from "./useState/stateStructure/multipleSelection";
 import { TravelPlan } from "./useState/stateStructure/redundantState";
+import { InputText } from "./useState/preserving-resetting/inputText";
+import { SwapField } from "./useState/preserving-resetting/swapField";
+import { ContactManager } from "./useState/preserving-resetting/detailForm";
+import { ContactList } from "./useState/preserving-resetting/contactList";
 
 const App = () => {
   return (
@@ -17,6 +21,11 @@ const App = () => {
           <li>
             <Link to="/structureState">Structure State</Link>
           </li>
+          <li>
+            <Link to="/preservingAndResettingState">
+              Preserving And Resetting State
+            </Link>
+          </li>
         </ul>
       </nav>
       <Routes>
@@ -28,6 +37,18 @@ const App = () => {
               <TravelPlan />
               <MailStar />
               <MailClient />
+            </>
+          }
+        />
+        <Route
+          path="/preservingAndResettingState"
+          element={
+            <>
+              <InputText />
+              <br></br>
+              <SwapField/>
+              <ContactManager/>
+              <ContactList/>
             </>
           }
         />
