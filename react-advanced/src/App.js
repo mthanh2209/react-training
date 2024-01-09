@@ -2,6 +2,8 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import { InputState } from "./useState/inputState";
+import { FilterableList } from "./useState/sharingState/filteringList";
+import { SyncedInputs } from "./useState/sharingState/syncedInputs";
 import { MailStar } from "./useState/stateStructure/duplicationState";
 import { MailClient } from "./useState/stateStructure/multipleSelection";
 import { TravelPlan } from "./useState/stateStructure/redundantState";
@@ -22,12 +24,16 @@ const App = () => {
             <Link to="/structureState">Structure State</Link>
           </li>
           <li>
+            <Link to="/sharingState">Sharing State</Link>
+          </li>
+          <li>
             <Link to="/preservingAndResettingState">
               Preserving And Resetting State
             </Link>
           </li>
         </ul>
       </nav>
+
       <Routes>
         <Route path="/inputState" element={<InputState />} />
         <Route
@@ -41,14 +47,24 @@ const App = () => {
           }
         />
         <Route
+          path="/sharingState"
+          element={
+            <>
+              <SyncedInputs />
+              <br></br>
+              <FilterableList />
+            </>
+          }
+        />
+        <Route
           path="/preservingAndResettingState"
           element={
             <>
               <InputText />
               <br></br>
-              <SwapField/>
-              <ContactManager/>
-              <ContactList/>
+              <SwapField />
+              <ContactManager />
+              <ContactList />{" "}
             </>
           }
         />
