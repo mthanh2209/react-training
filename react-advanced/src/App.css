@@ -24,3 +24,8 @@
 .highlighted {
   background: #d2eaff;
 }
+
+textarea, label {
+  display: block;
+  margin: 10px 0;
+}
