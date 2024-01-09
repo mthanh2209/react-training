@@ -1,5 +1,6 @@
 import "./App.css";
 import { InputState } from "./useState/inputState";
+import { FilterableList } from "./useState/sharingState/filteringList";
 import { SyncedInputs } from "./useState/sharingState/syncedInputs";
 import { MailStar } from "./useState/stateStructure/duplicationState";
 import { MailClient } from "./useState/stateStructure/multipleSelection";
@@ -13,6 +14,7 @@ function App() {
       <MailStar/>
       <MailClient/>
       <SyncedInputs/>
+      <FilterableList/>
     </>
   )
 }
