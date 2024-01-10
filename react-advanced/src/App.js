@@ -11,6 +11,7 @@ import { InputText } from "./useState/preserving-resetting/inputText";
 import { SwapField } from "./useState/preserving-resetting/swapField";
 import { ContactManager } from "./useState/preserving-resetting/detailForm";
 import { ContactList } from "./useState/preserving-resetting/contactList";
+import { ImageList } from "./useContext/imageList";
 
 const App = () => {
   return (
@@ -30,6 +31,9 @@ const App = () => {
             <Link to="/preservingAndResettingState">
               Preserving And Resetting State
             </Link>
+          </li>
+          <li>
+            <Link to="/passingDataWithContext">Passing Data With Context</Link>
           </li>
         </ul>
       </nav>
@@ -68,6 +72,7 @@ const App = () => {
             </>
           }
         />
+        <Route path="/passingDataWithContext" element={<ImageList />} />
       </Routes>
     </Router>
   );
