@@ -11,6 +11,7 @@ import { InputText } from "./useState/preserving-resetting/inputText";
 import { SwapField } from "./useState/preserving-resetting/swapField";
 import { ContactManager } from "./useState/preserving-resetting/detailForm";
 import { ContactList } from "./useState/preserving-resetting/contactList";
+import { TaskApp } from "./TaskApp";
 
 const App = () => {
   return (
@@ -29,6 +30,11 @@ const App = () => {
           <li>
             <Link to="/preservingAndResettingState">
               Preserving And Resetting State
+            </Link>
+          </li>
+          <li>
+            <Link to="/combiningReducerWithContext">
+              Combining Reducer with Context
             </Link>
           </li>
         </ul>
@@ -68,6 +74,7 @@ const App = () => {
             </>
           }
         />
+        <Route path="/combiningReducerWithContext" element={<TaskApp />} />
       </Routes>
     </Router>
   );
