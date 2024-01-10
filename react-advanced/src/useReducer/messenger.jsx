@@ -8,7 +8,11 @@ const contacts = [
 
 const initialState = {
   selectedId: 0,
-  message: "Hello",
+  messages: {
+    0: "Hello, Taylor",
+    1: "Hello, Alice",
+    2: "Hello, Bob",
+  },
 };
 
 const messengerReducer = (state, action) => {
@@ -17,13 +21,24 @@ const messengerReducer = (state, action) => {
       return {
         ...state,
         selectedId: action.contactId,
-        message: "",
       };
     }
     case "edited_message": {
       return {
         ...state,
-        message: action.message,
+        messages: {
+          ...state.messages,
+          [state.selectedId]: action.messages,
+        },
+      };
+    }
+    case "sent_message": {
+      return {
+        ...state,
+        messages: {
+          ...state.messages,
+          [state.selectedId]: "",
+        },
       };
     }
     default: {
@@ -34,7 +49,7 @@ const messengerReducer = (state, action) => {
 
 export const Messenger = () => {
   const [state, dispatch] = useReducer(messengerReducer, initialState);
-  const message = state.message;
+  const messages = state.messages[state.selectedId];
   const contact = contacts.find((c) => c.id === state.selectedId);
   return (
     <div>
@@ -45,7 +60,7 @@ export const Messenger = () => {
       />
       <Chat
         key={contact.id}
-        message={message}
+        messages={messages}
         contact={contact}
         dispatch={dispatch}
       />
@@ -58,19 +73,25 @@ const ContactList = ({
   selectedId,
   dispatch
 }) => {
+  const handleChangeSelection = (contactId) => {
+    dispatch({
+      type: "changed_selection",
+      contactId: contactId,
+    });
+  };
+
+  const handleSelectionClick = (id) => {
+    return () => {
+      handleChangeSelection(id);
+    };
+  };
+
   return (
     <section className="contact-list">
       <ul>
         {contacts.map((contact) => (
           <li key={contact.id}>
-            <button
-              onClick={() => {
-                dispatch({
-                  type: "changed_selection",
-                  contactId: contact.id,
-                });
-              }}
-            >
+            <button onClick={handleSelectionClick(contact.id)}>
               {selectedId === contact.id
                 ? <b>{contact.name}</b>
                 : contact.name
@@ -85,22 +106,33 @@ const ContactList = ({
 
 const Chat = ({
   contact,
-  message,
-  dispatch
+  messages,
+  dispatch 
 }) => {
+  const handleChangeMessage = (e) => {
+    dispatch({
+      type: "edited_message",
+      messages: e.target.value,
+    });
+  };
+
+  const handleSentMessage = () => {
+    alert(`Sending "${messages}" to ${contact.email}`);
+    dispatch({
+      type: "sent_message",
+    });
+  };
+
   return (
     <section className="chat">
       <textarea
-        value={message}
+        value={messages}
         placeholder={"Chat to " + contact.name}
-        onChange={(e) => {
-          dispatch({
-            type: "edited_message",
-            message: e.target.value,
-          });
-        }}
+        onChange={handleChangeMessage}
       />
-      <button>Send to {contact.email}</button>
+      <button onClick={handleSentMessage}>
+        Send to {contact.email}
+      </button>
     </section>
   );
 };
