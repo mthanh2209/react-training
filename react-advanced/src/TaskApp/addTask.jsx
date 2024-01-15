@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
-import { TaskDispatchContext } from "./taskContext";
+import { useState } from "react";
+import { useTasksDispatch } from "./taskContext";
 
 export const AddTask = () => {
   const [text, setText] = useState("");
-  const dispatch = useContext(TaskDispatchContext);
+  const dispatch = useTasksDispatch();
 
   const handleChangeInput = (e) => {
     setText(e.target.value);

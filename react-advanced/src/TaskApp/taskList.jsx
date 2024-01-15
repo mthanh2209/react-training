@@ -1,8 +1,8 @@
-import { useContext, useState } from "react";
-import { TaskContext, TaskDispatchContext } from "./taskContext";
+import { useState } from "react";
+import { useTasks, useTasksDispatch } from "./taskContext";
 
 export const TaskList = () => {
-  const tasks = useContext(TaskContext);
+  const tasks = useTasks();
   return (
     <ul>
       {tasks.map((task) => (
@@ -16,7 +16,7 @@ export const TaskList = () => {
 
 const Task = ({ task }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const dispatch = useContext(TaskDispatchContext);
+  const dispatch = useTasksDispatch();
   let taskContent;
 
   const handleCloseEditing = () => {
