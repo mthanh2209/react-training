@@ -11,6 +11,7 @@ import { InputText } from "./useState/preserving-resetting/inputText";
 import { SwapField } from "./useState/preserving-resetting/swapField";
 import { ContactManager } from "./useState/preserving-resetting/detailForm";
 import { ContactList } from "./useState/preserving-resetting/contactList";
+import { Messenger } from "./useReducer/messenger";
 import { ImageList } from "./useContext/imageList";
 
 const App = () => {
@@ -34,6 +35,9 @@ const App = () => {
           </li>
           <li>
             <Link to="/passingDataWithContext">Passing Data With Context</Link>
+          </li>
+          <li>
+            <Link to="/extractingLogicState">Extracting Logic State</Link>
           </li>
         </ul>
       </nav>
@@ -68,10 +72,11 @@ const App = () => {
               <br></br>
               <SwapField />
               <ContactManager />
-              <ContactList />{" "}
+              <ContactList />
             </>
           }
         />
+        <Route path="/extractingLogicState" element={<Messenger />} />
         <Route path="/passingDataWithContext" element={<ImageList />} />
       </Routes>
     </Router>
