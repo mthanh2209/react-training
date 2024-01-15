@@ -11,6 +11,8 @@ import { InputText } from "./useState/preserving-resetting/inputText";
 import { SwapField } from "./useState/preserving-resetting/swapField";
 import { ContactManager } from "./useState/preserving-resetting/detailForm";
 import { ContactList } from "./useState/preserving-resetting/contactList";
+import { Messenger } from "./useReducer/messenger";
+import { ImageList } from "./useContext/imageList";
 import { TaskApp } from "./TaskApp";
 
 const App = () => {
@@ -31,6 +33,12 @@ const App = () => {
             <Link to="/preservingAndResettingState">
               Preserving And Resetting State
             </Link>
+          </li>
+          <li>
+            <Link to="/passingDataWithContext">Passing Data With Context</Link>
+          </li>
+          <li>
+            <Link to="/extractingLogicState">Extracting Logic State</Link>
           </li>
           <li>
             <Link to="/combiningReducerWithContext">
@@ -70,10 +78,12 @@ const App = () => {
               <br></br>
               <SwapField />
               <ContactManager />
-              <ContactList />{" "}
+              <ContactList />
             </>
           }
         />
+        <Route path="/extractingLogicState" element={<Messenger />} />
+        <Route path="/passingDataWithContext" element={<ImageList />} />
         <Route path="/combiningReducerWithContext" element={<TaskApp />} />
       </Routes>
     </Router>

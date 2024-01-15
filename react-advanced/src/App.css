@@ -29,3 +29,13 @@ textarea, label {
   display: block;
   margin: 10px 0;
 }
+
+li {
+  list-style: none;
+}
+
+.chat,
+.contact-list {
+  float: left;
+  margin-right: 20px;
+}
