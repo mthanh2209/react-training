@@ -14,6 +14,7 @@ import { ContactList } from "./useState/preserving-resetting/contactList";
 import { Messenger } from "./useReducer/messenger";
 import { ImageList } from "./useContext/imageList";
 import { TaskApp } from "./TaskApp";
+import { Stopwatch } from "./useRef/stopwatch";
 
 const App = () => {
   return (
@@ -43,6 +44,11 @@ const App = () => {
           <li>
             <Link to="/combiningReducerWithContext">
               Combining Reducer with Context
+            </Link>
+          </li>
+          <li>
+            <Link to="/referencingValuesWithRefs">
+              Referencing Values with Refs
             </Link>
           </li>
         </ul>
@@ -85,6 +91,7 @@ const App = () => {
         <Route path="/extractingLogicState" element={<Messenger />} />
         <Route path="/passingDataWithContext" element={<ImageList />} />
         <Route path="/combiningReducerWithContext" element={<TaskApp />} />
+        <Route path="/referencingValuesWithRefs" element={<Stopwatch />} />
       </Routes>
     </Router>
   );
