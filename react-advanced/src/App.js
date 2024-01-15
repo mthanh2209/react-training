@@ -11,6 +11,7 @@ import { InputText } from "./useState/preserving-resetting/inputText";
 import { SwapField } from "./useState/preserving-resetting/swapField";
 import { ContactManager } from "./useState/preserving-resetting/detailForm";
 import { ContactList } from "./useState/preserving-resetting/contactList";
+import { Messenger } from "./useReducer/messenger";
 
 const App = () => {
   return (
@@ -30,6 +31,9 @@ const App = () => {
             <Link to="/preservingAndResettingState">
               Preserving And Resetting State
             </Link>
+          </li>
+          <li>
+            <Link to="/extractingLogicState">Extracting Logic State</Link>
           </li>
         </ul>
       </nav>
@@ -64,7 +68,15 @@ const App = () => {
               <br></br>
               <SwapField />
               <ContactManager />
-              <ContactList />{" "}
+              <ContactList />
+            </>
+          }
+        />
+        <Route
+          path="/extractingLogicState"
+          element={
+            <>
+              <Messenger />
             </>
           }
         />
