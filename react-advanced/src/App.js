@@ -13,6 +13,7 @@ import { ContactManager } from "./useState/preserving-resetting/detailForm";
 import { ContactList } from "./useState/preserving-resetting/contactList";
 import { Messenger } from "./useReducer/messenger";
 import { ImageList } from "./useContext/imageList";
+import { TaskApp } from "./TaskApp";
 
 const App = () => {
   return (
@@ -38,6 +39,11 @@ const App = () => {
           </li>
           <li>
             <Link to="/extractingLogicState">Extracting Logic State</Link>
+          </li>
+          <li>
+            <Link to="/combiningReducerWithContext">
+              Combining Reducer with Context
+            </Link>
           </li>
         </ul>
       </nav>
@@ -78,6 +84,7 @@ const App = () => {
         />
         <Route path="/extractingLogicState" element={<Messenger />} />
         <Route path="/passingDataWithContext" element={<ImageList />} />
+        <Route path="/combiningReducerWithContext" element={<TaskApp />} />
       </Routes>
     </Router>
   );
