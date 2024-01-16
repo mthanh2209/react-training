@@ -17,6 +17,7 @@ import { TaskApp } from "./TaskApp";
 import { Stopwatch } from "./useRef/stopwatch";
 import { Chat } from "./useRef/inputChat";
 import { CatFriends } from "./useRef/dom-with-ref/scrollImg";
+import { SearchPage } from "./useRef/dom-with-ref/focusInput";
 
 const App = () => {
   return (
@@ -112,6 +113,7 @@ const App = () => {
           element={
             <>
               <CatFriends />
+              <SearchPage />
             </>
           }
         />
