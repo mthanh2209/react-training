@@ -1,28 +1,20 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { flushSync } from "react-dom";
 
 export const CatFriends = () => {
-  const firstCatRef = useRef(null);
-  const secondCatRef = useRef(null);
-  const thirdCatRef = useRef(null);
+  const selectedRef = useRef(null);
+  const [index, setIndex] = useState(0);
 
-  const handleScrollToFirstCat = () => {
-    firstCatRef.current.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "center",
+  const handleScrollCat = () => {
+    flushSync(() => {
+      if (index < catList.length - 1) {
+        setIndex(index + 1);
+      } else {
+        setIndex(0);
+      }
     });
-  };
 
-  const handleScrollToSecondCat = () => {
-    secondCatRef.current.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "center",
-    });
-  };
-
-  const handleScrollToThirdCat = () => {
-    thirdCatRef.current.scrollIntoView({
+    selectedRef.current.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
       inline: "center",
@@ -32,35 +24,32 @@ export const CatFriends = () => {
   return (
     <>
       <nav className="navbar">
-        <button onClick={handleScrollToFirstCat}>Tom</button>
-        <button onClick={handleScrollToSecondCat}>Maru</button>
-        <button onClick={handleScrollToThirdCat}>Jellylorum</button>
+        <button onClick={handleScrollCat}>Next</button>
       </nav>
       <div className="cat-container">
         <ul className="list-cat">
-          <li className="item-cat">
-            <img
-              src="https://placekitten.com/g/200/200"
-              alt="Tom"
-              ref={firstCatRef}
-            />
-          </li>
-          <li className="item-cat">
-            <img
-              src="https://placekitten.com/g/300/200"
-              alt="Maru"
-              ref={secondCatRef}
-            />
-          </li>
-          <li className="item-cat">
-            <img
-              src="https://placekitten.com/g/250/200"
-              alt="Jellylorum"
-              ref={thirdCatRef}
-            />
-          </li>
+          {catList.map((cat, i) => (
+            <li
+              key={cat.id}
+              ref={index === i ? selectedRef : null}
+            >
+              <img
+                className={`cat-img ${index === i ? "active" : ""}`}
+                src={cat.imageUrl}
+                alt={"Cat #" + cat.id}
+              />
+            </li>
+          ))}
         </ul>
       </div>
     </>
   );
 };
+
+const catList = [];
+for (let i = 0; i < 10; i++) {
+  catList.push({
+    id: i,
+    imageUrl: "https://placekitten.com/250/200?image=" + i,
+  });
+}

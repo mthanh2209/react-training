@@ -51,10 +51,16 @@ li {
 }
 
 .list-cat {
+  display: flex;
   white-space: nowrap;
+  padding: 0.5rem;
 }
 
-.item-cat {
-  display: inline;
-  padding: 0.5rem;
+.cat-img {
+  padding: 10px;
+  transition: background 0.2s linear;
+}
+
+.active {
+  background: rgba(0, 100, 150, 0.4);
 }
