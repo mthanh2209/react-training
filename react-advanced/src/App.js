@@ -15,6 +15,7 @@ import { Messenger } from "./useReducer/messenger";
 import { ImageList } from "./useContext/imageList";
 import { TaskApp } from "./TaskApp";
 import { Stopwatch } from "./useRef/stopwatch";
+import { Chat } from "./useRef/inputChat";
 
 const App = () => {
   return (
@@ -91,7 +92,15 @@ const App = () => {
         <Route path="/extractingLogicState" element={<Messenger />} />
         <Route path="/passingDataWithContext" element={<ImageList />} />
         <Route path="/combiningReducerWithContext" element={<TaskApp />} />
-        <Route path="/referencingValuesWithRefs" element={<Stopwatch />} />
+        <Route
+          path="/referencingValuesWithRefs"
+          element={
+            <>
+              <Stopwatch />
+              <Chat/>
+            </>
+          }
+        />
       </Routes>
     </Router>
   );
