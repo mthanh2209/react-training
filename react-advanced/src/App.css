@@ -25,7 +25,8 @@
   background: #d2eaff;
 }
 
-textarea, label {
+textarea,
+label {
   display: block;
   margin: 10px 0;
 }
@@ -38,4 +39,22 @@ li {
 .contact-list {
   float: left;
   margin-right: 20px;
+}
+
+.navbar {
+  text-align: center;
+}
+
+.cat-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.list-cat {
+  white-space: nowrap;
+}
+
+.item-cat {
+  display: inline;
+  padding: 0.5rem;
 }
