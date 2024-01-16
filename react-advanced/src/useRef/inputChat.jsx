@@ -3,18 +3,20 @@ import { useRef, useState } from "react";
 export const Chat = () => {
   const [isSending, setIsSending] = useState(false);
   const [text, setText] = useState("");
+
   const timeoutRef = useRef(null);
+  const textRef = useRef(null);
 
   const handleSend = () => {
     setIsSending(true);
     timeoutRef.current = setTimeout(() => {
-      alert("Sent!");
-      setIsSending(false);
-    }, 1000);
+      alert("Sending: " + textRef.current);
+    }, 3000);
   };
 
   const handleChange = (e) => {
     setText(e.target.value);
+    textRef.current = e.target.value;
   };
 
   const handleUndo = () => {
@@ -26,15 +28,10 @@ export const Chat = () => {
     <>
       <h1>Chat</h1>
       <input
-        disabled={isSending}
         value={text}
         onChange={handleChange}
       />
-      <button
-        disabled={isSending}
-        onClick={handleSend}>
-        {isSending ? "Sending..." : "Send"}
-      </button>
+      <button onClick={handleSend}>Send</button>
       {isSending &&
         <button onClick={handleUndo}>Undo</button>
       }
