@@ -1,10 +1,5 @@
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import { InputState } from "./useState/inputState";
 import { FilterableList } from "./useState/sharingState/filteringList";
@@ -24,6 +19,7 @@ import { Chat } from "./useRef/inputChat";
 import { CatFriends } from "./useRef/dom-with-ref/scrollImg";
 import { SearchPage } from "./useRef/dom-with-ref/focusInput";
 import { MyForm } from "./useEffect/input";
+import { FormCounter } from "./useEffect/counter";
 
 const App = () => {
   return (
@@ -133,6 +129,7 @@ const App = () => {
           element={
             <>
               <MyForm />
+              <FormCounter />
             </>
           }
         />
