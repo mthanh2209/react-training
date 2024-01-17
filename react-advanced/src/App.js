@@ -1,5 +1,11 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Form,
+} from "react-router-dom";
 
 import { InputState } from "./useState/inputState";
 import { FilterableList } from "./useState/sharingState/filteringList";
@@ -18,6 +24,7 @@ import { Stopwatch } from "./useRef/stopwatch";
 import { Chat } from "./useRef/inputChat";
 import { CatFriends } from "./useRef/dom-with-ref/scrollImg";
 import { SearchPage } from "./useRef/dom-with-ref/focusInput";
+import { Formm } from "./useEffect/input";
 
 const App = () => {
   return (
@@ -57,6 +64,11 @@ const App = () => {
           <li>
             <Link to="/manipulatingDOMWithRefs">
               Manipulating the DOM with Refs
+            </Link>
+          </li>
+          <li>
+            <Link to="/synchronizingWithEffects">
+              Synchronizing with Effects
             </Link>
           </li>
         </ul>
@@ -114,6 +126,14 @@ const App = () => {
             <>
               <CatFriends />
               <SearchPage />
+            </>
+          }
+        />
+        <Route
+          path="/synchronizingWithEffects"
+          element={
+            <>
+              <Formm />
             </>
           }
         />
