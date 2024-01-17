@@ -16,6 +16,8 @@ import { ImageList } from "./useContext/imageList";
 import { TaskApp } from "./TaskApp";
 import { Stopwatch } from "./useRef/stopwatch";
 import { Chat } from "./useRef/inputChat";
+import { CatFriends } from "./useRef/dom-with-ref/scrollImg";
+import { SearchPage } from "./useRef/dom-with-ref/focusInput";
 
 const App = () => {
   return (
@@ -50,6 +52,11 @@ const App = () => {
           <li>
             <Link to="/referencingValuesWithRefs">
               Referencing Values with Refs
+            </Link>
+          </li>
+          <li>
+            <Link to="/manipulatingDOMWithRefs">
+              Manipulating the DOM with Refs
             </Link>
           </li>
         </ul>
@@ -97,7 +104,16 @@ const App = () => {
           element={
             <>
               <Stopwatch />
-              <Chat/>
+              <Chat />
+            </>
+          }
+        />
+        <Route
+          path="/manipulatingDOMWithRefs"
+          element={
+            <>
+              <CatFriends />
+              <SearchPage />
             </>
           }
         />
