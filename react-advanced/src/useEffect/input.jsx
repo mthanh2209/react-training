@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export const Formm = () => {
+export const MyForm = () => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("Taylor");
   const [upper, setUpper] = useState(false);

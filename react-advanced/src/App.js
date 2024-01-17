@@ -4,7 +4,6 @@ import {
   Routes,
   Route,
   Link,
-  Form,
 } from "react-router-dom";
 
 import { InputState } from "./useState/inputState";
@@ -24,7 +23,7 @@ import { Stopwatch } from "./useRef/stopwatch";
 import { Chat } from "./useRef/inputChat";
 import { CatFriends } from "./useRef/dom-with-ref/scrollImg";
 import { SearchPage } from "./useRef/dom-with-ref/focusInput";
-import { Formm } from "./useEffect/input";
+import { MyForm } from "./useEffect/input";
 
 const App = () => {
   return (
@@ -133,7 +132,7 @@ const App = () => {
           path="/synchronizingWithEffects"
           element={
             <>
-              <Formm />
+              <MyForm />
             </>
           }
         />
