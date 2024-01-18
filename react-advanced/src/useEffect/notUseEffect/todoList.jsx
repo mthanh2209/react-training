@@ -18,15 +18,22 @@ export const TodoList = () => {
   return (
     <>
       <label>
-        <input type="checkbox" checked={showActive} onChange={handleChange} />
+        <input
+          type="checkbox"
+          checked={showActive}
+          onChange={handleChange} />
         Show only active todos
       </label>
       <NewTodo onAdd={handleAddTodo} />
       <ul>
         {visibleTodos.map((todo) => (
-          <li>{todo.completed ? <s>{todo.text}</s> : todo.text}</li>
+          <li>{todo.completed
+            ? <s>{todo.text}</s>
+            : todo.text}
+          </li>
         ))}
       </ul>
+      <footer>{activeTodos.length} todos left</footer>
     </>
   );
 };
