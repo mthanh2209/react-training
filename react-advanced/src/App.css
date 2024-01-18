@@ -64,3 +64,11 @@ li {
 .active {
   background: rgba(0, 100, 150, 0.4);
 }
+
+.contacts-list {
+  display: flex;
+}
+
+.contact-item {
+  margin-right: 10px;
+}

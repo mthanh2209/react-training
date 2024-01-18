@@ -21,6 +21,7 @@ import { SearchPage } from "./useRef/dom-with-ref/focusInput";
 import { MyForm } from "./useEffect/input";
 import { FormCounter } from "./useEffect/counter";
 import { TodoList } from "./useEffect/notUseEffect/todoList";
+import { Contact } from "./useEffect/notUseEffect/contact";
 
 const App = () => {
   return (
@@ -142,6 +143,7 @@ const App = () => {
           element={
             <>
               <TodoList />
+              <Contact/>
             </>
           }
         />
