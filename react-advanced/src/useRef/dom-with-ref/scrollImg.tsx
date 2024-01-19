@@ -1,9 +1,19 @@
 import { useRef, useState } from "react";
 import { flushSync } from "react-dom";
 
+interface CatProps {
+  id: number;
+  imageUrl: string;
+}
+
+const catList: CatProps[] = Array.from({ length: 10 }, (_, i) => ({
+  id: i,
+  imageUrl: `https://placekitten.com/250/200?image=${i}`,
+}));
+
 export const CatFriends = () => {
   const selectedRef = useRef(null);
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState<number>(0);
 
   const handleScrollCat = () => {
     flushSync(() => {
@@ -45,11 +55,3 @@ export const CatFriends = () => {
     </>
   );
 };
-
-const catList = [];
-for (let i = 0; i < 10; i++) {
-  catList.push({
-    id: i,
-    imageUrl: "https://placekitten.com/250/200?image=" + i,
-  });
-}
