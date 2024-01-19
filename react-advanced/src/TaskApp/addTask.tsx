@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useTasksDispatch } from "./taskContext";
 
 export const AddTask = () => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState<string>("");
   const dispatch = useTasksDispatch();
 
-  const handleChangeInput = (e) => {
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
 
@@ -30,4 +30,4 @@ export const AddTask = () => {
   );
 };
 
-let nextId = 3;
+let nextId: number = 3;

@@ -1,10 +1,32 @@
-import { createContext, useContext, useReducer } from "react";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useReducer
+} from "react";
 
-const TaskContext = createContext(null);
+interface TaskProps {
+  id: number;
+  text: string;
+  done: boolean;
+}
 
-const TaskDispatchContext = createContext(null);
+type TaskAction =
+  | { type: "added"; id: number; text: string }
+  | { type: "changed"; task: TaskProps }
+  | { type: "deleted"; id: number };
 
-export const TaskProvider = ({ children }) => {
+type Dispatch = (action: TaskAction) => void;
+
+const TaskContext = createContext<TaskProps[]>(null);
+
+const TaskDispatchContext = createContext<Dispatch>(null);
+
+interface TaskProviderProps {
+  children: ReactNode;
+}
+
+export const TaskProvider = ({ children }: TaskProviderProps) => {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 
   return (
@@ -16,15 +38,15 @@ export const TaskProvider = ({ children }) => {
   );
 };
 
-export const useTasks = () => {
+export const useTasks = (): TaskProps[] => {
   return useContext(TaskContext);
 };
 
-export const useTasksDispatch = () => {
+export const useTasksDispatch = (): Dispatch => {
   return useContext(TaskDispatchContext);
 };
 
-const tasksReducer = (tasks, action) => {
+const tasksReducer = (tasks: TaskProps[], action: TaskAction): TaskProps[] => {
   switch (action.type) {
     case "added": {
       return [
@@ -49,12 +71,12 @@ const tasksReducer = (tasks, action) => {
       return tasks.filter((t) => t.id !== action.id);
     }
     default: {
-      throw Error("Unknown action: " + action.type);
+      throw Error("Unknown action: " + (action as any).type);
     }
   }
 };
 
-const initialTasks = [
+const initialTasks: TaskProps[] = [
   { id: 0, text: "Philosopher’s Path", done: true },
   { id: 1, text: "Visit the temple", done: false },
   { id: 2, text: "Drink matcha", done: false },

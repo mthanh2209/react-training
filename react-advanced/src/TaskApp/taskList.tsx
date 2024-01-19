@@ -1,5 +1,13 @@
-import { useState } from "react";
-import { useTasks, useTasksDispatch } from "./taskContext";
+import { ChangeEvent, useState } from "react";
+import { useTasks, useTasksDispatch } from "@TaskApp/taskContext";
+
+interface TaskProp {
+  task: {
+    id: number;
+    text: string;
+    done: boolean;
+  }
+}
 
 export const TaskList = () => {
   const tasks = useTasks();
@@ -14,10 +22,10 @@ export const TaskList = () => {
   );
 };
 
-const Task = ({ task }) => {
+const Task = ({ task }: TaskProp) => {
   const [isEditing, setIsEditing] = useState(false);
   const dispatch = useTasksDispatch();
-  let taskContent;
+  let taskContent: JSX.Element;
 
   const handleCloseEditing = () => {
     setIsEditing(false);
@@ -27,7 +35,7 @@ const Task = ({ task }) => {
     setIsEditing(true);
   };
 
-  const handleChangeTask = (e) => {
+  const handleChangeTask = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: "changed",
       task: {
@@ -37,7 +45,7 @@ const Task = ({ task }) => {
     });
   };
 
-  const handleChangeCheckbox = (e) => {
+  const handleChangeCheckbox = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: "changed",
       task: {
