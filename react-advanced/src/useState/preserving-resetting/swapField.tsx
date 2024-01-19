@@ -1,8 +1,12 @@
 import { useState } from "react";
 
+interface FieldProps {
+  label: string;
+}
+
 export const SwapField = () => {
   const [reverse, setReverse] = useState(false);
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setReverse(e.target.checked);
   };
 
@@ -36,9 +40,9 @@ export const SwapField = () => {
   }
 };
 
-const Field = ({ label }) => {
+const Field = ({ label }: FieldProps) => {
   const [text, setText] = useState("");
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
 
