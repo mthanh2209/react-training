@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 export const InputState = () => {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState<boolean>(false);
 
-  let backgroundClassName = "background";
-  let pictureClassName = "picture";
+  let backgroundClassName:string = "background";
+  let pictureClassName:string = "picture";
 
   if (isActive) {
     pictureClassName += " picture--active";
@@ -16,7 +16,7 @@ export const InputState = () => {
     setIsActive(false);
   };
 
-  const handlePictureActive = (e) => {
+  const handlePictureActive = (e: React.MouseEvent<HTMLImageElement>) => {
     e.stopPropagation();
     setIsActive(true);
   };
