@@ -1,28 +1,27 @@
 import { useState } from 'react';
 
-const initialLetters = [{
-  id: 0,
-  subject: 'Ready for adventure?',
-  isStarred: true,
-}, {
-  id: 1,
-  subject: 'Time to check in!',
-  isStarred: false,
-}, {
-  id: 2,
-  subject: 'Festival Begins in Just SEVEN Days!',
-  isStarred: false,
-}];
+interface Letter {
+  id: number;
+  subject: string;
+  isStarred: boolean;
+}
+
+interface LetterProps {
+  letter: Letter;
+  isHighlighted: boolean;
+  onHover: (letterId: number) => void;
+  onToggleStar: (starredId: number) => void;
+}
 
 export const MailStar = () => {
-  const [letters, setLetters] = useState(initialLetters);
-  const [highlightedId, setHighlightedId] = useState(null);
+  const [letters, setLetters] = useState<Letter[]>(initialLetters);
+  const [highlightedId, setHighlightedId] = useState<number | null>(null);
 
-  const handleHover = (letterId) => {
+  const handleHover = (letterId: number) => {
     setHighlightedId(letterId);
   }
 
-  const handleStar = (starredId) => {
+  const handleStar = (starredId: number) => {
     setLetters(letters.map(letter => {
       if (letter.id === starredId) {
         return {
@@ -40,7 +39,7 @@ export const MailStar = () => {
       <h2>Inbox</h2>
       <ul>
         {letters.map(letter => (
-          <Letter
+          <LetterComponent
             key={letter.id}
             letter={letter}
             isHighlighted={
@@ -55,12 +54,12 @@ export const MailStar = () => {
   );
 }
 
-const Letter = ({
+const LetterComponent = ({
   letter,
   isHighlighted,
   onHover,
   onToggleStar,
-}) => {
+}: LetterProps) => {
   const handleHover = () => {
     onHover(letter.id);
   }
@@ -82,3 +81,17 @@ const Letter = ({
     </li>
   )
 }
+
+const initialLetters: Letter[] = [{
+  id: 0,
+  subject: 'Ready for adventure?',
+  isStarred: true,
+}, {
+  id: 1,
+  subject: 'Time to check in!',
+  isStarred: false,
+}, {
+  id: 2,
+  subject: 'Festival Begins in Just SEVEN Days!',
+  isStarred: false,
+}];
