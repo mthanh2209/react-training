@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { useTasks, useTasksDispatch } from "@TaskApp/taskContext";
+import { useTasks, useTasksDispatch } from "./taskContext";
 
 interface TaskProp {
   task: {
