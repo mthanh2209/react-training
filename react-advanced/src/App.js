@@ -20,6 +20,8 @@ import { CatFriends } from "./useRef/dom-with-ref/scrollImg";
 import { SearchPage } from "./useRef/dom-with-ref/focusInput";
 import { MyForm } from "./useEffect/input";
 import { FormCounter } from "./useEffect/counter";
+import { TodoList } from "./useEffect/notUseEffect/todoList";
+import { Contact } from "./useEffect/notUseEffect/contact";
 
 const App = () => {
   return (
@@ -65,6 +67,9 @@ const App = () => {
             <Link to="/synchronizingWithEffects">
               Synchronizing with Effects
             </Link>
+          </li>
+          <li>
+            <Link to="/notNeedEffect">You might not need an Effect</Link>
           </li>
         </ul>
       </nav>
@@ -130,6 +135,15 @@ const App = () => {
             <>
               <MyForm />
               <FormCounter />
+            </>
+          }
+        />
+        <Route
+          path="/notNeedEffect"
+          element={
+            <>
+              <TodoList />
+              <Contact/>
             </>
           }
         />
