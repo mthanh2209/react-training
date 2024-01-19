@@ -9,7 +9,9 @@ export const FormCounter = () => {
 
   return (
     <>
-      <button onClick={handleShow}>{show ? "Hide" : "Show"} counter</button>
+      <button onClick={handleShow}>
+        {show ? "Hide" : "Show"} counter
+      </button>
       <br />
       <hr />
       {show && <Counter />}
