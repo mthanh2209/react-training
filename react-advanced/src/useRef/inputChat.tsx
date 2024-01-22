@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 
 export const Chat = () => {
-  const [isSending, setIsSending] = useState(false);
-  const [text, setText] = useState("");
+  const [isSending, setIsSending] = useState<boolean>(false);
+  const [text, setText] = useState<string>("");
 
   const timeoutRef = useRef(null);
   const textRef = useRef(null);
@@ -14,7 +14,7 @@ export const Chat = () => {
     }, 3000);
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
     textRef.current = e.target.value;
   };

@@ -1,29 +1,23 @@
 import { useState } from "react";
 
-const letters = [
-  {
-    id: 0,
-    subject: "Ready for adventure?",
-    isStarred: true,
-  },
-  {
-    id: 1,
-    subject: "Time to check in!",
-    isStarred: false,
-  },
-  {
-    id: 2,
-    subject: "Festival Begins in Just SEVEN Days!",
-    isStarred: false,
-  },
-];
+interface Letter {
+  id: number;
+  subject: string;
+  isStarred: boolean;
+}
+
+interface LetterProps {
+  letter: Letter;
+  onToggle: (toggledId: number) => void;
+  isSelected: boolean;
+}
 
 export const MailClient = () => {
-  const [selectedIds, setSelectedIds] = useState([]);
+  const [selectedIds, setSelectedIds] = useState<number[]>([]);
 
   const selectedCount = selectedIds.length;
 
-  const handleToggle = (toggledId) => {
+  const handleToggle = (toggledId: number) => {
     if (selectedIds.includes(toggledId)) {
       setSelectedIds(selectedIds.filter((id) => id !== toggledId));
     } else {
@@ -36,7 +30,7 @@ export const MailClient = () => {
       <h2>Inbox</h2>
       <ul>
         {letters.map((letter) => (
-          <Letter
+          <LetterComponent
             key={letter.id}
             letter={letter}
             isSelected={selectedIds.includes(letter.id)}
@@ -52,11 +46,11 @@ export const MailClient = () => {
   );
 };
 
-const Letter = ({
+const LetterComponent = ({
   letter,
   onToggle,
   isSelected
-}) => {
+}: LetterProps) => {
   const handleToggle = () => {
     onToggle(letter.id);
   }
@@ -74,3 +68,21 @@ const Letter = ({
     </li>
   );
 };
+
+const letters: Letter[] = [
+  {
+    id: 0,
+    subject: "Ready for adventure?",
+    isStarred: true,
+  },
+  {
+    id: 1,
+    subject: "Time to check in!",
+    isStarred: false,
+  },
+  {
+    id: 2,
+    subject: "Festival Begins in Just SEVEN Days!",
+    isStarred: false,
+  },
+];

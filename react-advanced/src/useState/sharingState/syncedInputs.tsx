@@ -1,9 +1,15 @@
 import { useState } from 'react';
 
-export const SyncedInputs = () => {
-  const [text, setText] = useState('');
+interface InputProps {
+  label: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-  const handleChange = (e) => {
+export const SyncedInputs = () => {
+  const [text, setText] = useState<string>('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   }
 
@@ -25,7 +31,7 @@ const Input = ({
   label,
   value,
   onChange
-}) => {
+}: InputProps) => {
   return (
     <label>
       {label}

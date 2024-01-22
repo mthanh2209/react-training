@@ -1,4 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  useEffect,
+  useRef,
+  useState
+} from "react";
+
+interface MyInputProps {
+  value: string,
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+}
 
 export const MyForm = () => {
   const [show, setShow] = useState(false);
@@ -9,17 +19,19 @@ export const MyForm = () => {
     setShow((s) => !s);
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
 
-  const handleChangeCheckbox = (e) => {
+  const handleChangeCheckbox = (e: ChangeEvent<HTMLInputElement>) => {
     setUpper(e.target.checked);
   };
 
   return (
     <>
-      <button onClick={handleShowForm}>{show ? "Hide" : "Show"} form</button>
+      <button onClick={handleShowForm}>
+        {show ? "Hide" : "Show"} form
+      </button>
       <br />
       <hr />
       {show && (
@@ -45,12 +57,18 @@ export const MyForm = () => {
   );
 };
 
-const MyInput = ({ value, onChange }) => {
+const MyInput = ({
+  value,
+  onChange
+}: MyInputProps) => {
   const ref = useRef(null);
 
   useEffect(() => {
     ref.current.focus();
   }, []);
 
-  return <input ref={ref} value={value} onChange={onChange} />;
+  return <input
+    ref={ref}
+    value={value}
+    onChange={onChange} />;
 };

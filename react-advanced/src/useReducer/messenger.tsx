@@ -1,12 +1,51 @@
 import { useReducer } from "react";
 
-const contacts = [
+interface ContactProps {
+  id: number;
+  name: string;
+  email: string;
+}
+
+interface ContactListProps {
+  contacts: ContactProps[];
+  selectedId: number;
+  dispatch: React.Dispatch<MessengerAction>;
+}
+
+interface ChatProps {
+  contact: ContactProps | undefined;
+  messages: string;
+  dispatch: React.Dispatch<MessengerAction>;
+}
+
+interface MessengerState {
+  selectedId: number;
+  messages: { [key: number]: string };
+}
+
+interface ChangeSelectionAction {
+  type: "changed_selection";
+  contactId: number;
+}
+
+interface EditMessageAction {
+  type: "edited_message";
+  messages: string;
+}
+
+interface SendMessageAction {
+  type: "sent_message";
+}
+
+type MessengerAction = ChangeSelectionAction | EditMessageAction | SendMessageAction;
+
+const contacts: ContactProps[] = [
   { id: 0, name: "Taylor", email: "taylor@mail.com" },
   { id: 1, name: "Alice", email: "alice@mail.com" },
   { id: 2, name: "Bob", email: "bob@mail.com" },
 ];
 
-const initialState = {
+const initialState: MessengerState = {
   selectedId: 0,
   messages: {
     0: "Hello, Taylor",
@@ -15,7 +54,16 @@ const initialState = {
   },
 };
 
-const messengerReducer = (state, action) => {
+/**
+ * The reducer function for handling Messenger actions and updating the state.
+ * @param state - The current state.
+ * @param action - The action to be performed.
+ * @returns The new state after applying the action.
+ */
+const messengerReducer = (
+  state: MessengerState,
+  action: MessengerAction
+): MessengerState => {
   switch (action.type) {
     case "changed_selection": {
       return {
@@ -42,7 +90,7 @@ const messengerReducer = (state, action) => {
       };
     }
     default: {
-      throw Error("Unknown action: " + action.type);
+      throw Error("Unknown action: " + (action as any).type);
     }
   }
 };
@@ -68,11 +116,17 @@ export const Messenger = () => {
   );
 };
 
+/**
+ * The ContactList component.
+ * @param contacts - The list of contacts.
+ * @param selectedId - The ID of the currently selected contact.
+ * @param dispatch - The dispatch function for updating the state.
+ */
 const ContactList = ({
   contacts,
   selectedId,
   dispatch
-}) => {
+}: ContactListProps) => {
   const handleChangeSelection = (contactId) => {
     dispatch({
       type: "changed_selection",
@@ -80,7 +134,7 @@ const ContactList = ({
     });
   };
 
-  const handleSelectionClick = (id) => {
+  const handleSelectionClick = (id: number) => {
     return () => {
       handleChangeSelection(id);
     };
@@ -104,12 +158,18 @@ const ContactList = ({
   );
 };
 
+/**
+ * The Chat component.
+ * @param contact - The currently selected contact.
+ * @param messages - The messages for the selected contact.
+ * @param dispatch - The dispatch function for updating the state.
+ */
 const Chat = ({
   contact,
   messages,
-  dispatch 
-}) => {
-  const handleChangeMessage = (e) => {
+  dispatch
+}: ChatProps) => {
+  const handleChangeMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     dispatch({
       type: "edited_message",
       messages: e.target.value,

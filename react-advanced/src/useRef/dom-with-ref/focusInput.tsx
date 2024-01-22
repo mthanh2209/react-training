@@ -1,10 +1,14 @@
 import { forwardRef, useRef } from "react";
 
-const SearchButton = ({ onClick }) => (
+interface SearchButtonProps {
+  onClick: () => void;
+}
+
+const SearchButton = ({ onClick }: SearchButtonProps) => (
   <button onClick={onClick}>Search</button>
 )
 
-const SearchInput = forwardRef((_, ref) => (
+const SearchInput = forwardRef<HTMLInputElement>((_, ref) => (
   <input ref={ref} placeholder="Looking for something" />
 ));
 

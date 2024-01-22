@@ -1,15 +1,62 @@
-import { createContext, useContext, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useState
+} from "react";
 
+/**
+ * Represents the properties of a place.
+ */
+interface PlaceProps {
+  id: number;
+  name: string;
+  description: string;
+  imageId: string;
+}
+
+/**
+ * Represents the properties of an image, including the associated place and imageSize.
+ */
+interface ImageProps {
+  place?: PlaceProps;
+  imageSize?: number;
+}
+
+/**
+ * Represents the properties of the ImageSizeContext.
+ */
+interface ImageSizeContextProps {
+  imageSize: number;
+  setIsLarge: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+// Create the context for imageSize and setIsLarge.
+const ImageSizeContext = createContext<ImageSizeContextProps | undefined>(
+  undefined
+);
+
+/**
+ * Returns the image URL based on the given place.
+ * @param place - The place to generate the image URL for.
+ * @returns The generated image URL.
+ */
+const getImageUrl = (place: PlaceProps) => {
+  return "https://i.imgur.com/" + place.imageId + "l.jpg";
+};
+
+/**
+ * Component representing the ImageList.
+ */
 export const ImageList = () => {
   const [isLarge, setIsLarge] = useState(false);
   const imageSize = isLarge ? 150 : 100;
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsLarge(e.target.checked);
   };
 
   return (
-    <ImageSizeContext.Provider value={imageSize}>
+    <ImageSizeContext.Provider value={{ imageSize, setIsLarge }}>
       <label>
         <input
           type="checkbox"
@@ -24,20 +71,32 @@ export const ImageList = () => {
   );
 };
 
-const ListPlace = () => {
+/**
+ * Component representing the list of places.
+ * @param imageSize - The size of the images to be displayed.
+ */
+const ListPlace = ({ imageSize }: ImageProps) => {
   const listItem = places.map((place) => (
     <li key={place.id}>
-      <Place place={place} />
+      <Place place={place} imageSize={imageSize} />
     </li>
   ));
 
   return <ul>{listItem}</ul>;
 };
 
-const Place = ({ place }) => {
+/**
+ * Component representing a single place.
+ * @param place - The place to be displayed.
+ * @param imageSize - The size of the image for the place.
+ */
+const Place = ({
+  place,
+  imageSize
+}: ImageProps) => {
   return (
     <>
-      <PlaceImage place={place} />
+      <PlaceImage place={place} imageSize={imageSize} />
       <p>
         <b>{place.name}</b>
         {": " + place.description}
@@ -46,26 +105,30 @@ const Place = ({ place }) => {
   );
 };
 
-const PlaceImage = ({ place }) => {
-  const imageSize = useContext(ImageSizeContext);
+/**
+ * Component representing the image for a place.
+ * @param place - The place for which the image is displayed.
+ * @param imageSize - The size of the image.
+ */
+const PlaceImage = ({
+  place,
+  imageSize
+}: ImageProps) => {
+  const contextData = useContext(ImageSizeContext);
+  const size = contextData?.imageSize || imageSize;
 
   return (
     <img
       src={getImageUrl(place)}
       alt={place.name}
-      width={imageSize}
-      height={imageSize}
+      width={size}
+      height={size}
     />
   );
 };
 
-const ImageSizeContext = createContext(500);
-
-const getImageUrl = (place) => {
-  return "https://i.imgur.com/" + place.imageId + "l.jpg";
-};
-
-const places = [
+// Sample data for places.
+const places: PlaceProps[] = [
   {
     id: 0,
     name: "Bo-Kaap in Cape Town, South Africa",

@@ -1,19 +1,28 @@
 import { useState } from "react";
 
-let nextId = 3;
-const initialItems = [
-  { id: 0, title: "Warm socks", packed: true },
-  { id: 1, title: "Travel journal", packed: false },
-  { id: 2, title: "Watercolors", packed: false },
-];
+interface ItemProps {
+  id: number;
+  title: string;
+  packed: boolean;
+}
+
+interface AddItemProps {
+  onAddItem: (title: string) => void;
+}
+
+interface PackingListProps {
+  items: ItemProps[];
+  onChangeItem: (nextItem: ItemProps) => void;
+  onDeleteItem: (itemId: number) => void;
+}
 
 export const TravelPlan = () => {
-  const [items, setItems] = useState(initialItems);
+  const [items, setItems] = useState<ItemProps[]>(initialItems);
 
   const total = items.length;
   const packed = items.filter((item) => item.packed).length;
 
-  const handleAddItem = (title) => {
+  const handleAddItem = (title: string) => {
     setItems([
       ...items,
       {
@@ -24,7 +33,7 @@ export const TravelPlan = () => {
     ]);
   };
 
-  const handleChangeItem = (nextItem) => {
+  const handleChangeItem = (nextItem: ItemProps) => {
     setItems(
       items.map((item) => {
         if (item.id === nextItem.id) {
@@ -36,7 +45,7 @@ export const TravelPlan = () => {
     );
   };
 
-  const handleDeleteItem = (itemId) => {
+  const handleDeleteItem = (itemId: number) => {
     setItems(items.filter((item) => item.id !== itemId));
   };
 
@@ -55,10 +64,10 @@ export const TravelPlan = () => {
   );
 };
 
-const AddItem = ({ onAddItem }) => {
+const AddItem = ({ onAddItem }: AddItemProps) => {
   const [title, setTitle] = useState("");
 
-  const handleChangeTitle = (e) => {
+  const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
 
@@ -79,8 +88,14 @@ const AddItem = ({ onAddItem }) => {
   );
 };
 
-const PackingList = ({ items, onChangeItem, onDeleteItem }) => {
-  const handleChangeItem = (itemId) => (e) => {
+const PackingList = ({
+  items,
+  onChangeItem,
+  onDeleteItem
+}: PackingListProps) => {
+  const handleChangeItem = (itemId: number) => (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const updatedItem = items.find((item) => item.id === itemId);
     if (updatedItem) {
       updatedItem.packed = e.target.checked;
@@ -88,7 +103,7 @@ const PackingList = ({ items, onChangeItem, onDeleteItem }) => {
     }
   };
 
-  const handleDeleteItem = (itemId) => () => {
+  const handleDeleteItem = (itemId: number) => () => {
     onDeleteItem(itemId);
   };
 
@@ -110,3 +125,10 @@ const PackingList = ({ items, onChangeItem, onDeleteItem }) => {
     </ul>
   );
 };
+
+let nextId = 3;
+const initialItems: ItemProps[] = [
+  { id: 0, title: "Warm socks", packed: true },
+  { id: 1, title: "Travel journal", packed: false },
+  { id: 2, title: "Watercolors", packed: false },
+];

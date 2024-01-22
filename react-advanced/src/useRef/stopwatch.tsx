@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 
 export const Stopwatch = () => {
-  const [startTime, setStartTime] = useState(null);
-  const [now, setNow] = useState(null);
+  const [startTime, setStartTime] = useState<number | null>(null);
+  const [now, setNow] = useState<number | null>(null);
   const intervalRef = useRef(null);
 
   const handleStart = () => {
