@@ -29,55 +29,57 @@ const App = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/inputState">Input State</Link>
+            <Link to="/input-state">Input State</Link>
           </li>
           <li>
-            <Link to="/structureState">Structure State</Link>
+            <Link to="/structure-state">Structure State</Link>
           </li>
           <li>
-            <Link to="/sharingState">Sharing State</Link>
+            <Link to="/sharing-state">Sharing State</Link>
           </li>
           <li>
-            <Link to="/preservingAndResettingState">
+            <Link to="/preserving-resetting-state">
               Preserving And Resetting State
             </Link>
           </li>
           <li>
-            <Link to="/passingDataWithContext">Passing Data With Context</Link>
+            <Link to="/passing-data-with-context">
+              Passing Data With Context
+            </Link>
           </li>
           <li>
-            <Link to="/extractingLogicState">Extracting Logic State</Link>
+            <Link to="/extracting-logic-state">Extracting Logic State</Link>
           </li>
           <li>
-            <Link to="/combiningReducerWithContext">
+            <Link to="/combining-reducer-with-context">
               Combining Reducer with Context
             </Link>
           </li>
           <li>
-            <Link to="/referencingValuesWithRefs">
+            <Link to="/referencing-values-with-refs">
               Referencing Values with Refs
             </Link>
           </li>
           <li>
-            <Link to="/manipulatingDOMWithRefs">
+            <Link to="/manipulating-DOM-with-refs">
               Manipulating the DOM with Refs
             </Link>
           </li>
           <li>
-            <Link to="/synchronizingWithEffects">
+            <Link to="/synchronizing-with-effects">
               Synchronizing with Effects
             </Link>
           </li>
           <li>
-            <Link to="/notNeedEffect">You might not need an Effect</Link>
+            <Link to="/not-need-effect">You might not need an Effect</Link>
           </li>
         </ul>
       </nav>
 
       <Routes>
-        <Route path="/inputState" element={<InputState />} />
+        <Route path="/input-state" element={<InputState />} />
         <Route
-          path="/structureState"
+          path="/structure-state"
           element={
             <>
               <TravelPlan />
@@ -87,7 +89,7 @@ const App = () => {
           }
         />
         <Route
-          path="/sharingState"
+          path="/sharing-state"
           element={
             <>
               <SyncedInputs />
@@ -97,7 +99,7 @@ const App = () => {
           }
         />
         <Route
-          path="/preservingAndResettingState"
+          path="/preserving-resetting-state"
           element={
             <>
               <InputText />
@@ -108,11 +110,11 @@ const App = () => {
             </>
           }
         />
-        <Route path="/extractingLogicState" element={<Messenger />} />
-        <Route path="/passingDataWithContext" element={<ImageList />} />
-        <Route path="/combiningReducerWithContext" element={<TaskApp />} />
+        <Route path="/extracting-logic-state" element={<Messenger />} />
+        <Route path="/passing-data-with-context" element={<ImageList />} />
+        <Route path="/combining-reducer-with-context" element={<TaskApp />} />
         <Route
-          path="/referencingValuesWithRefs"
+          path="/referencing-values-with-refs"
           element={
             <>
               <Stopwatch />
@@ -121,7 +123,7 @@ const App = () => {
           }
         />
         <Route
-          path="/manipulatingDOMWithRefs"
+          path="/manipulating-DOM-with-refs"
           element={
             <>
               <CatFriends />
@@ -130,7 +132,7 @@ const App = () => {
           }
         />
         <Route
-          path="/synchronizingWithEffects"
+          path="/synchronizing-with-effects"
           element={
             <>
               <MyForm />
@@ -139,11 +141,11 @@ const App = () => {
           }
         />
         <Route
-          path="/notNeedEffect"
+          path="/not-need-effect"
           element={
             <>
               <TodoList />
-              <Contact/>
+              <Contact />
             </>
           }
         />
