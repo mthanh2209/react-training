@@ -139,7 +139,7 @@ const ContactList = ({
 
   return (
     <section>
-      <ul className="contacts-list">
+      <ul style={{display: 'flex'}}>
         {contacts.map((contact) => (
           <li key={contact.id} className="contact-item">
             <button onClick={() => handleSelected(contact.id)}>
