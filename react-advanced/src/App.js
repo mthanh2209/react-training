@@ -22,6 +22,7 @@ import { MyForm } from "./useEffect/input";
 import { FormCounter } from "./useEffect/counter";
 import { TodoList } from "./useEffect/notUseEffect/todoList";
 import { Contact } from "./useEffect/notUseEffect/contact";
+import { Position } from "./useEffect/lifecycleOfEffect/position";
 
 const App = () => {
   return (
@@ -72,6 +73,9 @@ const App = () => {
           </li>
           <li>
             <Link to="/not-need-effect">You might not need an Effect</Link>
+          </li>
+          <li>
+            <Link to="/lifecycle-of-effect">Lifecycle of Reactive Effects</Link>
           </li>
         </ul>
       </nav>
@@ -146,6 +150,14 @@ const App = () => {
             <>
               <TodoList />
               <Contact />
+            </>
+          }
+        />
+        <Route
+          path="/lifecycle-of-effect"
+          element={
+            <>
+              <Position />
             </>
           }
         />
