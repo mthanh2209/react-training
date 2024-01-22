@@ -23,6 +23,7 @@ import { FormCounter } from "./useEffect/counter";
 import { TodoList } from "./useEffect/notUseEffect/todoList";
 import { Contact } from "./useEffect/notUseEffect/contact";
 import { Position } from "./useEffect/lifecycleOfEffect/position";
+import { OptionPage } from './useEffect/lifecycleOfEffect/selectBoxes/index';
 
 const App = () => {
   return (
@@ -158,6 +159,7 @@ const App = () => {
           element={
             <>
               <Position />
+              <OptionPage />
             </>
           }
         />
