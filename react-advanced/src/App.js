@@ -24,7 +24,9 @@ import { TodoList } from "./useEffect/notUseEffect/todoList";
 import { Contact } from "./useEffect/notUseEffect/contact";
 import { Position } from "./useEffect/lifecycleOfEffect/position";
 import { OptionPage } from "./useEffect/lifecycleOfEffect/selectBoxes/index";
-import { Timer } from './useEffect/separatingEvents/timer';
+import { Timer } from "./useEffect/separatingEvents/timer";
+import { ChatRoom } from "./useEffect/separatingEvents/chat";
+import { ToastContainer } from 'react-toastify/dist/components';
 
 const App = () => {
   return (
@@ -174,6 +176,8 @@ const App = () => {
           element={
             <>
               <Timer />
+              <ChatRoom />
+              <ToastContainer />
             </>
           }
         />
