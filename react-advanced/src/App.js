@@ -25,6 +25,7 @@ import { Contact } from "./useEffect/notUseEffect/contact";
 import { Position } from "./useEffect/lifecycleOfEffect/position";
 import { OptionPage } from "./useEffect/lifecycleOfEffect/selectBoxes/index";
 import { Animation } from "./useEffect/effectDependencies/animation";
+import { ChatRoom } from "./useEffect/effectDependencies/chat";
 
 const App = () => {
   return (
@@ -174,6 +175,7 @@ const App = () => {
           element={
             <>
               <Animation />
+              <ChatRoom />
             </>
           }
         />

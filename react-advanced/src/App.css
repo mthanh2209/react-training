@@ -68,3 +68,8 @@ li {
 .contact-item {
   margin-right: 10px;
 }
+
+.dark {
+  background: #222;
+  color: #eee;
+}
