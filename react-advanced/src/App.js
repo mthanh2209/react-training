@@ -25,6 +25,7 @@ import { Contact } from "./useEffect/notUseEffect/contact";
 import { Position } from "./useEffect/lifecycleOfEffect/position";
 import { OptionPage } from "./useEffect/lifecycleOfEffect/selectBoxes/index";
 import { Counter } from "./customHooks/counter";
+import { CounterDelay } from "./customHooks/delay";
 
 const App = () => {
   return (
@@ -174,6 +175,7 @@ const App = () => {
           element={
             <>
               <Counter />
+              <CounterDelay />
             </>
           }
         />
