@@ -26,6 +26,7 @@ import { Position } from "./useEffect/lifecycleOfEffect/position";
 import { OptionPage } from "./useEffect/lifecycleOfEffect/selectBoxes/index";
 import { Counter } from "./customHooks/counter";
 import { CounterDelay } from "./customHooks/delay";
+import { Pointer } from "./customHooks/position";
 
 const App = () => {
   return (
@@ -176,6 +177,7 @@ const App = () => {
             <>
               <Counter />
               <CounterDelay />
+              <Pointer />
             </>
           }
         />
