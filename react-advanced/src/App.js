@@ -27,6 +27,8 @@ import { OptionPage } from "./useEffect/lifecycleOfEffect/selectBoxes/index";
 import { Counter } from "./customHooks/counter";
 import { CounterDelay } from "./customHooks/delay";
 import { Pointer } from "./customHooks/position";
+import { Animation } from "./useEffect/effectDependencies/animation";
+import { ChatRoom } from "./useEffect/effectDependencies/chat";
 
 const App = () => {
   return (
@@ -84,6 +86,11 @@ const App = () => {
           <li>
             <Link to="/reusing-logic-with-custom-hooks">
               Reusing Logic with Custom Hooks
+            </Link>
+          </li>
+          <li>
+            <Link to="/removing-effect-dependencies">
+              Removing Effect Dependencies
             </Link>
           </li>
         </ul>
@@ -178,6 +185,15 @@ const App = () => {
               <Counter />
               <CounterDelay />
               <Pointer />
+            </>
+          }
+        />
+        <Route
+          path="/removing-effect-dependencies"
+          element={
+            <>
+              <Animation />
+              <ChatRoom />
             </>
           }
         />
