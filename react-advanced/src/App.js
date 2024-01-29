@@ -24,6 +24,9 @@ import { TodoList } from "./useEffect/notUseEffect/todoList";
 import { Contact } from "./useEffect/notUseEffect/contact";
 import { Position } from "./useEffect/lifecycleOfEffect/position";
 import { OptionPage } from "./useEffect/lifecycleOfEffect/selectBoxes/index";
+import { Counter } from "./customHooks/counter";
+import { CounterDelay } from "./customHooks/delay";
+import { Pointer } from "./customHooks/position";
 import { Animation } from "./useEffect/effectDependencies/animation";
 import { ChatRoom } from "./useEffect/effectDependencies/chat";
 
@@ -79,6 +82,11 @@ const App = () => {
           </li>
           <li>
             <Link to="/lifecycle-of-effect">Lifecycle of Reactive Effects</Link>
+          </li>
+          <li>
+            <Link to="/reusing-logic-with-custom-hooks">
+              Reusing Logic with Custom Hooks
+            </Link>
           </li>
           <li>
             <Link to="/removing-effect-dependencies">
@@ -167,6 +175,16 @@ const App = () => {
             <>
               <Position />
               <OptionPage />
+            </>
+          }
+        />
+        <Route
+          path="/reusing-logic-with-custom-hooks"
+          element={
+            <>
+              <Counter />
+              <CounterDelay />
+              <Pointer />
             </>
           }
         />
